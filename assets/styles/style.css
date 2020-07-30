@@ -76,6 +76,23 @@ aside {
   transition: 0.5s;
 }
 
+@media screen and (max-width: 700px) {
+  aside {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  aside a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  aside a {
+    text-align: center;
+    float: none;
+  }
+}
+
 .mainAndFooter {
   flex-basis: 75%;
 }
