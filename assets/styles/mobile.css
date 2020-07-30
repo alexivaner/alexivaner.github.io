@@ -7,8 +7,6 @@
 
 body {
   font-family: "Quicksand", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 15px;
   line-height: 1.8;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -50,30 +48,16 @@ figure figcaption {
 
 body {
   position: relative;
-  display: flex;
+  display: block;
   flex-direction: row;
 }
 
 header {
-  flex-basis: 25%;
+  flex-basis: 0%;
 }
 
 aside {
-  width: 20%;
-  padding-top: 3em;
-  padding-bottom: 40px;
-  padding-left: 3em;
-  padding-right: 3em;
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  overflow-y: scroll;
-  z-index: 1001;
-  background: #fff;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 400px) {
@@ -91,11 +75,15 @@ main {
   padding-left: 50px;
 }
 
-#home {
-  padding-right: 250px;
-  margin-top: 100px;
+#content {
+  height: 380px;
+  overflow: auto;
 }
 
+#home {
+  padding-right: 50px;
+  margin-top: 30px;
+}
 
 #about {
   padding-right: 100px;
@@ -119,11 +107,11 @@ main {
   -ms-transition: opacity .5s ease-in-out;
   -o-transition: opacity .5s ease-in-out;
   transition: opacity .5s ease-in-out;
-  font-size: 50px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
   padding-top: 50px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 
 .greetings {
@@ -133,7 +121,8 @@ main {
 }
 
 footer {
-  flex-basis: 15%;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 article {
@@ -146,22 +135,21 @@ article {
 
 #home h2 {
   font-family: Lato, sans-serif;
-  font-size: 80px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 900;
 }
 
 #home p {
   font-family: Quicksand, sans-serif;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 100;
   text-align: justify;
 }
 
 body footer {
-  position: fixed;
+  display: block;
   padding-left: 50px;
-  bottom: 20px;
 }
 
 #aside #main-menu ul li {
@@ -252,7 +240,7 @@ body footer {
 }
 
 #aside #main-menu ul li.active a:after {
-  visibility: visible;
+  visibility: hidden;
   -webkit-transform: scaleX(1);
   -moz-transform: scaleX(1);
   -ms-transform: scaleX(1);
