@@ -12,12 +12,12 @@ function updateTime(){
 
   if (time < 12 && time> 6) {
     greetings.innerHTML = "Good morning!";
-  }else if(time<18) {
+  }else if(time<18 && time>=12) {
     greetings.innerHTML = "Good afternoon!";
   }else if (time >=18 && time< 22){
     greetings.innerHTML = "Good evening!";
   }else{
-    greetings.innerHTML = "Don't forget to sleep!";
+    greetings.innerHTML = "Good Night! Don't forget to sleep!";
   }
 }
 
