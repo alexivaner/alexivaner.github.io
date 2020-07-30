@@ -321,7 +321,7 @@ body::before {
   background: #c2c2c2;
   position: absolute;
   bottom: 0;
-  left: 37.5px;
+  left: 25px;
   z-index: -1;
   transition: all 0.3s ease 0s;
 }
@@ -333,15 +333,15 @@ body::before {
 .serviceBox .service-icon {
   display: block;
   padding-top: 10px;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: #fff;
   border: 5px solid #c2c2c2;
   text-align: center;
   line-height: 50px;
   float: left;
-  font-size: 40px;
+  font-size: 20px;
   color: #c2c2c2;
   z-index: 1;
   transition: all 0.3s ease 0s;
@@ -363,7 +363,7 @@ body::before {
 }
 
 .serviceBox .service-content {
-  margin-left: 90px;
+  margin-left: 65px;
   padding-bottom: 10px;
 }
 
