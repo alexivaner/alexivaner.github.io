@@ -11,6 +11,10 @@ body {
   color: rgba(0, 0, 0, 0.7);
 }
 
+.service-content h3 {
+  font-size: 14px;
+}
+
 a {
   color: #FF8929;
   -webkit-transition: 0.5s;
@@ -57,14 +61,20 @@ header {
 }
 
 aside {
-  visibility: hidden;
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-@media screen and (max-width: 400px) {
-  aside a {
-    text-align: center;
-    float: none;
-  }
+aside a {
+  float: left;
+  font-size: 10px;
+}
+
+div.content {
+  margin-left: 0;
 }
 
 .mainAndFooter {
@@ -73,27 +83,27 @@ aside {
 
 main {
   padding-left: 50px;
+  padding-right: 50px;
 }
 
 #content {
-  height: 380px;
+  height: 70%;
   overflow: auto;
 }
 
 #home {
-  padding-right: 50px;
   margin-top: 30px;
 }
 
 #about {
-  padding-right: 100px;
+  padding-right: 0px;
   margin-bottom: 20px;
   clear: both;
 }
 
 #work {
   /* margin-top: 0px; */
-  padding-right: 300px;
+  padding-right: 10px;
 }
 
 #contact {
@@ -110,7 +120,7 @@ main {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -123,6 +133,18 @@ main {
 footer {
   font-weight: 400;
   font-size: 12px;
+}
+
+small {
+  display: none;
+}
+
+#navigationFooter {
+  display: none;
+}
+
+#logo {
+  display: none;
 }
 
 article {
@@ -148,8 +170,12 @@ article {
 }
 
 body footer {
-  display: block;
-  padding-left: 50px;
+  position: absolute;
+  bottom: 0px;
+  height: 50px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
 }
 
 #aside #main-menu ul li {
@@ -191,6 +217,8 @@ body footer {
   text-align: right;
   margin: 0;
   padding: 0;
+  text-align: center;
+  float: none;
 }
 
 #aside #main-menu ul li {
@@ -207,7 +235,7 @@ body footer {
   color: rgba(0, 0, 0, 0.4);
   text-decoration: none;
   position: relative;
-  padding: 10px 0;
+  padding: 10px 10px;
   font-family: "Quicksand", Arial, sans-serif;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
@@ -222,7 +250,6 @@ body footer {
   left: 0;
   right: 0;
   background-color: #ff414e;
-  visibility: hidden;
 }
 
 #aside #main-menu ul li a:hover {
@@ -378,27 +405,27 @@ body::before {
 }
 
 .service-content p {
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .about-profile {
-  display: flex;
-  flex-direction: row;
+  display: block;
   clear: both;
 }
 
 .about-profile #profile-photo {
-  flex-basis: 35%;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #profile-photo img {
-  width: 100%;
+  width: 50%;
+  display: block;
+  margin: 5 auto;
 }
 
 .about-profile .team-profile {
-  flex-basis: 95%;
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .about-profile .team-title {
@@ -406,11 +433,13 @@ body::before {
 }
 
 .about-profile .team-title a {
-  font-size: 35px;
+  font-size: 20px;
   font-family: "Quicksand", Arial, sans-serif;
   font-weight: 700;
   color: #444;
   transition: color 0.20s linear;
+  padding-top:  30px;
+  padding-bottom: 20px;
 }
 
 .about-profile .team-title a:hover {
@@ -420,7 +449,7 @@ body::before {
 .about-profile .post {
   color: #3498db;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 12px;
   display: block;
   margin-bottom: 10px;
 }
@@ -558,6 +587,6 @@ iframe::-webkit-scrollbar {
 
 @media only screen and (max-width:767px) {
   .serviceBox {
-    margin-bottom: 70px;
+    margin-bottom: 10px;
   }
 }
