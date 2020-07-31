@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+a {
+  color: #FF8929;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a:hover, a:active, a:focus {
+  color: #F75940;
+  outline: none;
+  text-decoration: none !important;
+}
+
+h1, h2 {
+  color: #000;
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: 400;
+  margin: 0 0 0px 0;
+}
+
+figure {
+  margin-bottom: 2.5em;
+  float: left;
+  width: 100%;
+}
+
+figure figcaption {
+  font-size: 16px;
+  width: 80%;
+  margin: 20px auto 0px auto;
+  color: #b3b3b3;
+  font-style: italic;
+  font-family: "Quicksand", Arial, sans-serif;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+header {
+  flex-basis: 25%;
+}
+
+aside {
+  width: 20%;
+  padding-top: 3em;
+  padding-bottom: 40px;
+  padding-left: 3em;
+  padding-right: 3em;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  z-index: 1001;
+  background: #fff;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 400px) {
+  aside a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.mainAndFooter {
+  flex-basis: 75%;
+}
+
+main {
+  padding-left: 50px;
+  padding-right: 50px;
+
+}
+
+#home {
+  margin-top: 100px;
+}
+
+
+#about {
+  padding-right: 10px;
+  margin-bottom: 20px;
+  clear: both;
+}
+
+#work {
+  /* margin-top: 0px; */
+  padding-right: 0px;
+  bottom: 20px;
+}
+
+#contact {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+#title {
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.greetings {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+footer {
+  flex-basis: 15%;
+}
+
+article {
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+#home h2 {
+  font-family: Lato, sans-serif;
+  font-size: 60px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+#home p {
+  font-family: Quicksand, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  text-align: justify;
+}
+
+body footer {
+  position: fixed;
+  display: none;
+  padding-left: 50px;
+  bottom: 20px;
+}
+
+#aside #main-menu ul li {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#aside #logo {
+  text-align: right;
+  font-weight: 400;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 3em;
+  width: 100%;
+}
+
+#aside #logo a {
+  display: inline-block;
+  text-align: center;
+  background: #000;
+  padding: .5em .8em;
+  color: #fff;
+  letter-spacing: 10px;
+  padding-right: .3em;
+}
+
+#aside #logo a span {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#aside #main-menu ul {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+#aside #main-menu ul li {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#aside #main-menu ul li a {
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  position: relative;
+  padding: 10px 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#aside #main-menu ul li a:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  background-color: #ff414e;
+  visibility: hidden;
+}
+
+#aside #main-menu ul li a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+#aside #main-menu ul li a:hover:after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+#aside #main-menu ul li.active a {
+  color: #ff8928;
+}
+
+#aside #main-menu ul li.active a:after {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+#aside .navigationFooter {
+  position: absolute;
+  bottom: 40px;
+  right: 1.5em;
+  left: 1.5em;
+  font-size: 12px;
+  text-align: right;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0 20px;
+}
+
+body::before {
+  opacity: 0.2;
+  content: "";
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-image: url('../image/plexus_bg_2.gif');
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+}
+
+.serviceBox {
+  margin-top: 25px;
+  border-bottom: 1px solid #c2c2c2;
+  z-index: 1;
+  position: relative;
+  top: 0;
+  transition: all 0.3s ease 0s;
+}
+
+.serviceBox:hover {
+  top: 10px;
+  border-bottom: 1px solid #FF8929;
+}
+
+.serviceBox:after {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background: #c2c2c2;
+  position: absolute;
+  bottom: 0;
+  left: 37.5px;
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+
+.serviceBox:hover:after {
+  background: #FF8929;
+}
+
+.serviceBox .service-icon {
+  display: block;
+  padding-top: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #fff;
+  border: 5px solid #c2c2c2;
+  text-align: center;
+  line-height: 50px;
+  float: left;
+  font-size: 40px;
+  color: #c2c2c2;
+  z-index: 1;
+  transition: all 0.3s ease 0s;
+}
+
+.serviceBox .service-icon i {
+  color: #c2c2c2;
+}
+
+.serviceBox:hover .service-icon i {
+  color: #FF8929;
+}
+
+.serviceBox:hover .service-icon {
+  border-color: #FF8929;
+  color: #FF8929;
+  margin-top: -30px;
+  animation: bounce 1s ease normal none 1;
+}
+
+.serviceBox .service-content {
+  margin-left: 90px;
+  padding-bottom: 10px;
+}
+
+.serviceBox .title {
+  font-size: 20px;
+  color: #000;
+  margin-top: 0;
+}
+
+.serviceBox .description {
+  font-size: 16px;
+  color: #000;
+  line-height: 24px;
+}
+
+.serviceBox .read-more {
+  display: inline-block;
+  padding: 4px 16px;
+  font-size: 13px;
+  color: #000;
+  text-transform: capitalize;
+  border: 2px solid #000;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: all 0.3s ease 0s;
+}
+
+.serviceBox:hover .read-more {
+  bottom: 25px;
+  opacity: 1;
+}
+
+.serviceBox .read-more:hover {
+  background: #000;
+  color: #fff;
+}
+
+.service-content p {
+  font-size: 14px;
+}
+
+.about-profile {
+  display: flex;
+  flex-direction: row;
+  clear: both;
+}
+
+.about-profile #profile-photo {
+  flex-basis: 35%;
+  padding-top: 20px;
+}
+
+#profile-photo img {
+  width: 100%;
+}
+
+.about-profile .team-profile {
+  flex-basis: 95%;
+  margin-left: 50px;
+}
+
+.about-profile .team-title {
+  margin: 0;
+}
+
+.about-profile .team-title a {
+  font-size: 35px;
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: 700;
+  color: #444;
+  transition: color 0.20s linear;
+}
+
+.about-profile .team-title a:hover {
+  color: #3498db;
+}
+
+.about-profile .post {
+  color: #3498db;
+  text-transform: uppercase;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.about-profile .description {
+  color: #8a8a8a;
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: 23px;
+  text-align: justify;
+}
+
+.about-profile .social-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.about-profile .social-links li {
+  display: inline-block;
+  margin-right: 3px;
+}
+
+.about-profile .social-links li a {
+  border: 2px solid #8a8a8a;
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  color: #8a8a8a;
+  transition: color 0.20s linear, border 0.20s linear;
+}
+
+.about-profile .social-links li a:hover {
+  color: #3498db;
+  border-color: #3498db;
+}
+
+.contact-profile {
+  display: block;
+}
+
+
+
+#social-contact {
+  padding: 40px;
+  padding-top: 0px;
+}
+
+#social-contact h1 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#social-contact .social-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#social-contact .social-links li {
+  display: inline-block;
+  font-size: 40px;
+  padding: 20px;
+}
+
+#social-contact .social-links li a {
+  display: block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  color: #8a8a8a;
+  transition: color 0.20s linear, border 0.20s linear;
+}
+
+#social-contact .social-links li a:hover {
+  color: #3498db;
+  border-color: #3498db;
+}
+
+iframe {
+  width: 500px;
+  height: 600px;
+  /* you have to specify width and heigth, otherwise overflow has no meaning */
+  overflow-x: hidden;
+  overflow-y: hidden
+}
+
+/* optionally, you could add the following code, to keep scrolling (but not the scrollbar) for touchscreen devices */
+iframe::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 990px) {
+  .about-profile {
+    margin-bottom: 30px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1.8)
+  }
+
+  50% {
+    transform: scale(0.95)
+  }
+
+  80% {
+    transform: scale(1.05)
+  }
+
+  90% {
+    transform: scale(0.98)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
+@media only screen and (max-width:990px) {
+  .serviceBox {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .serviceBox {
+    margin-bottom: 70px;
+  }
+}
