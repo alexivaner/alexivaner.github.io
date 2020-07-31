@@ -89,11 +89,12 @@ aside {
 
 main {
   padding-left: 50px;
-  padding-right: 250px;
+  padding-right: 50px;
 
 }
 
 #home {
+  padding-right: 150px;
   margin-top: 100px;
 }
 
@@ -502,8 +503,8 @@ body::before {
 
 #social-contact .social-links li {
   display: inline-block;
-  font-size: 80px;
-  padding: 60px;
+  font-size: 40px;
+  padding: 20px;
 }
 
 #social-contact .social-links li a {
