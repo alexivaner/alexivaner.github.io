@@ -161,6 +161,7 @@ article {
 }
 
 body footer {
+  display: none;
   position: fixed;
   padding-left: 50px;
   bottom: 20px;
