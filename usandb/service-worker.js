@@ -1,6 +1,6 @@
 const CACHE_NAME = "usbv3";
 var urlsToCache = [
-  "./usandb",
+  "./",
   "./nav.html",
   "./index.html",
   "./assets/about.jpg",
