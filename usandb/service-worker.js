@@ -1,4 +1,4 @@
-const CACHE_NAME = "usbv3";
+const CACHE_NAME = "usbv4";
 var urlsToCache = [
   "./",
   "./nav.html",
