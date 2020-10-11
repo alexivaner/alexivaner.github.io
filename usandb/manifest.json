@@ -1,0 +1,16 @@
+{
+    "name": "Us&B for Freelance Worker",
+    "short_name": "Us&B",
+    "description": "Aplikasi untuk Us&B",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FFDE03",
+    "theme_color": "#FFDE03",
+    "icons": [
+        {
+            "src": "assets/Icon.png",
+            "sizes": "1000x1000",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="dicoding:email" content="hutomoivan@gmail.com">
+
+  <title>Us&B Freelance Platforms</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img src="assets/logo.png" alt="Logo Us&B" style="width:52px;"></a>
+
+      <ul class="topnav right hide-on-med-and-down"></ul>
+
+      <ul id="nav-mobile" class="sidenav"></ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div id="body-content">
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4 bio-footer">Us&B Creative Management was created by 2 Digital Marketing Enthusiast where Us&B Creative Management comes in as a platform to connect your needs to the right person.
+            We aim to contribute and connecting more people especially in the middle of pandemic</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Ivan Surya Hutomo</h5>
+          <ul>
+            <li><a target="_blank" class="white-text fa fa-instagram" href="https://www.instagram.com/ivan.hutomo/"> Instagram</a></li>
+            <li><a target="_blank" class="white-text fa fa-linkedin" href="https://www.linkedin.com/in/ivan-surya-hutomo-b5746713a"> LinkedIn</a></li>
+            <li><a target="_blank" class="white-text fa fa-github" href="https://github.com/alexivaner"> Github</a></li>
+            <li><a target="_blank" class="white-text fa fa-envelope" href="https://mail.google.com/mail/?view=cm&fs=1&to=hutomoivan@gmail.com!"> Email</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Ryan Santoso</h5>
+          <ul>
+            <li><a target="_blank" class="white-text fa fa-instagram" href="https://www.instagram.com/ryansantosoo/"> Instagram</a></li>
+            <li><a target="_blank" class="white-text fa fa-linkedin" href="https://www.linkedin.com/in/ryan-santoso-981924196/"> LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        Copyright &copy;<script>
+          document.write(new Date().getFullYear())
+        </script> <a class="brown-text text-lighten-3" href="https://alexivaner.github.io/">Ivan Surya Hutomo</a> with MaterializeCSS
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // REGISTER SERVICE WORKER
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function() {
+            console.log("Pendaftaran ServiceWorker berhasil");
+          })
+          .catch(function() {
+            console.log("Pendaftaran ServiceWorker gagal");
+          });
+      });
+    } else {
+      console.log("ServiceWorker belum didukung browser ini.");
+    }
+  </script>
+</body>
+
+
+</html>
