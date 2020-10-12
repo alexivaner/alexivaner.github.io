@@ -1,6 +1,7 @@
 const CACHE_NAME = "usbv4";
 var urlsToCache = [
   "./",
+  "./manifest.json",
   "./nav.html",
   "./index.html",
   "./assets/about.jpg",
@@ -23,8 +24,15 @@ var urlsToCache = [
   "./pages/register.html",
   "./pages/showcase.html",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
+  "https://fonts.gstatic.com/s/materialicons/v55/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
+
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-  "https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap"
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0",
+
+  "https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap",
+  "https://fonts.gstatic.com/s/archivo/v7/k3kVo8UDI-1M0wlSdQbMO0bhLIiP-Q8.woff2"
 ];
 
 self.addEventListener("install", function(event) {
