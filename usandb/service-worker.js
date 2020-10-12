@@ -1,4 +1,4 @@
-const CACHE_NAME = "usbv4";
+var CACHE_NAME = "usbv4";
 var urlsToCache = [
   "./",
   "./manifest.json",
