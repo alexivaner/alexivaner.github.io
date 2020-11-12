@@ -1,4 +1,4 @@
-const CACHE_NAME = "usbv4";
+var CACHE_NAME = "usbv4";
 var urlsToCache = [
   "./",
   "./manifest.json",
@@ -23,9 +23,20 @@ var urlsToCache = [
   "./pages/categories.html",
   "./pages/register.html",
   "./pages/showcase.html",
+  
+    "./images/icons/icon-72x72.png",
+  "./images/icons/icon-96x96.png",
+  "./images/icons/icon-128x128.png",
+  "./images/icons/icon-144x144.png",
+  "./images/icons/icon-152x152.png",
+  "./images/icons/icon-192x192.png",
+  "./images/icons/icon-384x384.png",
+  "./images/icons/icon-512x512.png",
   "https://fonts.googleapis.com/icon?family=Material+Icons",
   "https://fonts.gstatic.com/s/materialicons/v55/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2",
 
+
+  "https://code.jquery.com/jquery-2.1.1.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0",
