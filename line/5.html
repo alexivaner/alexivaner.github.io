@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Pilih Jenis Game</title>
+  <title>Silahkan isi id player</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
@@ -22,7 +22,7 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="idplayer">Silahkan isi ID player</label>
         <div class="col-md-4">
-          <input id="idplayer" name="idplayer" type="text" placeholder="isi ID Player" class="form-control input-md" required="">
+          <input id="idplayer" name="idplayer" type="text" placeholder="isi ID Player" class="form-control input-md">
           <span class="help-block">Silahkan isi ID player</span>
         </div>
       </div>
@@ -30,15 +30,14 @@
       <!-- Button -->
       <div class="form-group">
         <label class="col-md-4 control-label" for="lanjutkan"></label>
-        <div class="col-md-4">
-          <button id="lanjutkan" name="lanjutkan" class="btn btn-primary">Lanjutkan</button>
+        <div class="col-md-8">
+          <button id="next_5" name="submit" class="btn btn-primary" data-target="6.html">Lanjutkan</button>
+          <button id="prev_5" name="submit" class="btn btn-inverse" data-target="4.html">Sebelumnya</button>
         </div>
       </div>
-
     </fieldset>
   </form>
-
-
+  <script src="script/myscript.js"></script>
 </body>
 
 </html>
