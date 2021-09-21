@@ -1,0 +1,22 @@
+body{
+  margin: 20px;
+}
+
+button{
+  float: right;
+}
+
+.secondlabel{
+  float: right;
+}
+
+.btn{
+  margin: 5px;
+}
+
+.title{
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+}
