@@ -1,0 +1,303 @@
+{
+  "engineering": [
+    {
+      "id": "xview",
+      "name": "XView - AI-Powered Motion Analysis Platform",
+      "headline": "Applied AI engineering within the IdeasLab development team.",
+      "story": [
+        {
+          "title": "The product",
+          "text": "XView is developed and owned by IdeasLab Formosa Co., Ltd. This case study describes my engineering contributions as part of the development team."
+        },
+        {
+          "title": "My contribution",
+          "text": "I work on applied AI product engineering, connecting computer vision integration with desktop and web application development."
+        },
+        {
+          "title": "The approach",
+          "text": "My professional focus includes user-facing AI workflows, 2D and 3D pose-estimation applications, and full-stack software engineering."
+        },
+        {
+          "title": "The context",
+          "text": "This is employment work within the IdeasLab team. Product information is available through the official XView website and public demo."
+        }
+      ],
+      "href": "https://xview.ai/",
+      "link": "Explore XView",
+      "scope": "Computer vision, desktop & web",
+      "links": [
+        {
+          "label": "Explore XView",
+          "href": "https://xview.ai/"
+        },
+        {
+          "label": "Open web demo",
+          "href": "https://demo.xview.ai/"
+        }
+      ]
+    },
+    {
+      "id": "xview-check",
+      "name": "System Compatibility Checker",
+      "headline": "Clear guidance before using software.",
+      "story": [
+        {
+          "title": "The product",
+          "text": "A public XView system-readiness website linked here as part of my professional experience."
+        },
+        {
+          "title": "My contribution",
+          "text": "Application engineering with a focus on clear user guidance and usable software."
+        },
+        {
+          "title": "The approach",
+          "text": "General skills in web development, product integration, and communicating software requirements."
+        },
+        {
+          "title": "The context",
+          "text": "IdeasLab owns the product. The official public website is the reference for its current capabilities."
+        }
+      ],
+      "href": "https://check.xview.ai/",
+      "link": "Open compatibility checker",
+      "scope": "Web application engineering"
+    },
+    {
+      "id": "xview-platform",
+      "name": "Commercial AI Platform & Licensing Infrastructure",
+      "headline": "Full-stack engineering around commercial AI software.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Commercial software needs clear account and software-access experiences around its core capabilities."
+        },
+        {
+          "title": "My contribution",
+          "text": "Professional experience in full-stack application engineering and product integration as part of the IdeasLab team."
+        },
+        {
+          "title": "The approach",
+          "text": "I connect user-facing workflows with application services at a general engineering level."
+        },
+        {
+          "title": "The context",
+          "text": "Customer identities, partner relationships, commercial arrangements, and licensing security mechanisms are not part of this public case study."
+        }
+      ],
+      "scope": "Application and product integration"
+    }
+  ],
+  "research": [
+    {
+      "id": "zero-dce",
+      "name": "Zero-DCE",
+      "headline": "Low-light enhancement, brought to a DSLR demo.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Low-light enhancement needs to preserve useful detail without amplifying noise or introducing unwanted color shifts."
+        },
+        {
+          "title": "Our contribution",
+          "text": "With Farhan Tandia and Martin Dominikus, I worked on extending the original Zero-DCE research with DSLR integration, color correction, denoising, dataset augmentation, and retraining."
+        },
+        {
+          "title": "The approach",
+          "text": "The public implementation combines PyTorch enhancement, color balancing, and OpenCV denoising. Node-RED and gPhoto2 connect the DSLR demonstration."
+        },
+        {
+          "title": "The result",
+          "text": "Best Demo Award, Applied Computer Vision 2020. The images below are the original and the team’s enhanced result from the public repository; they are a qualitative example, not a new benchmark."
+        }
+      ],
+      "source": "https://github.com/alexivaner/Applied-CV-Zero-DCE-master",
+      "category": "Computer vision & 3D",
+      "summary": "Real-time enhancement, color correction, and denoising.",
+      "comparison": true,
+      "pipeline": [
+        "DSLR capture",
+        "Zero-DCE enhancement",
+        "Color correction",
+        "Denoising"
+      ],
+      "mediaType": "zero"
+    },
+    {
+      "id": "pose-thesis",
+      "name": "2D-to-3D Human Pose",
+      "headline": "The research behind my computer vision career.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Human behavior recognition should account for changes in camera viewpoint, rather than treating each angle as an entirely separate problem."
+        },
+        {
+          "title": "My contribution",
+          "text": "As part of my master’s thesis, I extended existing pose-estimation baselines to use AlphaPose inputs, convert COCO joints to Human3.6M, estimate 3D skeletons, and transform skeleton references. Rashid Ali is credited as another contributor."
+        },
+        {
+          "title": "The approach",
+          "text": "A PyTorch 2D-to-3D pipeline, Optuna hyperparameter tuning, skeleton-reference transformation, and notebooks for pose visualization. This builds on AlphaPose and the published 3D Pose Baseline implementations."
+        },
+        {
+          "title": "The context",
+          "text": "Academic research on human behavior recognition inside elevators with variable camera angles. This public repository is a research artifact, not a current production system."
+        },
+        {
+          "title": "From research to engineering",
+          "text": "This thesis work taught me to connect model inputs, coordinate conventions, evaluation, and visualization. Those concerns continue in my professional computer vision work, alongside application and product engineering."
+        }
+      ],
+      "source": "https://github.com/alexivaner/3d_pose_baseline_pytorch_Alpha_Pose",
+      "category": "Computer vision & 3D",
+      "summary": "Master’s thesis: pose lifting and viewpoint transformation.",
+      "pipeline": [
+        "AlphaPose 2D keypoints",
+        "COCO to Human3.6M",
+        "PyTorch 3D estimation",
+        "Reference transformation"
+      ],
+      "mediaType": "pose"
+    },
+    {
+      "id": "traffic",
+      "name": "Traffic Jam Prediction",
+      "headline": "Comparing models for West Java traffic reports.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Predict which sectors will receive high traffic-jam reports at particular dates and hours using the competition’s West Java traffic data."
+        },
+        {
+          "title": "Our contribution",
+          "text": "With Farhan Tandia, I explored multiple tabular learning approaches and ensemble methods for the Lulus2021 team."
+        },
+        {
+          "title": "The approach",
+          "text": "The notebook includes CatBoost, LightGBM, NODE, a PyTorch MLP, FastAI, feature experiments, and ensemble workflows. The README also lists TabNet among the approaches explored."
+        },
+        {
+          "title": "The result",
+          "text": "Official private leaderboard: 12th of 96 teams, top 13%. The repository reports a later submission at 5th of 96; that later result is separate from the official competition placement."
+        }
+      ],
+      "source": "https://github.com/alexivaner/DataScienceWeekend_Traffic-Jam-Prediction-using-Multiple-Method-and-Model",
+      "category": "Machine learning & data science",
+      "summary": "Official private leaderboard: 12 / 96. Team project.",
+      "mediaType": "traffic"
+    },
+    {
+      "id": "bri",
+      "name": "BRI Data Hackathon",
+      "headline": "Learning from historical employee KPIs.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Predict employee performance for the following year using historical KPI data in a people-analytics competition."
+        },
+        {
+          "title": "Our contribution",
+          "text": "I participated with team PelajarHsinchu. The public repository contains people-analytics preprocessing, boosting experiments, and submission notebooks."
+        },
+        {
+          "title": "The approach",
+          "text": "The reviewed CatBoost notebook encodes categorical features, prepares numeric data, uses a held-out validation split, and trains a CatBoost classifier with AUC evaluation."
+        },
+        {
+          "title": "The result",
+          "text": "83rd of 505 teams, top 16%, as reported in the repository. This was a competition exercise; it is not presented as a deployed HR decision system."
+        }
+      ],
+      "source": "https://github.com/alexivaner/BRI-Hackathon-2021",
+      "category": "Machine learning & data science",
+      "summary": "People analytics. 83 / 505 teams, top 16%.",
+      "mediaType": "bri"
+    },
+    {
+      "id": "shopee",
+      "name": "Shopee Product Matching",
+      "headline": "Learning visual similarity between product listings.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Recognize whether two product listings describe the same item, supporting better matching across a marketplace."
+        },
+        {
+          "title": "Our contribution",
+          "text": "A collaborative NDSC project with Farhan Tandia, Mahdin Rohmatillah, and Martin Dominikus. I contributed to the team’s product-matching experiments."
+        },
+        {
+          "title": "The approach",
+          "text": "The README documents Siamese networks, contrastive loss, EfficientNetB3, augmentation, and optimizer experiments. The checked-in competition notebook uses a shared EfficientNetB6 with pairwise features and binary cross-entropy: these are different experiments."
+        },
+        {
+          "title": "The result",
+          "text": "6th of 139 teams, top 5%, in NDSC Indonesia 2020. The achievement belongs to the team; no single notebook is claimed to explain the entire result."
+        }
+      ],
+      "source": "https://github.com/alexivaner/NDSC-ID-2020-Product-Matching",
+      "category": "Machine learning & data science",
+      "summary": "Representation learning. 6 / 139 teams, top 5%.",
+      "mediaType": "shopee"
+    },
+    {
+      "id": "tsp",
+      "name": "Traveling Salesman Problem",
+      "headline": "Searching for shorter routes with evolution.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Visit every city and return to the start while minimizing the total route distance."
+        },
+        {
+          "title": "My contribution",
+          "text": "I implemented and explored a genetic algorithm for an Evolutionary Computation course project, with configurable populations, generations, and route visualizations."
+        },
+        {
+          "title": "The approach",
+          "text": "Candidate routes compete through binary tournament selection. Crossover and mutation repair repeated cities; fitness evaluation and truncation selection form subsequent populations."
+        },
+        {
+          "title": "The context",
+          "text": "An academic optimization experiment. Genetic algorithms search for useful solutions, but this project does not establish a guaranteed global optimum or a production routing service."
+        }
+      ],
+      "source": "https://github.com/alexivaner/Travel-Salesman-Problem-using-GA",
+      "category": "Optimization & algorithms",
+      "summary": "Genetic algorithms, selection, crossover, and mutation.",
+      "pipeline": [
+        "Route population",
+        "Tournament selection",
+        "Crossover & mutation",
+        "Fitness evaluation"
+      ],
+      "mediaType": "tsp"
+    }
+  ],
+  "kita": {
+    "id": "kita",
+    "name": "Kita Taiwan",
+    "headline": "Website for the Indonesian Catholic Community in Taiwan",
+    "story": [
+      {
+        "title": "The purpose",
+        "text": "A community website for Indonesians in Taiwan, giving the Indonesian Catholic community a place to present itself online."
+      },
+      {
+        "title": "My contribution",
+        "text": "Website design and development for the community. The organization’s identity and content belong to the community."
+      },
+      {
+        "title": "The delivery",
+        "text": "A public-facing community website. No unverified framework, backend, audience metrics, or operational outcomes are claimed."
+      },
+      {
+        "title": "Availability",
+        "text": "The live website was unavailable during review. This case study remains accessible here; the external address is provided only as a reference."
+      }
+    ],
+    "href": "https://kitataiwan.com/",
+    "link": "Website reference",
+    "availability": "Live availability could not be verified."
+  }
+}

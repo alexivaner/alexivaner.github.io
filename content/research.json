@@ -1,0 +1,420 @@
+{
+  "papers": [
+    {
+      "id": "paper-fall",
+      "name": "A Skeleton-based View-Invariant Framework for Human Fall Detection in an Elevator",
+      "headline": "Fall detection across camera viewpoints.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Elevator cameras see people from different angles, while emergency fall examples are difficult to collect."
+        },
+        {
+          "title": "The approach",
+          "text": "The published framework combines AlphaPose 2D keypoints, 3D pose estimation, Procrustes alignment to a reference camera, and a fall-recognition model."
+        },
+        {
+          "title": "My contribution",
+          "text": "Co-authored with Rashid Ali, Lan-Da Van, and Yu-Chee Tseng. The related public thesis repository contains my pose-conversion, tuning, and visualization work."
+        },
+        {
+          "title": "The outcome",
+          "text": "Published at ICIT 2022. The work studies transferring recognition across camera views; the case study does not claim a deployed safety certification."
+        }
+      ],
+      "href": "https://ieeexplore.ieee.org/document/10002823",
+      "link": "Read original publication",
+      "metadata": [
+        {
+          "label": "Publication",
+          "value": "2022 IEEE International Conference on Industrial Technology (ICIT)"
+        },
+        {
+          "label": "Role",
+          "value": "Co-author"
+        },
+        {
+          "label": "DOI",
+          "value": "10.1109/ICIT48603.2022.10002823"
+        }
+      ],
+      "related": "pose-thesis",
+      "relatedLabel": "Explore the thesis project"
+    },
+    {
+      "id": "paper-door",
+      "name": "A Smart Door Prototype with a Face Recognition Capability",
+      "headline": "Computer vision meets a physical door.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Explore touch-free access by connecting face recognition to a physical door-lock prototype."
+        },
+        {
+          "title": "The approach",
+          "text": "The paper describes a Raspberry Pi 3B, servo actuator, Python, Node-RED, Blynk, MQTT, Haar-cascade detection, LBPH recognition, and Google Assistant integration."
+        },
+        {
+          "title": "My contribution",
+          "text": "Co-authored with Handy Wicaksono. My smart-door project connects the software, recognition workflow, and physical demonstration."
+        },
+        {
+          "title": "The outcome",
+          "text": "Published in IJRA 11(1), pages 1-9. The original demonstration lets visitors inspect the prototype; it is a research system, not a commercial security guarantee."
+        }
+      ],
+      "href": "https://ijra.iaescore.com/index.php/IJRA/article/view/20308",
+      "link": "Read original publication",
+      "metadata": [
+        {
+          "label": "Publication",
+          "value": "IAES International Journal of Robotics and Automation 11(1), 1-9"
+        },
+        {
+          "label": "Role",
+          "value": "Co-author"
+        },
+        {
+          "label": "DOI",
+          "value": "10.11591/ijra.v11i1.pp1-9"
+        }
+      ],
+      "videoId": "xZSF7dcB_MA"
+    },
+    {
+      "id": "paper-door-earlier",
+      "name": "Integration of Smart Door Lock with Face Recognition based on Raspberry Pi 3 with Google Assistant Features",
+      "headline": "A connected door, controlled through recognition and voice.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Bring camera-based recognition and voice interaction into a Raspberry Pi smart-door prototype."
+        },
+        {
+          "title": "The approach",
+          "text": "The publication connects face recognition, Raspberry Pi 3, and Google Assistant. The related prototype demonstrates the interaction with a physical door."
+        },
+        {
+          "title": "My contribution",
+          "text": "This earlier smart-door publication is part of my embedded-systems research. The linked record preserves the original publication credit."
+        },
+        {
+          "title": "The outcome",
+          "text": "Retained as an earlier publication, distinct from the later IJRA paper. The original record was not fully readable during this review, so additional experimental claims are omitted."
+        }
+      ],
+      "href": "http://jurnalelektro.petra.ac.id/index.php/elk/article/view/23018",
+      "link": "Read original publication",
+      "metadata": [
+        {
+          "label": "Publication",
+          "value": "Computer vision & embedded systems"
+        },
+        {
+          "label": "Role",
+          "value": "Co-author"
+        }
+      ],
+      "videoId": "xZSF7dcB_MA"
+    },
+    {
+      "id": "paper-controllers",
+      "name": "Towards Integration of Heterogeneous Controllers in an IOT-based Automation System",
+      "headline": "Different controllers, one connected automation workflow.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Automation installations combine PLCs and microcontrollers that do not naturally share one communication interface."
+        },
+        {
+          "title": "The approach",
+          "text": "The research uses Node-RED to connect heterogeneous devices and services. The published cases include an elderly smart-home prototype, a recognition-based smart door, and separated-house automation."
+        },
+        {
+          "title": "My contribution",
+          "text": "Co-authored with Handy Wicaksono, Petrus Santoso, Iwan Handoyo Putro, and Pricilia Alvina. This was collaborative connected-systems research."
+        },
+        {
+          "title": "The outcome",
+          "text": "Published in E3S Web of Conferences 188, article 00009. The research demonstrates device integration and information flow rather than claiming a deployed industrial platform."
+        }
+      ],
+      "href": "https://www.e3s-conferences.org/articles/e3sconf/abs/2020/48/e3sconf_icesti2020_00009/e3sconf_icesti2020_00009.html",
+      "link": "Read original publication",
+      "metadata": [
+        {
+          "label": "Publication",
+          "value": "E3S Web of Conferences 188, 00009"
+        },
+        {
+          "label": "Role",
+          "value": "Co-author"
+        }
+      ]
+    },
+    {
+      "id": "paper-wiki",
+      "name": "Understanding Engineering Students’ Behaviours when Writing Group Report using Wiki",
+      "headline": "Understanding the human side of collaborative tools.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "A shared group report can conceal uneven contribution and difficult group dynamics."
+        },
+        {
+          "title": "The approach",
+          "text": "The study follows engineering students writing laboratory reports with Wiki, using questionnaires, observations, and logbooks to examine participation."
+        },
+        {
+          "title": "My contribution",
+          "text": "Co-authored with Iwan Handoyo Putro, Petrus Santoso, Handry Khoswanto, and Handy Wicaksono. The publication is a team research contribution."
+        },
+        {
+          "title": "The outcome",
+          "text": "Published in E3S Web of Conferences 188, article 00014. Findings emphasize preparation, monitoring, and feedback in collaborative learning; they are not an AI-model result."
+        }
+      ],
+      "href": "https://www.e3s-conferences.org/articles/e3sconf/abs/2020/48/e3sconf_icesti2020_00014/e3sconf_icesti2020_00014.html",
+      "link": "Read original publication",
+      "metadata": [
+        {
+          "label": "Publication",
+          "value": "E3S Web of Conferences 188, 00014"
+        },
+        {
+          "label": "Role",
+          "value": "Co-author"
+        }
+      ]
+    }
+  ],
+  "patents": [
+    {
+      "id": "patent-I893176",
+      "name": "AI-based Abnormal Behavior Detection System for Elevators",
+      "headline": "Detecting abnormal passenger behavior across different elevator camera viewpoints.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "A behavior detector must handle different viewpoints inside an elevator car."
+        },
+        {
+          "title": "The approach",
+          "text": "The published method extracts 2D body features, reconstructs a 3D reference, transforms the viewpoint, projects to 2D, and applies behavior detection."
+        },
+        {
+          "title": "My contribution",
+          "text": "Listed as a co-inventor within the research team. This describes the public invention at a high level; patent ownership remains with the recorded assignee."
+        },
+        {
+          "title": "The outcome",
+          "text": "Taiwan patent I893176, granted August 11, 2025. The public record describes the invention; no unverified deployment or performance metric is added."
+        }
+      ],
+      "href": "https://patents.google.com/patent/TWI893176B/en",
+      "link": "Read the patent record",
+      "metadata": [
+        {
+          "label": "Patent",
+          "value": "I893176"
+        },
+        {
+          "label": "Role",
+          "value": "Co-inventor"
+        },
+        {
+          "label": "Granted",
+          "value": "August 11, 2025"
+        }
+      ],
+      "pipeline": [
+        "2D body features",
+        "3D reference",
+        "Viewpoint transformation",
+        "Behavior detection"
+      ]
+    },
+    {
+      "id": "patent-I883252",
+      "name": "Energy-efficient Abnormal Passenger Behavior Detection Method and Elevator System",
+      "headline": "An energy-efficient approach to detecting abnormal passenger behavior inside elevators.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Elevator passenger-behavior detection also needs to consider energy use during operation."
+        },
+        {
+          "title": "The approach",
+          "text": "The granted invention concerns an elevator system and an energy-efficient passenger-behavior detection method. Only its publicly documented scope is summarized here."
+        },
+        {
+          "title": "My contribution",
+          "text": "Listed as a co-inventor within the research team. The certificate and the laboratory publication record provide the public attribution."
+        },
+        {
+          "title": "The outcome",
+          "text": "Taiwan patent I883252, granted May 11, 2025. The public certificate confirms the grant; it does not establish a measured energy-saving result."
+        }
+      ],
+      "href": "https://en.hitachi-yungtay.com.tw/wp-content/uploads/2025/06/ELEVATOR-AND-ENERGY-EFFICIENT-DETECTION-METHOD-OF-ABNORMAL-PASSENGER-BEHAVIOR-IN-ELEVATORTaiwan-Utility-Model-Patent-No.I883252.pdf",
+      "link": "Read the patent record",
+      "metadata": [
+        {
+          "label": "Patent",
+          "value": "I883252"
+        },
+        {
+          "label": "Role",
+          "value": "Co-inventor"
+        },
+        {
+          "label": "Granted",
+          "value": "May 11, 2025"
+        }
+      ],
+      "pipeline": null
+    }
+  ],
+  "robotics": [
+    {
+      "id": "robot-fJvOMFCaZIk",
+      "name": "Quadruped Robot using MCS8951",
+      "headline": "Robotics and connected-hardware demonstration.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Coordinate physical movement in an early four-legged robot prototype."
+        },
+        {
+          "title": "The approach",
+          "text": "The original video demonstrates a quadruped built around the MCS8951 microcontroller."
+        },
+        {
+          "title": "My contribution",
+          "text": "An early robotics project in my hardware portfolio, connecting controller behavior with a moving physical prototype."
+        },
+        {
+          "title": "The outcome",
+          "text": "A recorded prototype demonstration. It shows the project in operation without claiming autonomous navigation or a production robotics platform."
+        }
+      ],
+      "videoId": "fJvOMFCaZIk",
+      "image": "assets/images/hardware/fJvOMFCaZIk.webp",
+      "imageWidth": 1000,
+      "imageHeight": 563,
+      "imageAlt": "Quadruped Robot using MCS8951",
+      "caption": "Still frame from the original demonstration.",
+      "metadata": [
+        {
+          "label": "Project type",
+          "value": "Hardware prototype"
+        }
+      ]
+    },
+    {
+      "id": "robot-mWQRHR8GrJM",
+      "name": "3DOF Kinematic Robot Arm",
+      "headline": "Robotics and connected-hardware demonstration.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Connect a three-degree-of-freedom robot arm’s motion with its kinematic explanation."
+        },
+        {
+          "title": "The approach",
+          "text": "The original demonstration presents a 3DOF arm and the kinematic reasoning behind its movement."
+        },
+        {
+          "title": "My contribution",
+          "text": "An early robotics project exploring the relationship between mechanical motion, control, and mathematical models."
+        },
+        {
+          "title": "The outcome",
+          "text": "A recorded educational demonstration, not a claim of industrial accuracy, payload capacity, or deployment."
+        }
+      ],
+      "videoId": "mWQRHR8GrJM",
+      "image": "assets/images/hardware/mWQRHR8GrJM.webp",
+      "imageWidth": 1000,
+      "imageHeight": 563,
+      "imageAlt": "3DOF Kinematic Robot Arm",
+      "caption": "Still frame from the original demonstration.",
+      "metadata": [
+        {
+          "label": "Project type",
+          "value": "Hardware prototype"
+        }
+      ]
+    },
+    {
+      "id": "robot-xZSF7dcB_MA",
+      "name": "Face Recognition Smart Door with Google Assistant (Final Version)",
+      "headline": "Robotics and connected-hardware demonstration.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Explore touch-free access by connecting face recognition to a physical door-lock prototype."
+        },
+        {
+          "title": "The approach",
+          "text": "The paper describes a Raspberry Pi 3B, servo actuator, Python, Node-RED, Blynk, MQTT, Haar-cascade detection, LBPH recognition, and Google Assistant integration."
+        },
+        {
+          "title": "My contribution",
+          "text": "Co-authored with Handy Wicaksono. My smart-door project connects the software, recognition workflow, and physical demonstration."
+        },
+        {
+          "title": "The outcome",
+          "text": "Published in IJRA 11(1), pages 1-9. The original demonstration lets visitors inspect the prototype; it is a research system, not a commercial security guarantee."
+        }
+      ],
+      "videoId": "xZSF7dcB_MA",
+      "image": "assets/images/hardware/xZSF7dcB_MA.webp",
+      "imageWidth": 1000,
+      "imageHeight": 563,
+      "imageAlt": "Face Recognition Smart Door with Google Assistant (Final Version)",
+      "caption": "Still frame from the original demonstration.",
+      "metadata": [
+        {
+          "label": "Project type",
+          "value": "Hardware prototype"
+        }
+      ]
+    },
+    {
+      "id": "robot-ob6De2c_8XE",
+      "name": "Automatic IoT Lifting Bridge with Siemens S7-1200",
+      "headline": "Robotics and connected-hardware demonstration.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Connect automation logic to a physical lifting-bridge model."
+        },
+        {
+          "title": "The approach",
+          "text": "The original demonstration uses a Siemens S7-1200 in an automatic IoT lifting-bridge prototype."
+        },
+        {
+          "title": "My contribution",
+          "text": "An early connected-hardware project bringing control-system behavior into a visible physical demonstration."
+        },
+        {
+          "title": "The outcome",
+          "text": "A recorded prototype showing the bridge mechanism and automation workflow. No full-scale infrastructure deployment is claimed."
+        }
+      ],
+      "videoId": "ob6De2c_8XE",
+      "image": "assets/images/hardware/ob6De2c_8XE.webp",
+      "imageWidth": 1000,
+      "imageHeight": 563,
+      "imageAlt": "Automatic IoT Lifting Bridge with Siemens S7-1200",
+      "caption": "Still frame from the original demonstration.",
+      "metadata": [
+        {
+          "label": "Project type",
+          "value": "Hardware prototype"
+        }
+      ]
+    }
+  ]
+}

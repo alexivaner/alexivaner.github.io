@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.prerender/
+.DS_Store
+.hallmark/before/
+.hallmark/after/
+.hallmark/screenshots/
+.hallmark/reports/
+.hallmark/*.html
+
+.hallmark/shots/
+.private-review/
+docs/portfolio-confidentiality-audit.md
+
+.hallmark/
+docs/*.md
+!docs/deployment.md

@@ -1,0 +1,342 @@
+{
+  "name": "Ivan Surya Hutomo",
+  "role": "Lead Applied AI Engineer",
+  "email": "hutomoivan@gmail.com",
+  "projects": [
+    {
+      "id": "readmory",
+      "name": "Readmory",
+      "status": "Independent product",
+      "headline": "A second home for what you read.",
+      "description": "Books, highlights, and reading history in one local-first workspace. Built for Kobo, KOReader, and Kobalt.",
+      "image": "assets/images/readmory-kobo.webp",
+      "imageAlt": "Readmory showing the owner’s actual Kobo library, local book covers, and reading activity.",
+      "href": "https://alexivaner.github.io/readmory/",
+      "link": "Open Readmory",
+      "source": "https://github.com/alexivaner/readmory",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Reading records live across devices, databases, and annotation files. I wanted a place to connect books, highlights, and personal reflections."
+        },
+        {
+          "title": "What I built",
+          "text": "A browser-based workspace that imports reader databases, keeps a local library, connects ideas across books, and exports notes and backups."
+        },
+        {
+          "title": "The engineering",
+          "text": "Reader-specific imports preserve source identity. Repeated imports update existing records. Timed sessions, inferred intervals, and aggregate counters remain distinct."
+        },
+        {
+          "title": "The tradeoff",
+          "text": "Local-first storage avoids a server library, but browser data can be cleared. Backups matter. Optional metadata enrichment is disclosed separately."
+        }
+      ],
+      "caption": "Real Kobo library. Captured in Readmory.",
+      "imageWidth": 1240,
+      "imageHeight": 850
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis",
+      "status": "Independent prototype",
+      "headline": "A more personal way to explore Taiwan.",
+      "description": "A regional trip planner connecting a searchable places library, maps, and source-grounded AI suggestions.",
+      "image": "assets/images/aegis.webp",
+      "imageAlt": "Aegis Taiwan trip-planning prototype with a regional trip brief and places library.",
+      "story": [
+        {
+          "title": "The idea",
+          "text": "Turn a trip brief into a useful starting point, with places a person can inspect on a map rather than an itinerary with no sources."
+        },
+        {
+          "title": "What I built",
+          "text": "A searchable Taiwan places library, a regional planning flow, an OpenStreetMap view, and a bounded AI planning workflow."
+        },
+        {
+          "title": "The boundary",
+          "text": "This is a local prototype. Retrieval is lexical, source records can age or overlap, and travel times, costs, and opening hours are estimates to verify."
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "period": "2024-present",
+      "title": "Lead Applied AI Engineer",
+      "area": "IdeasLab / XView",
+      "text": "At IdeasLab, I lead applied AI engineering for XView, connecting computer vision, product architecture, and software delivery.",
+      "links": [
+        {
+          "label": "XView website",
+          "href": "https://xview.ai/"
+        },
+        {
+          "label": "Demo website",
+          "href": "https://demo.xview.ai/"
+        }
+      ]
+    },
+    {
+      "period": "2021-2024",
+      "title": "R&D Software Developer",
+      "area": "Octon Inc.",
+      "text": "Real-time communication and telemedicine software across web, desktop, mobile, and native platforms."
+    },
+    {
+      "period": "2019-2021",
+      "title": "Computer vision researcher",
+      "area": "National Chiao Tung University",
+      "text": "Applied research in fall detection and voice recognition, connecting machine learning with real systems."
+    },
+    {
+      "period": "2018-present",
+      "title": "Independent web developer",
+      "area": "Vanz Website",
+      "text": "Building and maintaining websites for organizations in Taiwan, Indonesia, and Canada."
+    }
+  ],
+  "education": [
+    {
+      "degree": "M.S. Computer Science",
+      "school": "National Yang Ming Chiao Tung University",
+      "period": "2019-2021"
+    },
+    {
+      "degree": "B.Eng. Electrical Engineering",
+      "school": "Petra Christian University",
+      "period": "2015-2019"
+    }
+  ],
+  "publications": [
+    {
+      "title": "A Skeleton-based View-Invariant Framework for Human Fall Detection in an Elevator",
+      "topic": "View-invariant human fall detection",
+      "venue": "2022 IEEE International Conference on Industrial Technology (ICIT)",
+      "year": "2022",
+      "href": "https://ieeexplore.ieee.org/document/10002823",
+      "featured": true,
+      "doi": "10.1109/ICIT48603.2022.10002823"
+    },
+    {
+      "title": "A Smart Door Prototype with a Face Recognition Capability",
+      "topic": "Computer vision & connected hardware",
+      "venue": "IAES International Journal of Robotics and Automation 11(1), 1-9",
+      "year": "2022",
+      "href": "https://ijra.iaescore.com/index.php/IJRA/article/view/20308",
+      "doi": "10.11591/ijra.v11i1.pp1-9",
+      "featured": true
+    },
+    {
+      "title": "Integration of Smart Door Lock with Face Recognition based on Raspberry Pi 3 with Google Assistant Features",
+      "topic": "Computer vision & embedded systems",
+      "href": "http://jurnalelektro.petra.ac.id/index.php/elk/article/view/23018"
+    },
+    {
+      "title": "Towards Integration of Heterogeneous Controllers in an IOT-based Automation System",
+      "topic": "Connected systems",
+      "href": "https://www.e3s-conferences.org/articles/e3sconf/abs/2020/48/e3sconf_icesti2020_00009/e3sconf_icesti2020_00009.html",
+      "venue": "E3S Web of Conferences 188, 00009"
+    },
+    {
+      "title": "Understanding Engineering Students’ Behaviours when Writing Group Report using Wiki",
+      "topic": "Engineering education",
+      "href": "https://www.e3s-conferences.org/articles/e3sconf/abs/2020/48/e3sconf_icesti2020_00014/e3sconf_icesti2020_00014.html",
+      "venue": "E3S Web of Conferences 188, 00014"
+    }
+  ],
+  "patents": [
+    {
+      "id": "I893176",
+      "title": "AI-based Abnormal Behavior Detection System for Elevators",
+      "officialTitle": "An abnormal human behavior detection system applicable to different camera viewpoints in elevator",
+      "issued": "2025-08-11",
+      "issuedLabel": "Issued August 11, 2025",
+      "role": "Co-inventor",
+      "summary": "Detecting abnormal passenger behavior across different elevator camera viewpoints.",
+      "description": "The system extracts 2D body features from a passenger image, reconstructs a 3D reference, and estimates a better viewing angle. It then projects the transformed reference onto a plane perpendicular to the ground and applies a behavior-detection model.",
+      "href": "https://tiponet.tipo.gov.tw/twpat1/twpatc/twpatengkm?!!FRURLI893176",
+      "record": "https://patents.google.com/patent/TWI893176B/en"
+    },
+    {
+      "id": "I883252",
+      "title": "Energy-efficient Abnormal Passenger Behavior Detection Method and Elevator System",
+      "issued": "2025-05-11",
+      "issuedLabel": "Issued May 11, 2025",
+      "role": "Co-inventor",
+      "summary": "An energy-efficient approach to detecting abnormal passenger behavior inside elevators.",
+      "description": "Research linking passenger-behavior detection with energy-conscious operation in an elevator system.",
+      "href": "https://tiponet.tipo.gov.tw/twpat1/twpatc/twpatengkm?!!FRURLI883252",
+      "record": "https://en.hitachi-yungtay.com.tw/wp-content/uploads/2025/06/ELEVATOR-AND-ENERGY-EFFICIENT-DETECTION-METHOD-OF-ABNORMAL-PASSENGER-BEHAVIOR-IN-ELEVATORTaiwan-Utility-Model-Patent-No.I883252.pdf"
+    }
+  ],
+  "experiments": [
+    {
+      "title": "Radio-signal classification",
+      "description": "A collaborative deep-learning study of noisy radio signals.",
+      "href": "https://github.com/alexivaner/Deep-Learning-Based-Radio-Signal-Classification"
+    },
+    {
+      "title": "Speaker recognition with GMMs",
+      "description": "Model creation and ONNX conversion.",
+      "href": "https://github.com/alexivaner/Speaker-Recognition-Model-Creation-using-GMM-Scikit-learn"
+    },
+    {
+      "title": "A smarter front door",
+      "description": "Face recognition and Google Assistant in a hardware prototype.",
+      "href": "https://github.com/alexivaner/Smart-Door-with-Face-Recognition-and-Google-Assistant",
+      "video": "https://youtu.be/W2UmUKfTkp8"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/alexivaner",
+    "linkedin": "https://www.linkedin.com/in/ivan-surya-hutomo-b5746713a",
+    "youtube": "https://www.youtube.com/channel/UCUHP9DeewYaRSlcZAHBEgnw",
+    "instagram": "https://www.instagram.com/ivan.hutomo/"
+  },
+  "websites": [
+    {
+      "id": "ifey",
+      "name": "IFEY Films",
+      "href": "https://ifeyfilms.com/",
+      "category": "Client websites",
+      "type": "Film production website",
+      "image": "assets/images/web/ifey.webp",
+      "description": "Website development for a film production and photography studio."
+    },
+    {
+      "id": "prohealth",
+      "name": "ProHealth Medical",
+      "href": "https://prohealthmedical.ca/",
+      "category": "Client websites",
+      "type": "Healthcare website",
+      "image": "assets/images/web/prohealth.webp",
+      "description": "A public information website for a Canadian medical clinic."
+    },
+    {
+      "id": "kita",
+      "name": "Kita Taiwan",
+      "href": "https://kitataiwan.com/",
+      "category": "Client websites",
+      "type": "Community website",
+      "description": "Website for the Indonesian Catholic Community in Taiwan"
+    },
+    {
+      "id": "tarn",
+      "name": "Transit Asia Research Network",
+      "href": "https://transit-asia.chss.nycu.edu.tw/tarn/",
+      "category": "Research & publishing",
+      "type": "Research network website",
+      "image": "assets/images/web/tarn.webp",
+      "description": "A research network website connecting publications, events, and participating institutions."
+    },
+    {
+      "id": "tad",
+      "name": "Transit Asia Dossiers",
+      "href": "https://transit-asia.chss.nycu.edu.tw/tarn/tad",
+      "category": "Research & publishing",
+      "type": "Editorial and publishing platform",
+      "image": "assets/images/web/tad.webp",
+      "description": "An editorial website for browsing journal issues and reading published articles."
+    },
+    {
+      "id": "cms",
+      "name": "Migration & Critical Legal Studies",
+      "href": "https://transit-asia.chss.nycu.edu.tw/cms/",
+      "category": "Research & publishing",
+      "type": "Academic programme website",
+      "image": "assets/images/web/cms.webp",
+      "description": "An academic website for migration research, events, and publications."
+    },
+    {
+      "id": "ghi",
+      "name": "Global Humanities Institutes",
+      "href": "https://transit-asia.chss.nycu.edu.tw/GHI/",
+      "category": "Research & publishing",
+      "type": "Humanities initiative website",
+      "description": "A website for the Global Humanities Institutes initiative.",
+      "image": "assets/images/web/ghi.webp",
+      "captureNote": "Authentic public-site capture with JavaScript disabled."
+    }
+  ],
+  "hardware": [
+    {
+      "id": "fJvOMFCaZIk",
+      "title": "Quadruped Robot using MCS8951",
+      "href": "https://www.youtube.com/watch?v=fJvOMFCaZIk",
+      "image": "assets/images/hardware/fJvOMFCaZIk.webp",
+      "kind": "Hardware prototype"
+    },
+    {
+      "id": "mWQRHR8GrJM",
+      "title": "3DOF Kinematic Robot Arm",
+      "href": "https://www.youtube.com/watch?v=mWQRHR8GrJM",
+      "image": "assets/images/hardware/mWQRHR8GrJM.webp",
+      "kind": "Hardware prototype"
+    },
+    {
+      "id": "xZSF7dcB_MA",
+      "title": "Face Recognition Smart Door with Google Assistant (Final Version)",
+      "href": "https://www.youtube.com/watch?v=xZSF7dcB_MA",
+      "image": "assets/images/hardware/xZSF7dcB_MA.webp",
+      "kind": "Hardware prototype"
+    },
+    {
+      "id": "ob6De2c_8XE",
+      "title": "Automatic IoT Lifting Bridge with Siemens S7-1200",
+      "href": "https://www.youtube.com/watch?v=ob6De2c_8XE",
+      "image": "assets/images/hardware/ob6De2c_8XE.webp",
+      "kind": "Hardware prototype"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google Project Management",
+      "issuer": "Google",
+      "type": "Specialization certificate",
+      "date": "August 2023",
+      "dateTime": "2023-08",
+      "href": "https://www.coursera.org/account/accomplishments/specialization/certificate/VK669GW8XFVC"
+    }
+  ],
+  "recognition": [
+    {
+      "title": "NDSC Product Matching",
+      "result": "6th of 139 teams",
+      "detail": "Top 5%",
+      "issuer": "Shopee Indonesia",
+      "date": "November 2020",
+      "category": "Data science",
+      "description": "Machine-learning product matching across titles, descriptions, and images.",
+      "association": "National Yang Ming Chiao Tung University"
+    },
+    {
+      "title": "Data Science Weekend",
+      "result": "Finalist",
+      "issuer": "Data Science Indonesia",
+      "date": "March 2021",
+      "category": "Data science",
+      "description": "Predictive modelling for traffic-related reports in West Java.",
+      "association": "National Yang Ming Chiao Tung University"
+    },
+    {
+      "title": "Festive Photography Competition",
+      "result": "Top 10 best photos",
+      "issuer": "Festive 2019",
+      "date": "April 2019",
+      "category": "Photography"
+    },
+    {
+      "title": "GEEST VAN DE ARCHITECTUUR",
+      "result": "Top 10 best photos",
+      "issuer": "GADA Photography Competition",
+      "date": "March 2019",
+      "category": "Photography"
+    }
+  ],
+  "photography": {
+    "handle": "@ivan.hutomo",
+    "href": "https://www.instagram.com/ivan.hutomo/",
+    "description": "Photography is another way I explore light, composition, and everyday life."
+  }
+}

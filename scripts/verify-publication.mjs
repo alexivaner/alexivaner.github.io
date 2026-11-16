@@ -1,0 +1,56 @@
+import puppeteer from 'puppeteer-core';
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+const base=process.env.PORTFOLIO_URL||'http://127.0.0.1:4175';
+const browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+try{
+ const errors=[];
+ async function sample({motion='no-preference',saveData=false,blocked=false}={}){
+  const p=await browser.newPage();p.on('pageerror',e=>errors.push(e.message));
+  await p.setViewport({width:1440,height:900});await p.emulateMediaFeatures([{name:'prefers-reduced-motion',value:motion}]);
+  await p.evaluateOnNewDocument(({saveData,blocked})=>{localStorage.setItem('ivan-language','en');if(saveData)Object.defineProperty(navigator,'connection',{get:()=>({saveData:true})});if(blocked)HTMLMediaElement.prototype.play=()=>Promise.reject(new DOMException('Playback blocked','NotAllowedError'));},{saveData,blocked});
+  await p.goto(base,{waitUntil:'networkidle0'});await p.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');
+  await p.click('#project-tsp .project-story > summary');await p.waitForSelector('dialog[open] video');
+  return p;
+ }
+ const p=await sample();
+ await p.waitForFunction(()=>{const v=document.querySelector('video');return !v.paused&&v.currentTime>0;},{timeout:15000});
+ assert(await p.$eval('video',v=>v.muted&&v.loop&&v.playsInline&&v.autoplay));
+ // Scroll the actual dialog body, keeping its header independent and visible.
+ await p.$eval('.viewer-body',el=>el.scrollTop=el.scrollHeight);
+ await p.waitForFunction(()=>document.querySelector('video').paused);
+ assert(await p.$eval('.viewer-top',el=>el.getBoundingClientRect().top>=0));
+ await p.$eval('video',el=>el.scrollIntoView({block:'center'}));
+ await p.waitForFunction(()=>!document.querySelector('video').paused);
+ await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
+ await p.waitForFunction(()=>document.querySelector('video').paused);
+ await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});
+ await p.waitForFunction(()=>!document.querySelector('video').paused);
+ await p.screenshot({path:'.hallmark/reports/publication-tsp-desktop.png'});
+ await p.keyboard.press('Escape');await p.waitForFunction(()=>!document.querySelector('video'));
+ await p.close();
+ for(const settings of [{motion:'reduce'},{saveData:true},{blocked:true}]){
+  const q=await sample(settings);await q.waitForSelector('.preview-manual');
+  assert(await q.$eval('video',v=>v.paused));
+  if(!settings.blocked)assert.equal(await q.$eval('video',v=>v.getAttribute('src')),null,'Motion/data preference must avoid fetching animation');
+  if(settings.motion){await q.click('.preview-manual');await q.waitForFunction(()=>!document.querySelector('video').paused);}
+  await q.close();
+ }
+ const r=await browser.newPage();await r.setRequestInterception(true);r.on('request',q=>q.url().startsWith('https://www.youtube-nocookie.com/embed/')?q.respond({status:200,contentType:'text/html',body:'<!doctype html><title>Native embedded video test</title>'}):q.continue());
+ for(const width of [375,1440]){
+  await r.setViewport({width,height:900});await r.goto(base,{waitUntil:'networkidle0'});await r.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');await r.click('#robot-fJvOMFCaZIk .project-story > summary');await r.waitForSelector('dialog[open] iframe');
+  assert.equal(await r.$$eval('dialog .viewer-image',e=>e.length),0);
+  assert(await r.$eval('.video-frame',el=>{const b=el.getBoundingClientRect(),h=document.querySelector('.viewer-top').getBoundingClientRect();return b.top>=h.bottom&&b.right<=innerWidth&&b.width>200;}));
+  await r.screenshot({path:`.hallmark/reports/publication-robot-${width}.png`});
+  await r.keyboard.press('Escape');await r.waitForFunction(()=>!document.querySelector('iframe'));
+  await r.goto(base+'/resume/',{waitUntil:'networkidle0'});
+  assert(await r.$eval('body',el=>el.scrollWidth<=innerWidth));
+  assert.equal(await r.$eval('.resume-download',el=>el.download),'');
+  const pdf=await r.$eval('.resume-download',el=>el.href);
+  const probe=await fetch(pdf);assert.equal(probe.status,200);assert((await probe.text()).startsWith('%PDF-'));
+  assert(await r.$eval('.resume-nav a[target="_blank"]',el=>el.href.endsWith('.pdf')));
+  await r.screenshot({path:`.hallmark/reports/publication-resume-${width}.png`,fullPage:true});
+ }
+ assert.deepEqual(errors,[]);await writeFile('.hallmark/reports/publication-checks.json',JSON.stringify({passed:true,checks:['viewport autoplay, muted inline loop','offscreen and hidden-tab pause','resume after visibility restoration','reduced-motion poster and manual play','save-data poster','blocked autoplay fallback','robotics video first, no duplicate still, unload','mobile and desktop resume, PDF delivery'],errors},null,2));
+ console.log('Publication checks passed: playback policies, dialog geometry, robotics players, and resume PDF on desktop/mobile.');
+}finally{await browser.close();}

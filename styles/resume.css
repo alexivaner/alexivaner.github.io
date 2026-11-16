@@ -1,0 +1,42 @@
+/* Hallmark · checked: 2026-11-16 · genre: modern-minimal · built: the project · scope: document · v2.0.0 */
+@import url('./tokens.css');
+@font-face { font-family: 'Host Grotesk'; src: url('/assets/fonts/host-grotesk-latin.woff2') format('woff2'); font-weight: 300 700; font-display: swap; }
+html, body { overflow-x: clip; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--color-paper); color: var(--color-ink); font: 16px/1.55 var(--font-body); }
+main, .resume-nav { max-width: 850px; margin-inline: auto; padding: 32px; }
+.resume-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.resume-nav button { background: var(--color-ink); color: var(--color-paper); border: 0; padding: 12px 20px; border-radius: var(--radius-pill); font: inherit; cursor: pointer; }
+a { color: inherit; text-underline-offset: 3px; }
+a:hover { color: var(--color-accent); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+button:active { transform: translateY(1px); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+h1, h2, h3 { font-weight: 500; line-height: 1.2; overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
+h1 { font-size: 40px; letter-spacing: -.04em; margin: 0 0 8px; }
+.resume-role { font-size: 22px; margin: 0 0 16px; }
+h2 { margin: 32px 0 18px; padding-bottom: 8px; font-size: 22px; border-bottom: 1px solid var(--color-rule); }
+h3 { margin: 0; font-size: 17px; }
+p { margin: 6px 0; text-wrap: pretty; }
+article { margin-bottom: 20px; break-inside: avoid; }
+.resume-row { display: flex; justify-content: space-between; gap: 20px; align-items: baseline; }
+.resume-row p, .resume-area { color: var(--color-muted); }
+.resume-row p { white-space: nowrap; }
+@media (max-width: 600px) { main, .resume-nav { padding: 20px; } h1 { font-size: 32px; } .resume-row { display: block; } .resume-nav { align-items: start; } .resume-nav button { font-size: 14px; } }
+@media (prefers-reduced-motion: reduce) { button:active { transform: none; } }
+@media print { :root { --color-paper: #fafbfc; --color-ink: #23262b; --color-muted: #626974; --color-rule: #d6d9de; } @page { size: A4; margin: 15mm; } body { font-size: 10pt; } main { padding: 0; max-width: none; } .resume-nav { display: none; } h1 { font-size: 28pt; } h2 { margin-top: 20px; margin-bottom: 12px; font-size: 15pt; } h3 { font-size: 11pt; } article { margin-bottom: 12px; } a { text-decoration: none; } }
+
+.language-control select { font: inherit; min-height: 44px; border: 1px solid var(--color-muted); border-radius: var(--radius-pill); padding: var(--space-xs) var(--space-sm); background: var(--color-paper); color: var(--color-ink); }
+@media print { .language-control { display: none; } }
+@media (max-width: 600px) { .resume-nav { flex-wrap: wrap; padding: 16px; } .resume-nav .language-control { order: 3; width: 100%; } }
+:lang(zh-TW) { font-family: var(--font-tc); }
+:lang(ja) { font-family: var(--font-ja); }
+:lang(ko) { font-family: var(--font-ko); word-break: keep-all; }
+
+/* Readable document route with direct PDF fallback on every screen. */
+.resume-nav { max-width: 980px; flex-wrap: wrap; padding-bottom: 8px; font-size: 14px; }
+.resume-nav a, .resume-nav button { min-height: 44px; display: inline-flex; align-items: center; }
+.resume-download { font-weight: 600; }
+main { padding-top: 24px; }
+@media (max-width: 600px) { .resume-nav { gap: 8px 16px; } .resume-nav button { padding: 8px 12px; } main { padding-top: 24px; } }
+@media print { h2 { break-after: avoid; } header { break-inside: avoid; } main { padding-top: 0; } .resume-nav { display: none; } }
