@@ -391,7 +391,7 @@
     "Motion analysis, from capture to review.": "Analisis gerak, dari perekaman hingga peninjauan.",
     "Multi-camera capture": "Perekaman multi-kamera",
     "Human pose estimation": "Estimasi pose manusia",
-    "3D motion review": "Peninjauan gerak 3D",
+    "3D motion review": "Tinjauan gerak 3D",
     "My role: applied AI and product engineering within the IdeasLab team.": "Peran saya: rekayasa AI terapan dan produk dalam tim IdeasLab.",
     "Independent product. Real interface, synthetic demo library.": "Produk independen. Antarmuka asli, pustaka demo sintetis.",
     "Google Scholar": "Google Scholar",
@@ -547,6 +547,21 @@
     "Technical walkthrough in English.": "Ulasan teknis dalam bahasa Inggris.",
     "Protected content is unavailable in this browser.": "Konten terlindungi tidak tersedia di browser ini.",
     "Could not load the protected walkthrough. Try again.": "Tidak dapat memuat ulasan terlindungi. Coba lagi.",
-    "The passcode is incorrect.": "Kode akses tidak benar."
+    "The passcode is incorrect.": "Kode akses tidak benar.",
+    "3D motion analysis": "Analisis gerak 3D",
+    "System compatibility": "Kompatibilitas sistem",
+    "From video to motion.": "Dari video menjadi gerakan.",
+    "Multiple views": "Berbagai sudut pandang",
+    "One movement. Multiple perspectives.": "Satu gerakan. Berbagai perspektif.",
+    "Your device": "Perangkat Anda",
+    "Compatibility": "Kompatibilitas",
+    "Ready to begin": "Siap untuk memulai",
+    "Account": "Akun",
+    "Software access": "Akses perangkat lunak",
+    "AI application": "Aplikasi AI",
+    "Helping people prepare their system before they begin.": "Membantu pengguna menyiapkan sistem sebelum memulai.",
+    "Connecting the AI application to the software around it.": "Menghubungkan aplikasi AI dengan perangkat lunak pendukungnya.",
+    "The same reconstructed motion, presented on the portfolio avatar.": "Rekonstruksi gerakan yang sama, ditampilkan pada avatar portofolio.",
+    "Golf motion preview with a neutral-handed avatar and golf club.": "Pratinjau gerak golf dengan avatar bertangan netral dan stik golf."
   }
 }

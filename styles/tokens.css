@@ -58,3 +58,7 @@
  }
 }
 :root { --color-backdrop: rgb(15 18 24 / .68); }
+
+:root { --motion-key: #fff5e8; --motion-fill: #e1edff; --motion-rim: #ecf4ff; --motion-floor: #e3e5e8; --motion-platform: #f0f1f3; --motion-metal: #c4ccd6; --motion-grip: #303842; --motion-glove: #e5e6e8; }
+:root[data-mode='dark'] { --motion-key: #fff0dd; --motion-fill: #b9d6ff; --motion-rim: #c8ddff; --motion-floor: #171b22; --motion-platform: #2b323d; --motion-metal: #c4ccd6; --motion-grip: #303842; --motion-glove: #e5e6e8; }
+@media (prefers-color-scheme: dark) { :root:not([data-mode]) { --motion-key: #fff0dd; --motion-fill: #b9d6ff; --motion-rim: #c8ddff; --motion-floor: #171b22; --motion-platform: #2b323d; --motion-metal: #c4ccd6; --motion-grip: #303842; --motion-glove: #e5e6e8; } }

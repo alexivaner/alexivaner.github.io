@@ -1,3 +1,4 @@
+import Icon from './components/Icon.jsx';
 import React, { useEffect, useRef, useState } from 'react';
 import data from '../content/portfolio.json';
 import WebsiteWork from './components/WebsiteWork.jsx';
@@ -14,9 +15,8 @@ import SiteNavigation from './components/SiteNavigation.jsx';
 import { findCase } from './cases.js';
 import { LocaleProvider, Localized, LanguageSelector } from './i18n/I18n.jsx';
 
-export function Icon({ name, size = 24, className = 'glyph' }) {
-  return <Localized><img className={className} src={`/assets/icons/${name}.svg`} width={size} height={size} alt="" aria-hidden="true" /></Localized>;
-}
+export { default as Icon } from './components/Icon.jsx';
+
 const external = { target: '_blank', rel: 'noopener noreferrer' };
 
 function ThemeToggle() {

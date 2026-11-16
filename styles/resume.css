@@ -50,3 +50,5 @@ main { padding-top: var(--space-lg); }
 @media (max-width: 600px) { .resume-document, .resume-extended { padding-inline: var(--space-lg); margin-block: var(--space-lg); } .resume-document object { display: none; } .resume-mobile-note { display: block; color: var(--color-muted); } }
 @media print { .resume-document, .resume-extended > summary { display: none; } .resume-extended { margin: 0; padding: 0; max-width: none; } }
 .resume-nav .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+svg.glyph { filter: none; }

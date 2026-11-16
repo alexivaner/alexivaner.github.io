@@ -5,12 +5,20 @@
 /* Hallmark · dismissed 29 · the user requests Apple-inspired material; this one translucent navigation surface has a solid reduced-transparency fallback */
 /* Hallmark · dismissed 28a · website and hardware images occur below the opening screen; lazy loading is intentional, while the actual hero image has high fetch priority */
 /* Hallmark · dismissed 25 · project descriptions are short captions, and About is a short introduction, not running article prose; the narrower measures balance the actual grid tracks */
-/* Hallmark · hero-review: prior in-thread, mobile overflow fixed · finish-review: subagent, ship, avatar and restricted presenter reviewed, 0 material findings · refinement: dialog hierarchy, video behavior, and resume · previous 2 findings resolved · floor: 0 FAIL · reflex: 0 open */
+/* Hallmark · hero-review: prior in-thread, mobile overflow fixed · finish-review: subagent, ship, neutral hands, club, first paint, phone previews, and protected product screens reviewed, 0 material findings · refinement: dialog hierarchy, video behavior, and resume · previous 2 findings resolved · floor: 0 FAIL · reflex: 0 open */
 /* Hallmark · dismissed 59 · eleven content sections preserve the requested publications, patents, websites, hardware, and new engineering work; case details are progressive rather than additional pages */
 /* Hallmark · dismissed 58 · full source counts include collapsed case-study fallbacks; the hero identity line names the engineer and role, and the page preserves the user’s requested evidence */
 /* Hallmark · reworded "XView Studio" to "XView. Motion analysis in 3D." · the user requests one visual flagship instead of duplicate product introductions */
 /* Hallmark · reworded "Beyond inference. The whole product." to "From AI to a product." · the user requests three progressive engineering layers */
 /* Hallmark · reworded "XView - AI-Powered Motion Analysis Platform" to "Computer vision in use." · the complete project name remains in the deeper case rather than repeating it on the homepage */
+/* Hallmark · dropped caret-down.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped moon.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped list.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped plus.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped arrow-right.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped arrow-up-right.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped play.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
+/* Hallmark · dropped copy.svg · the same licensed Phosphor icon is now inline SVG for reliable first-paint phone navigation */
 @import url('./tokens.css');
 @import url('./base.css');
 @font-face { font-family: 'Host Grotesk'; src: url('/assets/fonts/host-grotesk-latin.woff2') format('woff2'); font-weight: 300 700; font-style: normal; font-display: swap; }
@@ -384,3 +392,39 @@ details[open] > summary > .glyph { transform: rotate(45deg); }
 .motion-stage[data-renderer='avatar'] .avatar-canvas, .motion-stage[data-renderer='skeleton'] .skeleton-canvas { opacity: 1; }
 .motion-stage[data-ready] { cursor: grab; touch-action: pan-y; }
 .motion-stage[data-ready]:active { cursor: grabbing; }
+
+.motion-poster, .motion-poster img { width: 100%; height: 100%; display: block; }
+.motion-poster { position: absolute; inset: 0; }
+.motion-poster img { object-fit: cover; }
+.motion-poster .poster-dark { display: none; }
+:root[data-mode='dark'] .motion-poster .poster-light { display: none; }
+:root[data-mode='dark'] .motion-poster .poster-dark { display: block; }
+@media (prefers-color-scheme: dark) { :root:not([data-mode]) .motion-poster .poster-light { display: none; } :root:not([data-mode]) .motion-poster .poster-dark { display: block; } }
+.motion-stage [hidden] { display: none; }
+
+/* Product evidence stays public; company product captures stay encrypted. */
+.engineering-evidence { margin: 0 0 var(--space-xl); min-width: 0; }
+.engineering-evidence figcaption { font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-sm); }
+.reconstruction-evidence { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.4fr); align-items: center; gap: var(--space-xs); min-height: 240px; background: var(--color-paper); border-radius: var(--radius-card); overflow: hidden; }
+.evidence-views { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); min-width: 0; padding-left: var(--space-md); }
+.evidence-views svg { width: 100%; height: auto; overflow: visible; }
+.evidence-views span { grid-column: 1 / -1; }
+.evidence-pose { stroke: var(--color-ink-2); stroke-width: 3; fill: none; stroke-linecap: round; }
+.evidence-avatar { position: relative; min-width: 0; }
+.evidence-avatar img { width: 100%; height: 220px; object-fit: cover; }
+.evidence-avatar .evidence-dark { display: none; }
+.evidence-avatar span, .evidence-views span { display: block; font-size: var(--text-xs); text-align: center; padding: var(--space-sm); }
+:root[data-mode='dark'] .evidence-avatar .evidence-light { display: none; }
+:root[data-mode='dark'] .evidence-avatar .evidence-dark { display: block; }
+@media (prefers-color-scheme: dark) { :root:not([data-mode]) .evidence-avatar .evidence-light { display: none; } :root:not([data-mode]) .evidence-avatar .evidence-dark { display: block; } }
+.engineering-flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); list-style: none; padding: var(--space-xl) 0; min-height: 240px; align-items: center; }
+.engineering-flow li { display: flex; flex-direction: column; align-items: center; gap: var(--space-lg); position: relative; padding-inline: var(--space-xs); text-align: center; font-size: var(--text-sm); }
+.engineering-flow li:not(:last-child)::after { content: ''; position: absolute; width: 40%; height: 1px; background: var(--color-rule-2); left: 80%; top: 24px; }
+.engineering-flow svg { color: var(--color-accent); }
+.website-preview { scroll-margin-top: 96px; }
+.nav-group[open] > summary svg { transform: rotate(180deg); }
+@media (max-width: 767px) { .reconstruction-evidence { min-height: 210px; } .evidence-avatar img { height: 190px; } .engineering-flow { min-height: 210px; } .engineering-evidence { margin-bottom: var(--space-lg); } }
+
+svg.glyph { filter: none; }
+
+@media (max-width: 767px) { .system-selector { grid-template-columns: repeat(3,minmax(0,1fr)); } .system-selector a { flex-direction: column; gap: var(--space-xs); min-width: 0; min-height: 104px; padding: var(--space-sm) var(--space-xs); border-left: 0; border-top: 0; border-bottom: 2px solid var(--color-transparent); font-size: var(--text-sm); overflow-wrap: anywhere; } .system-selector a[aria-current='true'] { border-bottom-color: var(--color-accent); } .system-selector .system-number { padding-top: 0; } }

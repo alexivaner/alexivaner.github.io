@@ -391,7 +391,7 @@
     "Motion analysis, from capture to review.": "撮影から確認まで、一貫した動作解析。",
     "Multi-camera capture": "マルチカメラ撮影",
     "Human pose estimation": "人体姿勢推定",
-    "3D motion review": "3D動作の確認",
+    "3D motion review": "3Dモーションレビュー",
     "My role: applied AI and product engineering within the IdeasLab team.": "担当：IdeasLabチームでの応用AIと製品開発。",
     "Independent product. Real interface, synthetic demo library.": "個人開発。実際の画面と架空のデモライブラリ。",
     "Google Scholar": "Google Scholar",
@@ -547,6 +547,21 @@
     "Technical walkthrough in English.": "技術解説は英語で表示されます。",
     "Protected content is unavailable in this browser.": "このブラウザーでは保護されたコンテンツを利用できません。",
     "Could not load the protected walkthrough. Try again.": "保護された解説を読み込めませんでした。再試行してください。",
-    "The passcode is incorrect.": "パスコードが正しくありません。"
+    "The passcode is incorrect.": "パスコードが正しくありません。",
+    "3D motion analysis": "3Dモーション解析",
+    "System compatibility": "システム互換性",
+    "From video to motion.": "映像から動きへ。",
+    "Multiple views": "複数の視点",
+    "One movement. Multiple perspectives.": "ひとつの動き、さまざまな視点。",
+    "Your device": "お使いのデバイス",
+    "Compatibility": "互換性",
+    "Ready to begin": "準備完了",
+    "Account": "アカウント",
+    "Software access": "ソフトウェアへのアクセス",
+    "AI application": "AIアプリケーション",
+    "Helping people prepare their system before they begin.": "利用を始める前のシステム準備を支えます。",
+    "Connecting the AI application to the software around it.": "AIアプリケーションと周辺のソフトウェアをつなぎます。",
+    "The same reconstructed motion, presented on the portfolio avatar.": "同じ再構成モーションをポートフォリオのアバターで表示。",
+    "Golf motion preview with a neutral-handed avatar and golf club.": "自然な手の形のアバターとゴルフクラブによる動きのプレビュー。"
   }
 }

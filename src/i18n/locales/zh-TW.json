@@ -547,6 +547,21 @@
     "Technical walkthrough in English.": "技術導覽內容為英文。",
     "Protected content is unavailable in this browser.": "此瀏覽器無法開啟受保護的內容。",
     "Could not load the protected walkthrough. Try again.": "無法載入受保護的導覽，請重試。",
-    "The passcode is incorrect.": "存取密碼不正確。"
+    "The passcode is incorrect.": "存取密碼不正確。",
+    "3D motion analysis": "3D 動作分析",
+    "System compatibility": "系統相容性",
+    "From video to motion.": "從影片到動作。",
+    "Multiple views": "多角度視圖",
+    "One movement. Multiple perspectives.": "同一動作，不同視角。",
+    "Your device": "您的裝置",
+    "Compatibility": "相容性",
+    "Ready to begin": "準備就緒",
+    "Account": "帳戶",
+    "Software access": "軟體存取",
+    "AI application": "AI 應用程式",
+    "Helping people prepare their system before they begin.": "協助使用者在開始前準備好系統。",
+    "Connecting the AI application to the software around it.": "串聯 AI 應用程式與周邊軟體服務。",
+    "The same reconstructed motion, presented on the portfolio avatar.": "將同一個重建動作呈現在作品集角色上。",
+    "Golf motion preview with a neutral-handed avatar and golf club.": "以自然手型角色與球桿呈現高爾夫動作預覽。"
   }
 }

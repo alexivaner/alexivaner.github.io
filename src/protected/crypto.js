@@ -18,5 +18,6 @@ export async function decryptWalkthrough(packet,passcode){
  const key=await keyFor(passcode,salt,'decrypt');const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv,additionalData:aad,tagLength:128},key,decode(packet.ciphertext));
  const content=JSON.parse(new TextDecoder().decode(plain));
  if(!content||!Array.isArray(content.chapters)||!content.chapters.length||content.chapters.length>20||!content.chapters.every(c=>typeof c.id==='string'&&typeof c.title==='string'&&typeof c.summary==='string'&&Array.isArray(c.sections)&&c.sections.length<=8&&c.sections.every(s=>typeof s.title==='string'&&typeof s.text==='string')))throw new Error('Invalid walkthrough');
+ for(const chapter of content.chapters)if(chapter.images&&(!Array.isArray(chapter.images)||chapter.images.length>4||!chapter.images.every(image=>typeof image.src==='string'&&/^data:image\/(jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(image.src)&&image.src.length<1000000&&typeof image.alt==='string'&&typeof image.caption==='string'&&/^https:\/\/(?:demo\.)?xview\.ai\//.test(image.href))))throw new Error('Invalid product screens');
  return content;
 }

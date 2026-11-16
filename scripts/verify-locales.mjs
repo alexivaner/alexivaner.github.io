@@ -10,8 +10,9 @@ assert.equal(translate('Missing phrase', {}), 'Missing phrase');
 assert.equal(translate(' Home ', { Home: '首頁' }), ' 首頁 ');
 const english = JSON.parse(await readFile('src/i18n/locales/en.json')).messages;
 for (const locale of ['id','zh-TW','ko','ja']) {
-  const messages = JSON.parse(await readFile(`src/i18n/locales/${locale}.json`)).messages;
+  const catalog=JSON.parse(await readFile(`src/i18n/locales/${locale}.json`));assert.deepEqual(Object.keys(catalog),['messages'],'Translation keys must live inside messages');const messages=catalog.messages;
   assert.deepEqual(Object.keys(messages).sort(), Object.keys(english).sort(), `${locale}: incomplete catalog`);
+  for(const key of ['3D motion analysis','System compatibility','From video to motion.','One movement. Multiple perspectives.'])assert(messages[key]&&messages[key]!==key,`${locale}: new evidence copy is untranslated`);
   assert(Object.values(messages).every(value => typeof value === 'string' && value.trim()), `${locale}: empty translation`);
 }
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });

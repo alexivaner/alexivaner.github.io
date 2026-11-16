@@ -28,3 +28,6 @@ console.log('Motion, embedded avatar, and encrypted walkthrough boundaries passe
 const headMotion=JSON.parse(await readFile('dist/assets/media/golf-head-motion.json','utf8'));
 assert.deepEqual(Object.keys(headMotion).sort(),['format','frames']);assert.equal(headMotion.format,'head-directions-v1');assert.equal(headMotion.frames.length,motion.frames.length);
 for(const frame of headMotion.frames){assert.deepEqual(Object.keys(frame).sort(),['neck','right','up']);for(const key of ['neck','up','right'])assert(frame[key].length===3&&frame[key].every(Number.isFinite)&&Math.abs(Math.hypot(...frame[key])-1)<.001,'Only normalized head/neck directions may be exported');}
+assert(!built.some(p=>/golf-club-motion/.test(p)),'Additional company club-motion data must not be public');
+assert(!built.some(p=>/product-captures|xview-studio\.jpg|demo-review\.jpg|demo-3d\.jpg/.test(p)),'Product screenshots must remain encrypted');
+for(const theme of ['light','dark'])assert((await stat(`dist/assets/images/motion/avatar-${theme}.webp`)).size>1000);

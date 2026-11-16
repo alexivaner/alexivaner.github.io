@@ -15,7 +15,9 @@
     "test:publication": "node scripts/verify-publication.mjs",
     "test:motion": "node scripts/verify-head-rig.mjs && node scripts/verify-motion.mjs",
     "private:pack": "node scripts/pack-walkthrough.mjs",
-    "test:protected": "node scripts/verify-protected.mjs"
+    "test:protected": "node scripts/verify-protected.mjs",
+    "test:mobile": "node scripts/verify-mobile-refinement.mjs",
+    "capture:motion": "node scripts/capture-motion-posters.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/host-grotesk": "^5.2.0",

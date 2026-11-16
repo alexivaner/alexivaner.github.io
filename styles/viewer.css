@@ -151,3 +151,23 @@
 .architecture-explanation p { color: var(--color-muted); margin-top: var(--space-sm); }
 .architecture-explanation code { overflow-wrap: anywhere; }
 @media (max-width: 767px) { .private-toolbar { padding-inline: var(--space-md); flex-wrap: wrap; } .private-toolbar label { flex-basis: 100%; } .private-toolbar .private-lock { margin-left: auto; } .private-document > h3 { font-size: var(--text-xl); } .architecture-choices { grid-template-columns: repeat(2,minmax(0,1fr)); } .private-unlock { margin-block: var(--space-lg); } }
+
+.private-screens { display: grid; gap: var(--space-xl); margin-block: var(--space-xl); }
+.private-screens figure { margin: 0; min-width: 0; }
+.private-screen-preview { display: block; width: 100%; padding: 0; border: 1px solid var(--color-rule); border-radius: calc(var(--radius-card) / 2); background: var(--color-paper-2); overflow: hidden; color: var(--color-ink); }
+.private-screen-preview img { display: block; width: 100%; height: auto; }
+.private-screen-preview > span { display: flex; gap: var(--space-xs); align-items: center; justify-content: center; padding: var(--space-sm); font-size: var(--text-sm); }
+.private-screens figcaption { font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-sm); }
+.private-screen-preview:hover { border-color: var(--color-accent); }
+.private-screen-preview:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+.private-screen-dialog { width: min(1600px,calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: var(--space-md); border: 1px solid var(--color-rule); border-radius: var(--radius-card); background: var(--color-paper); color: var(--color-ink); overflow: auto; }
+.private-screen-dialog::backdrop { background: var(--color-backdrop); }
+.private-screen-dialog > button { display: flex; margin-left: auto; margin-bottom: var(--space-sm); }
+.private-screen-scroll { overflow: auto; }
+.private-screen-scroll img { display: block; width: 100%; height: auto; }
+.private-screen-dialog > p { color: var(--color-muted); font-size: var(--text-sm); margin-top: var(--space-sm); }
+@media (max-width: 767px) { .private-screen-scroll img { width: 1100px; max-width: none; } .private-screen-dialog { border-radius: calc(var(--radius-card) / 2); } }
+
+.private-screen-dialog[open] { display: flex; flex-direction: column; overflow: hidden; }
+.private-screen-dialog > button, .private-screen-dialog > p { flex-shrink: 0; }
+.private-screen-scroll { min-height: 0; flex: 1 1 auto; }

@@ -547,6 +547,21 @@
     "Technical walkthrough in English.": "기술 설명은 영어로 제공됩니다.",
     "Protected content is unavailable in this browser.": "이 브라우저에서는 보호된 콘텐츠를 사용할 수 없습니다.",
     "Could not load the protected walkthrough. Try again.": "보호된 설명을 불러올 수 없습니다. 다시 시도하세요.",
-    "The passcode is incorrect.": "접근 코드가 올바르지 않습니다."
+    "The passcode is incorrect.": "접근 코드가 올바르지 않습니다.",
+    "3D motion analysis": "3D 동작 분석",
+    "System compatibility": "시스템 호환성",
+    "From video to motion.": "영상에서 동작으로.",
+    "Multiple views": "여러 시점",
+    "One movement. Multiple perspectives.": "하나의 동작, 다양한 관점.",
+    "Your device": "사용 기기",
+    "Compatibility": "호환성",
+    "Ready to begin": "시작 준비 완료",
+    "Account": "계정",
+    "Software access": "소프트웨어 접근",
+    "AI application": "AI 애플리케이션",
+    "Helping people prepare their system before they begin.": "시작 전에 시스템을 준비하도록 돕습니다.",
+    "Connecting the AI application to the software around it.": "AI 애플리케이션과 주변 소프트웨어를 연결합니다.",
+    "The same reconstructed motion, presented on the portfolio avatar.": "동일한 재구성 동작을 포트폴리오 아바타로 보여줍니다.",
+    "Golf motion preview with a neutral-handed avatar and golf club.": "중립적인 손 모양의 아바타와 골프 클럽을 사용한 동작 미리보기."
   }
 }

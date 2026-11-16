@@ -1,11 +1,10 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Localized,useI18n} from '../i18n/I18n.jsx';
-import {bones,poseAt,project,initialCamera,visibleJoints} from '../motion/golf.js';
+import {initialCamera} from '../motion/golf.js';
 
 function StaticPose(){
  const {t}=useI18n();
- const p=poseAt(.57),screen=v=>project(v,initialCamera,600,420);
- return <svg className="motion-fallback" viewBox="0 0 600 420" role="img" aria-label={t('Golf-motion reconstruction with a standard body skeleton.')}><g className="motion-bones">{bones.map(([a,b])=>{const x=screen(p[a]),y=screen(p[b]);return <line key={a+b} x1={x[0].toFixed(2)} y1={x[1].toFixed(2)} x2={y[0].toFixed(2)} y2={y[1].toFixed(2)}/>;})}{visibleJoints.map(k=>[k,p[k]]).map(([k,v])=>{const q=screen(v);return <circle key={k} cx={q[0].toFixed(2)} cy={q[1].toFixed(2)} r={k==='head'?9:3}/>;})}</g></svg>;
+ return <div className="motion-poster"><img className="poster-light" src="/assets/images/motion/avatar-light.webp" width="1200" height="750" alt={t('Golf motion preview with a neutral-handed avatar and golf club.')} fetchPriority="high"/><img className="poster-dark" src="/assets/images/motion/avatar-dark.webp" width="1200" height="750" alt={t('Golf motion preview with a neutral-handed avatar and golf club.')} fetchPriority="high"/></div>;
 }
 export default function GolfMotion({suspended=false}){
  const {t}=useI18n(),stage=useRef(null),canvas=useRef(null),avatarCanvas=useRef(null),timeline=useRef(null),api=useRef(null),choice=useRef('auto');
@@ -14,7 +13,7 @@ export default function GolfMotion({suspended=false}){
  useEffect(()=>{
   let disposed=false,visible=false,surface,loading=false,frame=0,last=0,phase=.4,active=false,width=600,height=420;
   const camera={...initialCamera},node=stage.current,media=matchMedia('(prefers-reduced-motion: reduce)'),data=matchMedia('(prefers-reduced-data: reduce)');
-  const colors=()=>{const css=getComputedStyle(node);return Object.fromEntries([['ink','--color-ink'],['muted','--color-muted'],['rule','--color-rule'],['paper','--color-paper-2'],['ink2','--color-ink-2'],['accent','--color-accent']].map(([k,v])=>[k,css.getPropertyValue(v).trim()]));};
+  const colors=()=>{const css=getComputedStyle(node);return Object.fromEntries([['ink','--color-ink'],['muted','--color-muted'],['rule','--color-rule'],['paper','--color-paper-2'],['ink2','--color-ink-2'],['accent','--color-accent'],...['key','fill','rim','floor','platform','metal','grip','glove'].map(name=>[name,'--motion-'+name])].map(([k,v])=>[k,css.getPropertyValue(v).trim()]));};
   let palette=colors();
   const paint=()=>surface?.draw(width,height,phase,camera,palette);
   const animate=now=>{if(!active)return;if(now-last>=32){phase=(phase+Math.min((now-last)||32,70)/6500)%1;last=now;paint();if(timeline.current)timeline.current.value=String(Math.round(phase*100));}frame=requestAnimationFrame(animate);};
