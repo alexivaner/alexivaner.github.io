@@ -5,7 +5,7 @@ import {poseAt,initialCamera,project} from '../src/motion/golf.js';
 const packet=JSON.parse(await readFile('public/assets/media/golf-body-motion.json','utf8'));
 assert.deepEqual(Object.keys(packet).sort(),['format','frames']);assert.equal(packet.format,'body17-normalized-v1');assert(packet.frames.length>20);
 for(const frame of packet.frames)assert(frame.length===17&&frame.every(p=>p.length===3&&p.every(Number.isFinite)));
-const poster=JSON.parse(await readFile('src/motion/golf-poster.json','utf8'));assert.deepEqual(poster,packet.frames[Math.round(.4*(packet.frames.length-1))]);
+const poster=JSON.parse(await readFile('src/motion/golf-poster.json','utf8'));assert.deepEqual(poster,packet.frames[0]);
 for(let i=0;i<=200;i++)for(const v of Object.values(poseAt(i/200,packet.frames))){const pixel=project(v,initialCamera,600,420);assert(pixel.every(Number.isFinite));assert(pixel[0]>=12&&pixel[0]<=588&&pixel[1]>=12&&pixel[1]<=408,'Full motion must fit the initial view');}
 assert.notDeepEqual(poseAt(.1,packet.frames),poseAt(.7,packet.frames),'The approved preview must contain motion');
 const base=process.env.PORTFOLIO_URL||'http://127.0.0.1:4175';

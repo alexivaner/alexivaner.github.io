@@ -18,7 +18,7 @@ for(let i=0;i<=720;i++){
  assert(Math.abs(head.quaternion.length()-1)<1e-7,'Club-head orientation must be valid');
 }
 for(let i=0;i<data.frames.length;i++)for(const key of ['grip','heel','head'])assert(clubPoseAt(i/(data.frames.length-1),data.frames)[key].distanceTo(new Vector3(...data.frames[i][key]))<1e-9);
-const camera=new PerspectiveCamera(38,1.25,.01,50),distance=5.6;
+const camera=new PerspectiveCamera(38,1.25,.01,50),distance=5.6/initialCamera.zoom;
 camera.position.set(Math.sin(initialCamera.yaw)*Math.cos(initialCamera.pitch)*distance,1.3-Math.sin(initialCamera.pitch)*distance,Math.cos(initialCamera.yaw)*Math.cos(initialCamera.pitch)*distance);camera.lookAt(0,1.3,0);camera.updateMatrixWorld(true);
 for(const frame of data.frames)for(const point of Object.values(frame))for(const x of [-.075,.075])for(const y of [-.075,.075])for(const z of [-.075,.075]){const screen=new Vector3(...point).add(new Vector3(x,y,z)).project(camera);assert(Math.abs(screen.x)<.99&&Math.abs(screen.y)<.99,'Full recorded club and its geometry must fit the phone view');}
 equipment.dispose();assert.equal(scene.children.length,0);

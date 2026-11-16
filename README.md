@@ -103,6 +103,6 @@ The passcode viewer supports enlarged, pannable media on phones. Closing or lock
 
 The engineering section offers a prominent **Unlock case study** action with a visible passcode requirement. Public project overviews remain available without a passcode. Keyboard navigation and a next-project action guide visitors through the three engineering contributions.
 
-The motion study offers Free view, Face-on, Down-the-line, Front, Head, and Chest presets. Camera changes ease between viewpoints and switch immediately with reduced motion enabled. The avatar feet maintain a neutral stance with bounded heel lift instead of inheriting hip twist.
+The motion study offers Free view, Face-on, Down-the-line, Front, Head, and Chest presets. Head and Chest are avatar-mounted first-person views. Camera changes ease between viewpoints and switch immediately with reduced motion enabled. Playback begins at setup and includes the complete approved sequence through the finish. The avatar feet maintain a neutral stance with bounded heel lift instead of inheriting hip twist.
 
 `npm run test:presentation` checks rig constraints and camera interpolation. `npm run test:engineering` checks the guided explorer, responsive layouts, keyboard operation, camera transitions, first-click loading, and accessibility.

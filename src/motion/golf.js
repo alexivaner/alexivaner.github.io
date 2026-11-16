@@ -15,4 +15,4 @@ export function project(point,camera,width,height){
  const y=r[1]*cp-r[2]*sp,z=r[1]*sp+r[2]*cp,scale=Math.min(width*.34,height*.39)*camera.zoom*3.8/(3.8+z);
  return [width/2+r[0]*scale,height*.47-y*scale,z];
 }
-export const initialCamera={yaw:-.62,pitch:-.12,zoom:1};
+export const initialCamera={yaw:Math.PI-.62,pitch:-.12,zoom:.85};
