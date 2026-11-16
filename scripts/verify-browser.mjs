@@ -46,7 +46,7 @@ try {
   await page.setViewport({ width: 1280, height: 800 });
   await page.goto(url, { waitUntil: 'networkidle0' });
   await page.waitForFunction(() => document.documentElement.dataset.hydrated === 'true');
-  assert(await page.$eval('.hero-product-text', el => el.textContent.includes('XView. Motion analysis in 3D.')), 'XView must lead the hero');
+  assert(await page.$eval('.hero-product-text', el => el.textContent.includes('Interactive motion study.')), 'Hero must identify the personal motion study');
   assert.equal(await page.$$eval('img[src*="xview-studio"]', els=>els.length),0,'Unapproved employer image must not ship');
   assert.equal(await page.$$eval('.system-selector a', els => els.length), 3);
   assert.equal(await page.$$eval('.research-project-group .research-project', els => els.length), 6);

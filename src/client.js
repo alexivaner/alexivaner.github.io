@@ -11,7 +11,7 @@ document.addEventListener('pointerdown', () => start().catch(() => {}), { once: 
 document.addEventListener('keydown', () => start().catch(() => {}), { once: true });
 document.addEventListener('click', async event => {
   if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
-  const summary = event.target.closest('.project-story > summary, a[data-case-id]');
+  const summary = event.target.closest('.project-story > summary, a[data-case-id], a.protected-case-link, .system-selector a');
   if (!summary || document.documentElement.dataset.hydrated) return;
   event.preventDefault();
   summary.setAttribute('aria-busy', 'true');

@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {createFootRetargeter} from './footRig.js';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {clubPoseAt,loadClubFrames} from './clubPose.js';
 import {removeFingeredHands,createGolfEquipment} from './golfEquipment.js';
@@ -35,6 +36,7 @@ export async function createAvatarSurface(canvas){
   const restHip=basis(at('RightUpLeg').sub(at('LeftUpLeg')),at('Spine2').sub(at('Hips'))),restChest=basis(at('RightArm').sub(at('LeftArm')),at('Neck').sub(at('Spine')));
   const bounds=new THREE.Box3().setFromObject(model),clearance=(at('LeftFoot').y+at('RightFoot').y)/2-bounds.min.y;
   const retargetHead=createHeadRetargeter({neck:get('Neck'),head:get('Head'),tip:get('HeadTop_End'),rightShoulder:get('RightArm'),leftShoulder:get('LeftArm')});
+  const retargetFeet=createFootRetargeter({left:get('LeftFoot'),right:get('RightFoot'),leftToe:get('LeftToe_End'),rightToe:get('RightToe_End'),first,frames});
   const camera=new THREE.PerspectiveCamera(38,1,.01,50),target=new THREE.Vector3(0,1.3,0);
   const hemi=new THREE.HemisphereLight(),sun=new THREE.DirectionalLight();hemi.intensity=1.1;sun.intensity=2.2;sun.position.set(-3,5,4);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-2;sun.shadow.camera.right=2;sun.shadow.camera.top=3;sun.shadow.camera.bottom=-1;sun.shadow.normalBias=.0025;sun.shadow.bias=-.00005;sun.shadow.radius=4;const rim=new THREE.DirectionalLight();rim.intensity=1.4;rim.position.set(3,3,-3);const fill=new THREE.DirectionalLight();fill.intensity=.6;fill.position.set(3,2,4);scene.add(hemi,sun,rim,fill);
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({roughness:.9,metalness:.05}));floor.rotation.x=-Math.PI/2;floor.position.y=-.24;floor.receiveShadow=true;scene.add(floor);
@@ -55,10 +57,11 @@ export async function createAvatarSurface(canvas){
     pointDirection(side+'ForeArm',side+'Hand',vector(p[prefix+'Hand']).sub(vector(p[prefix+'Elbow'])));
     pointDirection(side+'UpLeg',side+'Leg',vector(p[prefix+'Knee']).sub(vector(p[prefix+'Hip'])));
     pointDirection(side+'Leg',side+'Foot',vector(p[prefix+'Ankle']).sub(vector(p[prefix+'Knee'])));
-    world(side+'Foot',hipDelta.clone().multiply(original(side+'Foot').world));
    }
+   retargetFeet(p);
    const desired=vector(p.pelvis);desired.y+=clearance;model.position.copy(desired.sub(at('Hips')));model.updateMatrixWorld(true);
    equipment.update(clubPoseAt(phase,clubFrames),colors);
+   const headFocus=view.headFocus||0,chestFocus=view.chestFocus||0;target.set(0,1.3,0).multiplyScalar(1-headFocus-chestFocus).addScaledVector(at('Head').add(at('HeadTop_End')).multiplyScalar(.5),headFocus).addScaledVector(at('Spine2'),chestFocus);
    const distance=5.6/view.zoom;camera.position.set(target.x+Math.sin(view.yaw)*Math.cos(view.pitch)*distance,target.y-Math.sin(view.pitch)*distance,target.z+Math.cos(view.yaw)*Math.cos(view.pitch)*distance);camera.lookAt(target);renderer.render(scene,camera);
   }
   return {kind:'avatar',draw,dispose(){model.traverse(node=>{if(node.isMesh){node.geometry.dispose();node.skeleton?.dispose();for(const material of Array.isArray(node.material)?node.material:[node.material]){for(const value of Object.values(material))if(value?.isTexture)value.dispose();material.dispose();}}});equipment.dispose();environment.dispose();floor.geometry.dispose();floor.material.dispose();stage.geometry.dispose();stage.material.dispose();ring.geometry.dispose();ring.material.dispose();renderer.dispose();renderer.forceContextLoss();}};

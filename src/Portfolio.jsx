@@ -43,7 +43,7 @@ function ThemeToggle() {
 function Hero({ suspended }) {
   return <Localized><section className="hero" id="home" aria-labelledby="hero-heading"><div className="container stage-grid">
     <div className="intro-copy"><p className="personal-intro">Ivan Surya Hutomo · Lead Applied AI Engineer</p><h1 id="hero-heading">Engineering AI<br />beyond the model.</h1><p className="hero-description">I turn computer vision and AI research into real software products.</p><div className="hero-actions"><a className="button" href="#engineering">Explore engineering work</a><a className="text-link" href="resume/">View resume</a></div></div>
-    <div className="work-preview"><article className="hero-product-text" aria-labelledby="flagship-title"><h2 id="flagship-title">XView. Motion analysis in 3D.</h2><p className="hero-product-owner">XView is developed and owned by IdeasLab Formosa Co., Ltd.</p><GolfMotion suspended={suspended}/></article></div>
+    <div className="work-preview"><article className="hero-product-text" aria-labelledby="flagship-title"><h2 id="flagship-title">Interactive motion study.</h2><GolfMotion suspended={suspended}/></article></div>
   </div></section></Localized>;
 }
 

@@ -57,9 +57,9 @@ The canonical domain and social preview URLs currently target `https://alexivane
 
 ## Assets and attribution
 
-Host Grotesk is self-hosted, with its license in `public/assets/fonts/`. Icons come from Phosphor (MIT). The opening describes IdeasLab / XView through an attributed editorial product overview. The public overview uses the approved reconstruction and independent diagrams. Approved official product screenshots appear only in the encrypted interviewer presentation. The earlier abstract artwork has been retired. Readmory shows a real capture of the owner’s connected Kobo library, with local covers and aggregate activity. Raw databases, notes, interview documents, and device serial numbers are excluded from the site. Aegis is a screenshot of the owner's working local prototype, not a public deployment or production-readiness claim.
+Host Grotesk is self-hosted, with its license in `public/assets/fonts/`. Icons come from Phosphor (MIT). The opening presents a custom-avatar motion study, with the reconstruction source credited in its expandable caption. The public overview uses the approved reconstruction and independent diagrams. Optional case studies require a passcode. The earlier abstract artwork has been retired. Readmory shows a real capture of the owner’s connected Kobo library, with local covers and aggregate activity. Raw databases, notes, interview documents, and device serial numbers are excluded from the site. Aegis is a screenshot of the owner's working local prototype, not a public deployment or production-readiness claim.
 
-Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Unapproved company-owned images, customer information, and private review documents are excluded from both this repository and the deployable artifact. Case-study copy stays general. The owner confirmed company approval for the exact supplied resume PDF and one selected 3D motion reconstruction. The PDF is served unchanged; the motion is a normalized body-only export. The owner also confirmed company approval for restricted interviewer access to the curated engineering walkthrough; its content is encrypted before publication. These permissions do not extend to other company material.
+Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Unapproved company-owned images, customer information, and private review documents are excluded from both this repository and the deployable artifact. Case-study copy stays general. The owner confirmed company approval for the exact supplied resume PDF and one selected 3D motion reconstruction. The PDF is served unchanged; the motion uses the approved normalized presentation tracks. The owner also confirmed company approval for restricted interviewer access to the curated engineering walkthrough; its content is encrypted before publication. These permissions do not extend to other company material.
 
 Public media provenance and license notices are recorded in [the asset attribution file](public/assets/ATTRIBUTION.md). All supplied client destinations remain referenced. Kita Taiwan opens a local case study because live availability could not be verified.
 
@@ -95,6 +95,14 @@ The public engineering section combines projections of the approved reconstructe
 
 The optional avatar has fixed neutral mittens rather than inferred finger movement. The club follows the recorded reconstruction in synchronization with the body. A lit studio environment, soft-ground stage, and fill/rim lighting support both themes. These presentation adaptations are not measurement output.
 
-The encrypted document supports embedded images, with an enlarged, pannable viewer on phones. Closing or locking removes decrypted content. Image provenance is recorded with the protected content, within its approved audience. The passphrase remains unchanged.
+The passcode viewer supports enlarged, pannable media on phones. Closing or locking removes decrypted content. The passphrase remains unchanged.
 
 `npm run test:mobile` verifies first-paint posters without JavaScript, the mobile avatar, all available website captures, engineering evidence, encrypted screenshots, and accessibility. To regenerate the posters after rendering changes, build and serve the site on port 4175, run `npm run capture:motion`, then rebuild so the captured WebPs enter the production artifact.
+
+## Guided engineering explorer
+
+The engineering section offers a prominent **Unlock case study** action with a visible passcode requirement. Public project overviews remain available without a passcode. Keyboard navigation and a next-project action guide visitors through the three engineering contributions.
+
+The motion study offers Free view, Face-on, Down-the-line, Front, Head, and Chest presets. Camera changes ease between viewpoints and switch immediately with reduced motion enabled. The avatar feet maintain a neutral stance with bounded heel lift instead of inheriting hip twist.
+
+`npm run test:presentation` checks rig constraints and camera interpolation. `npm run test:engineering` checks the guided explorer, responsive layouts, keyboard operation, camera transitions, first-click loading, and accessibility.
