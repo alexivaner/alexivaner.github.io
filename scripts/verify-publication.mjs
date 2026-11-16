@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer-core';
 import assert from 'node:assert/strict';
-import {writeFile} from 'node:fs/promises';
+import {writeFile,readFile} from 'node:fs/promises';
 const base=process.env.PORTFOLIO_URL||'http://127.0.0.1:4175';
 const browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 try{
@@ -38,7 +38,7 @@ try{
  }
  const r=await browser.newPage();await r.setRequestInterception(true);r.on('request',q=>q.url().startsWith('https://www.youtube-nocookie.com/embed/')?q.respond({status:200,contentType:'text/html',body:'<!doctype html><title>Native embedded video test</title>'}):q.continue());
  for(const width of [375,1440]){
-  await r.setViewport({width,height:900});await r.goto(base,{waitUntil:'networkidle0'});await r.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');await r.click('#robot-fJvOMFCaZIk .project-story > summary');await r.waitForSelector('dialog[open] iframe');
+  await r.setViewport({width,height:900});await r.goto(base,{waitUntil:'networkidle0'});await r.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');await r.click('#robot-fJvOMFCaZIk .hardware-video');await r.waitForSelector('dialog[open] iframe');
   assert.equal(await r.$$eval('dialog .viewer-image',e=>e.length),0);
   assert(await r.$eval('.video-frame',el=>{const b=el.getBoundingClientRect(),h=document.querySelector('.viewer-top').getBoundingClientRect();return b.top>=h.bottom&&b.right<=innerWidth&&b.width>200;}));
   await r.screenshot({path:`.hallmark/reports/publication-robot-${width}.png`});
@@ -51,6 +51,14 @@ try{
   assert(await r.$eval('.resume-nav a[target="_blank"]',el=>el.href.endsWith('.pdf')));
   await r.screenshot({path:`.hallmark/reports/publication-resume-${width}.png`,fullPage:true});
  }
+ const gallery=await browser.newPage();await gallery.goto(process.env.PORTFOLIO_URL||'http://127.0.0.1:4175',{waitUntil:'networkidle0'});await gallery.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');
+ async function thumbnail(selector,name){await gallery.click(selector);await gallery.waitForSelector('dialog[open]');assert.equal(await gallery.$eval('#project-dialog-title',el=>el.textContent),name);await gallery.keyboard.press('Escape');await gallery.waitForFunction(()=>!document.querySelector('dialog[open]'));assert(await gallery.$eval(selector,el=>el===document.activeElement),'Thumbnail focus was not restored');}
+ await thumbnail('.featured-project .project-thumbnail','Readmory');await thumbnail('.aegis-project .project-thumbnail','Aegis');
+ const websites=JSON.parse(await readFile('content/portfolio.json')).websites;
+ for(const site of websites.filter(item=>item.image)){
+  await gallery.$eval(`.website-selector a[href="${site.href}"]`,el=>el.click());await thumbnail('.website-preview .project-thumbnail',site.name);
+ }
+ await gallery.close();
  assert.deepEqual(errors,[]);await writeFile('.hallmark/reports/publication-checks.json',JSON.stringify({passed:true,checks:['viewport autoplay, muted inline loop','offscreen and hidden-tab pause','resume after visibility restoration','reduced-motion poster and manual play','save-data poster','blocked autoplay fallback','robotics video first, no duplicate still, unload','mobile and desktop resume, PDF delivery'],errors},null,2));
  console.log('Publication checks passed: playback policies, dialog geometry, robotics players, and resume PDF on desktop/mobile.');
 }finally{await browser.close();}

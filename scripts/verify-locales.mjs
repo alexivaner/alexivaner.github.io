@@ -77,7 +77,8 @@ try {
   page.on('request', request => { if(request.url().startsWith('https://www.youtube-nocookie.com/embed/')) {embeds++;request.respond({status:200,contentType:'text/html',body:'<!doctype html><title>Embed transport fixture</title>'});} else request.continue(); });
   for(let index=0;index<4;index++) {
     const link = (await page.$$('.hardware-video'))[index];
-    await link.click(); await page.waitForSelector('.video-dialog[open] iframe');
+    const requested=page.waitForRequest(r=>r.url().startsWith('https://www.youtube-nocookie.com/embed/'));
+    await link.click(); await page.waitForSelector('.project-dialog[open] iframe');await requested;
     const src = await page.$eval('iframe',el=>el.src);
     assert(src.startsWith('https://www.youtube-nocookie.com/embed/'));
     assert(!src.includes('autoplay=1'));

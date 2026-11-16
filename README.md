@@ -59,7 +59,7 @@ The canonical domain and social preview URLs currently target `https://alexivane
 
 Host Grotesk is self-hosted, with its license in `public/assets/fonts/`. Icons come from Phosphor (MIT). The opening describes IdeasLab / XView through an attributed editorial product overview. Employer imagery is excluded because portfolio reuse is not authorized. The earlier abstract artwork has been retired. Readmory shows a real capture of the owner’s connected Kobo library, with local covers and aggregate activity. Raw databases, notes, interview documents, and device serial numbers are excluded from the site. Aegis is a screenshot of the owner's working local prototype, not a public deployment or production-readiness claim.
 
-Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Company-owned images, internal implementation details, customer information, and private review documents are excluded from both this repository and the deployable artifact. More detailed employer material requires permission before publication.
+Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Company-owned images, customer information, and private review documents are excluded from both this repository and the deployable artifact. Case-study copy stays general. The owner confirmed company approval to publish the exact supplied resume PDF; that file is served unchanged. This permission does not extend to other company material.
 
 Public media provenance and license notices are recorded in [the asset attribution file](public/assets/ATTRIBUTION.md). All supplied client destinations remain referenced. Kita Taiwan opens a local case study because live availability could not be verified.
 
@@ -67,4 +67,6 @@ To update translations, edit the matching English source-string keys in all five
 
 Run `npm run test:feedback` for media, keyboard navigation, research cases, and GHI. Run `npm run test:publication` for viewport playback policies, embedded robotics players, and resume PDF delivery. `npm run check:release` verifies that private review files and unapproved company media stay out of the production artifact.
 
-The resume page works as readable HTML on mobile. Its English PDF is checked into `public/assets/ivan-surya-hutomo-resume.pdf`. To refresh it after an intentional resume content change, serve the built site on port 4175 and run `npm run resume:pdf`, then rebuild and visually verify all PDF pages. The exporter requires local Chrome.
+The resume page works as readable HTML on mobile. Download and new-tab actions serve the owner's original one-page PDF, preserved byte-for-byte at `public/assets/ivan-surya-hutomo-resume.pdf`. Replace it only with an approved source PDF; the site does not generate or overwrite it from the HTML profile.
+
+Product, website, and robotics thumbnails open their corresponding project details with keyboard focus restored on close. Separate source links still open the original website or video. The shared thumbnail component handles lazy viewer loading, first-click hydration, and a native disclosure fallback.

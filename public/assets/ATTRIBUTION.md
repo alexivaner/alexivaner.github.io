@@ -15,3 +15,7 @@ The portfolio owner requested reuse of their original public project materials. 
 Other existing product captures, client website captures, font notices, and Phosphor icons retain their existing attribution.
 
 The pose animation uses a constant crop of empty margins across all frames (132 × 180 at x=154, y=50 in the 432 × 288 original). All colored skeleton pixels across the complete sequence remain inside the crop; no pose, coordinate, or motion was generated or changed.
+
+## Resume
+
+The downloadable resume is the owner-supplied original PDF, retained without content or layout changes. It is maintained separately from the readable HTML profile.

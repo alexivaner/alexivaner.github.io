@@ -12,8 +12,7 @@
     "test:locales": "node scripts/verify-locales.mjs",
     "test:feedback": "node scripts/verify-feedback.mjs",
     "check:release": "node scripts/check-release.mjs",
-    "test:publication": "node scripts/verify-publication.mjs",
-    "resume:pdf": "node scripts/export-resume.mjs"
+    "test:publication": "node scripts/verify-publication.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/host-grotesk": "^5.2.0",

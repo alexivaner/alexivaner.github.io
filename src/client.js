@@ -10,6 +10,7 @@ else window.addEventListener('load', schedule, { once: true });
 document.addEventListener('pointerdown', () => start().catch(() => {}), { once: true, passive: true });
 document.addEventListener('keydown', () => start().catch(() => {}), { once: true });
 document.addEventListener('click', async event => {
+  if(event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
   const summary = event.target.closest('.project-story > summary, a[data-case-id]');
   if (!summary || document.documentElement.dataset.hydrated) return;
   event.preventDefault();

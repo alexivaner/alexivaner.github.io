@@ -4,6 +4,7 @@ import WebsiteWork from './components/WebsiteWork.jsx';
 import HardwareWork from './components/HardwareWork.jsx';
 import Recognition from './components/Recognition.jsx';
 import ProjectStory from './components/ProjectStory.jsx';
+import ProjectThumbnail from './components/ProjectThumbnail.jsx';
 import EngineeringWork from './components/EngineeringWork.jsx';
 import ResearchWork from './components/ResearchWork.jsx';
 import work from '../content/work.json';
@@ -47,17 +48,17 @@ function Hero({ onOpen, onPreload, pending }) {
 }
 
 
-function ProductCapture({ project }) {
-  return <Localized><figure className="product-capture"><img src={`/${project.image.replace(/^\//, '')}`} width={project.imageWidth || 1440} height={project.imageHeight || 900} alt={project.imageAlt} loading="lazy" /><figcaption>{project.caption || (project.id === 'readmory' ? 'Independent product. Real interface, synthetic demo library.' : 'Independent prototype. Captured from the working local build.')}</figcaption></figure></Localized>;
+function ProductCapture({ project, onOpen, onPreload, pending }) {
+  return <Localized><figure className="product-capture"><ProjectThumbnail project={project} onOpen={onOpen} onPreload={onPreload} pending={pending}><img src={`/${project.image.replace(/^\//, '')}`} width={project.imageWidth || 1440} height={project.imageHeight || 900} alt={project.imageAlt} loading="lazy" /></ProjectThumbnail><figcaption>{project.caption || (project.id === 'readmory' ? 'Independent product. Real interface, synthetic demo library.' : 'Independent prototype. Captured from the working local build.')}</figcaption></figure></Localized>;
 }
 
 function SelectedWork({ onOpen, onPreload, pending }) {
   const [readmory, aegis] = data.projects;
-  const storyProps = project => ({ project, onOpen, onPreload, pending: pending === project.id });
+  const storyProps = project => ({ project, onOpen, onPreload, pending: pending === project.id, fallbackId: project.id });
   return <Localized><section className="work-section section" id="works" aria-labelledby="work-heading"><div className="container">
     <div className="section-intro"><h2 id="work-heading">Independent by design.</h2><p className="lead">Personal products, built around everyday interests.</p><nav className="work-destinations" aria-label="Browse selected work"><a href="#works">Products</a><a href="#websites">Websites</a><a href="#hardware">Hardware</a></nav></div>
-    <article className="featured-project" aria-labelledby="readmory-heading"><div className="project-copy"><h3 id="readmory-heading">Readmory</h3><p className="project-headline">{readmory.headline}</p><p>{readmory.description}</p><a className="text-link" href={readmory.href} {...external}>{readmory.link}</a></div><ProductCapture project={readmory} /><ProjectStory {...storyProps(readmory)} /></article>
-    <div className="secondary-projects"><article className="aegis-project" aria-labelledby="aegis-heading"><ProductCapture project={aegis} /><h3 id="aegis-heading">Aegis</h3><p>{aegis.description}</p><ProjectStory {...storyProps(aegis)} /></article>
+    <article className="featured-project" aria-labelledby="readmory-heading"><div className="project-copy"><h3 id="readmory-heading">Readmory</h3><p className="project-headline">{readmory.headline}</p><p>{readmory.description}</p><a className="text-link" href={readmory.href} {...external}>{readmory.link}</a></div><ProductCapture {...storyProps(readmory)} /><ProjectStory {...storyProps(readmory)} /></article>
+    <div className="secondary-projects"><article className="aegis-project" aria-labelledby="aegis-heading"><ProductCapture {...storyProps(aegis)} /><h3 id="aegis-heading">Aegis</h3><p>{aegis.description}</p><ProjectStory {...storyProps(aegis)} /></article>
     <aside className="earlier-projects" aria-labelledby="independent-heading"><h3 id="independent-heading">Built from<br />curiosity.</h3><p>Reading, exploring, and community needs become independent software projects.</p><a className="text-link" href="#applied">Explore research & applied AI</a><a className="text-link" href="#websites">Explore website work</a></aside></div>
   </div></section></Localized>;
 }
@@ -101,8 +102,6 @@ function SiteFooter() {
 
 function PortfolioContent({ onHydrated }) {
   const [selected, setSelected] = useState(null);
-  const [video, setVideo] = useState(null);
-  const [Video, setVideoViewer] = useState(null);
   const [Viewer, setViewer] = useState(null);
   const [pending, setPending] = useState(null);
   const module = useRef(null);
@@ -116,11 +115,7 @@ function PortfolioContent({ onHydrated }) {
     try { const loaded = await loadViewer(); setViewer(() => loaded.default); source.current = trigger; setSelected(project); }
     finally { setPending(null); }
   }
-  async function openVideo(item, trigger) {
-    const loaded = await import('./components/VideoViewer.jsx');
-    source.current = trigger; setVideoViewer(() => loaded.default); setVideo(item);
-  }
-  return <Localized><><a className="skip-link" href="#main">Skip to content</a><SiteNavigation onOpenCase={(id, trigger) => openProject(findCase(id), trigger)} tools={<><LanguageSelector /><ThemeToggle /></>} /><main id="main"><Hero onOpen={openProject} onPreload={preload} pending={pending} /><EngineeringWork onOpen={openProject} onPreload={preload} pending={pending} /><ResearchWork onOpen={openProject} onPreload={preload} pending={pending} /><SelectedWork onOpen={openProject} onPreload={preload} pending={pending} /><WebsiteWork onOpen={openProject} /><HardwareWork onPlay={openVideo} onOpen={openProject} onPreload={preload} pending={pending} /><Experience /><Publications onOpen={openProject} onPreload={preload} pending={pending} /><Patents onOpen={openProject} onPreload={preload} pending={pending} /><About /><SiteFooter /></main>{Viewer && selected && <div id="project-viewer"><Viewer key={selected.id} project={selected} onOpenRelated={id => setSelected(findCase(id))} onClose={() => { setSelected(null); source.current?.focus({ preventScroll: true }); }} /></div>}{Video && video && <Video video={video} onClose={() => { setVideo(null); source.current?.focus({ preventScroll: true }); }} />}</></Localized>;
+  return <Localized><><a className="skip-link" href="#main">Skip to content</a><SiteNavigation onOpenCase={(id, trigger) => openProject(findCase(id), trigger)} tools={<><LanguageSelector /><ThemeToggle /></>} /><main id="main"><Hero onOpen={openProject} onPreload={preload} pending={pending} /><EngineeringWork onOpen={openProject} onPreload={preload} pending={pending} /><ResearchWork onOpen={openProject} onPreload={preload} pending={pending} /><SelectedWork onOpen={openProject} onPreload={preload} pending={pending} /><WebsiteWork onOpen={openProject} onPreload={preload} pending={pending} /><HardwareWork onOpen={openProject} onPreload={preload} pending={pending} /><Experience /><Publications onOpen={openProject} onPreload={preload} pending={pending} /><Patents onOpen={openProject} onPreload={preload} pending={pending} /><About /><SiteFooter /></main>{Viewer && selected && <div id="project-viewer"><Viewer key={selected.id} project={selected} onOpenRelated={id => setSelected(findCase(id))} onClose={() => { setSelected(null); source.current?.focus({ preventScroll: true }); }} /></div>}</></Localized>;
 }
 
 export default function Portfolio(props) { return <LocaleProvider><PortfolioContent {...props} /></LocaleProvider>; }

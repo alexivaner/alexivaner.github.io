@@ -310,3 +310,9 @@ details[open] > summary > .glyph { transform: rotate(45deg); }
 .nav-dropdown { box-shadow: none; }
 @media (max-width: 479px) { .footer-navigation { grid-template-columns: minmax(0, 1fr); } .footer-navigation > div { display: flex; flex-wrap: wrap; column-gap: var(--space-lg); } .footer-navigation h3 { width: 100%; margin-bottom: var(--space-xs); } .footer-navigation a { font-size: var(--text-sm); white-space: nowrap; } }
 .system-links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-lg); }
+
+/* Images open their project; destination links remain explicit text actions. */
+.project-thumbnail { display: block; color: inherit; border-radius: calc(var(--radius-card) / 2); cursor: pointer; }
+.product-capture > .project-thumbnail > img { width: 100%; aspect-ratio: 1.6; object-fit: cover; object-position: top; border-radius: calc(var(--radius-card) / 2); }
+.project-thumbnail:active { opacity: .9; }
+.website-preview .project-story { margin-block: var(--space-md); }
