@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {clubPoseAt,loadClubFrames} from './clubPose.js';
 import {removeFingeredHands,createGolfEquipment} from './golfEquipment.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
@@ -17,8 +18,8 @@ export async function createAvatarSurface(canvas){
  let model;
  try{
   const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-  const [gltf,frames,headFrames]=await Promise.all([loader.loadAsync('/assets/models/portfolio-character.glb'),loadMotionFrames(),loadHeadFrames()]);
-  if(frames.length!==headFrames.length)throw new Error('Motion tracks must be synchronized');
+  const [gltf,frames,headFrames,clubFrames]=await Promise.all([loader.loadAsync('/assets/models/portfolio-character.glb'),loadMotionFrames(),loadHeadFrames(),loadClubFrames()]);
+  if(frames.length!==headFrames.length||frames.length!==clubFrames.length)throw new Error('Motion tracks must be synchronized');
   model=gltf.scene;const scene=new THREE.Scene();scene.add(model);model.updateMatrixWorld(true);
   const bones=new Map();model.traverse(node=>{if(node.isBone||/mixamorig/i.test(node.name))bones.set(node.name.replace(/^.*mixamorig:?/i,'').replace(/[^a-z0-9]/gi,'').toLowerCase(),node);if(node.isMesh){node.castShadow=true;node.frustumCulled=false;for(const material of Array.isArray(node.material)?node.material:[node.material]){material.roughness=.85;material.metalness=0;}}});
   const get=name=>{const bone=bones.get(name.replace(/[^a-z0-9]/gi,'').toLowerCase());if(!bone)throw new Error('Avatar rig is incomplete');return bone;};
@@ -34,10 +35,10 @@ export async function createAvatarSurface(canvas){
   const restHip=basis(at('RightUpLeg').sub(at('LeftUpLeg')),at('Spine2').sub(at('Hips'))),restChest=basis(at('RightArm').sub(at('LeftArm')),at('Neck').sub(at('Spine')));
   const bounds=new THREE.Box3().setFromObject(model),clearance=(at('LeftFoot').y+at('RightFoot').y)/2-bounds.min.y;
   const retargetHead=createHeadRetargeter({neck:get('Neck'),head:get('Head'),tip:get('HeadTop_End'),rightShoulder:get('RightArm'),leftShoulder:get('LeftArm')});
-  const camera=new THREE.PerspectiveCamera(38,1,.01,50),target=new THREE.Vector3(0,1.38,0);
+  const camera=new THREE.PerspectiveCamera(38,1,.01,50),target=new THREE.Vector3(0,1.3,0);
   const hemi=new THREE.HemisphereLight(),sun=new THREE.DirectionalLight();hemi.intensity=1.1;sun.intensity=2.2;sun.position.set(-3,5,4);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-2;sun.shadow.camera.right=2;sun.shadow.camera.top=3;sun.shadow.camera.bottom=-1;sun.shadow.normalBias=.0025;sun.shadow.bias=-.00005;sun.shadow.radius=4;const rim=new THREE.DirectionalLight();rim.intensity=1.4;rim.position.set(3,3,-3);const fill=new THREE.DirectionalLight();fill.intensity=.6;fill.position.set(3,2,4);scene.add(hemi,sun,rim,fill);
-  const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({roughness:.9,metalness:.05}));floor.rotation.x=-Math.PI/2;floor.position.y=-.012;floor.receiveShadow=true;scene.add(floor);
-  const stage=new THREE.Mesh(new THREE.CylinderGeometry(1.65,1.7,.035,96),new THREE.MeshStandardMaterial({roughness:.84,metalness:.08}));stage.position.y=-.025;stage.receiveShadow=true;scene.add(stage);const ring=new THREE.Mesh(new THREE.TorusGeometry(1.53,.0025,6,96),new THREE.MeshStandardMaterial({roughness:.7}));ring.rotation.x=-Math.PI/2;ring.position.y=-.004;scene.add(ring);
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({roughness:.9,metalness:.05}));floor.rotation.x=-Math.PI/2;floor.position.y=-.24;floor.receiveShadow=true;scene.add(floor);
+  const stage=new THREE.Mesh(new THREE.CylinderGeometry(.85,.9,.22,96),new THREE.MeshStandardMaterial({roughness:.84,metalness:.08}));stage.position.y=-.12;stage.receiveShadow=true;scene.add(stage);const ring=new THREE.Mesh(new THREE.TorusGeometry(.76,.0025,6,96),new THREE.MeshStandardMaterial({roughness:.7}));ring.rotation.x=-Math.PI/2;ring.position.y=-.004;scene.add(ring);
   function world(name,q){const bone=get(name),parent=bone.parent.getWorldQuaternion(new THREE.Quaternion());bone.quaternion.copy(parent.invert().multiply(q));bone.updateMatrixWorld(true);}
   function pointDirection(name,child,direction){const r=original(child).position.clone().sub(original(name).position).normalize();const q=new THREE.Quaternion().setFromUnitVectors(r,direction.clone().normalize()).multiply(original(name).world);world(name,q);}
   let lastWidth=0,lastHeight=0,lastPalette;
@@ -57,8 +58,8 @@ export async function createAvatarSurface(canvas){
     world(side+'Foot',hipDelta.clone().multiply(original(side+'Foot').world));
    }
    const desired=vector(p.pelvis);desired.y+=clearance;model.position.copy(desired.sub(at('Hips')));model.updateMatrixWorld(true);
-   equipment.update(p,colors);
-   const distance=4.6/view.zoom;camera.position.set(target.x+Math.sin(view.yaw)*Math.cos(view.pitch)*distance,target.y-Math.sin(view.pitch)*distance,target.z+Math.cos(view.yaw)*Math.cos(view.pitch)*distance);camera.lookAt(target);renderer.render(scene,camera);
+   equipment.update(clubPoseAt(phase,clubFrames),colors);
+   const distance=5.6/view.zoom;camera.position.set(target.x+Math.sin(view.yaw)*Math.cos(view.pitch)*distance,target.y-Math.sin(view.pitch)*distance,target.z+Math.cos(view.yaw)*Math.cos(view.pitch)*distance);camera.lookAt(target);renderer.render(scene,camera);
   }
   return {kind:'avatar',draw,dispose(){model.traverse(node=>{if(node.isMesh){node.geometry.dispose();node.skeleton?.dispose();for(const material of Array.isArray(node.material)?node.material:[node.material]){for(const value of Object.values(material))if(value?.isTexture)value.dispose();material.dispose();}}});equipment.dispose();environment.dispose();floor.geometry.dispose();floor.material.dispose();stage.geometry.dispose();stage.material.dispose();ring.geometry.dispose();ring.material.dispose();renderer.dispose();renderer.forceContextLoss();}};
  }catch(error){renderer.dispose();renderer.forceContextLoss();throw error;}

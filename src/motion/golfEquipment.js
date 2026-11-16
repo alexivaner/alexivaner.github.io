@@ -15,20 +15,24 @@ export function createGolfEquipment(scene,get){
  const glove=new THREE.MeshStandardMaterial({roughness:.83}),metal=new THREE.MeshStandardMaterial({roughness:.27,metalness:.82}),grip=new THREE.MeshStandardMaterial({roughness:.94}),headMaterial=new THREE.MeshStandardMaterial({roughness:.3,metalness:.55});
  const sphere=new THREE.SphereGeometry(1,20,14),handParts=[];
  for(const side of ['Left','Right']){const group=new THREE.Group(),palm=new THREE.Mesh(sphere,glove),thumb=new THREE.Mesh(sphere,glove);palm.scale.set(.036,.057,.027);palm.position.y=.044;thumb.scale.set(.019,.035,.025);thumb.position.set(side==='Left'?-.026:.026,.027,.015);thumb.rotation.z=side==='Left'?-.38:.38;group.add(palm,thumb);group.traverse(n=>{if(n.isMesh)n.castShadow=true;});root.add(group);handParts.push({side,group});}
- const club=new THREE.Group();root.add(club);
- const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.004,.007,1.03,16),metal);shaft.position.y=.61;
- const handle=new THREE.Mesh(new THREE.CylinderGeometry(.012,.009,.23,16),grip);handle.position.y=.045;
- const hosel=new THREE.Mesh(new THREE.CylinderGeometry(.011,.013,.07,12),metal);hosel.position.y=1.12;
- const clubHead=new THREE.Mesh(sphere,headMaterial);clubHead.scale.set(.073,.039,.054);clubHead.position.set(.044,1.155,.012);clubHead.rotation.z=-.2;club.add(shaft,handle,hosel,clubHead);club.traverse(n=>{if(n.isMesh)n.castShadow=true;});
+ const club=new THREE.Group();club.name='recorded-club';root.add(club);
+ const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.004,.007,1,16),metal);
+ const handle=new THREE.Mesh(new THREE.CylinderGeometry(.012,.009,1,16),grip);
+ const hosel=new THREE.Mesh(new THREE.CylinderGeometry(.011,.013,1,12),metal);
+ const clubHead=new THREE.Mesh(sphere,headMaterial);clubHead.scale.set(.073,.039,.054);shaft.name='club-shaft';handle.name='club-grip';clubHead.name='club-head';club.add(shaft,handle,hosel,clubHead);club.traverse(n=>{if(n.isMesh)n.castShadow=true;});
+ function segment(mesh,a,b){const delta=b.clone().sub(a);mesh.position.copy(a).add(b).multiplyScalar(.5);mesh.quaternion.setFromUnitVectors(yAxis,delta.clone().normalize());mesh.scale.y=delta.length();}
  const wrist=side=>get(side+'Hand').getWorldPosition(new THREE.Vector3());
- return {update(body,colors){
-  // An illustrative shaft follows the existing body wrist line. A fixed grip offset is purely illustrative, not reconstructed club motion.
-  const direction=new THREE.Vector3(...body.rightHand).sub(new THREE.Vector3(...body.leftHand)).normalize().applyAxisAngle(new THREE.Vector3(0,1,0),Math.PI/3);
+ return {update(pose,colors){
+  const direction=pose.heel.clone().sub(pose.grip).normalize();
   glove.color.set(colors.glove);metal.color.set(colors.metal);grip.color.set(colors.grip);headMaterial.color.set(colors.grip);
-  const left=wrist('Left'),right=wrist('Right'),center=left.clone().add(right).multiplyScalar(.5);
-  // Fit the illustrative grip to the character, without any additional motion track.
-  const away=center.clone().sub(get('Spine2').getWorldPosition(new THREE.Vector3())).normalize().multiplyScalar(.035);center.add(away);
-  club.position.copy(center);club.quaternion.setFromUnitVectors(yAxis,direction);
-  for(const {side,group}of handParts){const start=side==='Left'?left:right,target=center.clone().addScaledVector(direction,side==='Left'?-.035:.035),aim=target.sub(start);if(aim.lengthSq()<.0001)aim.copy(direction);group.position.copy(start);group.quaternion.setFromUnitVectors(yAxis,aim.normalize());}
+  // Every club landmark follows the recording in the same world frame as the body.
+  segment(shaft,pose.grip,pose.heel);
+  segment(handle,pose.grip,pose.grip.clone().addScaledVector(direction,.23));
+  segment(hosel,pose.heel.clone().addScaledVector(direction,-.045),pose.heel);
+  clubHead.position.copy(pose.head);
+  const side=pose.head.clone().sub(pose.heel);side.addScaledVector(direction,-side.dot(direction)).normalize();
+  const normal=new THREE.Vector3().crossVectors(side,direction).normalize();
+  clubHead.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(side,direction,normal));
+  for(const {side,group}of handParts){const start=wrist(side),target=pose.grip.clone().addScaledVector(direction,side==='Left'?.045:.115),aim=target.sub(start);if(aim.lengthSq()<.0001)aim.copy(direction);group.position.copy(start);group.quaternion.setFromUnitVectors(yAxis,aim.normalize());}
  },dispose(){scene.remove(root);sphere.dispose();shaft.geometry.dispose();handle.geometry.dispose();hosel.geometry.dispose();glove.dispose();metal.dispose();grip.dispose();headMaterial.dispose();}};
 }
