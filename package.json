@@ -13,7 +13,7 @@
     "test:feedback": "node scripts/verify-feedback.mjs",
     "check:release": "node scripts/check-release.mjs",
     "test:publication": "node scripts/verify-publication.mjs",
-    "test:motion": "node scripts/verify-motion.mjs",
+    "test:motion": "node scripts/verify-head-rig.mjs && node scripts/verify-motion.mjs",
     "private:pack": "node scripts/pack-walkthrough.mjs",
     "test:protected": "node scripts/verify-protected.mjs"
   },

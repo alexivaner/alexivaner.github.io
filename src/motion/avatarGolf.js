@@ -3,6 +3,7 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
 import {poseAt} from './golf.js';
 import {loadMotionFrames} from './drawGolf.js';
+import {createHeadRetargeter,headPoseAt,loadHeadFrames} from './headRig.js';
 const vector=p=>new THREE.Vector3(...p);
 function basis(right,up){
  const y=up.clone().normalize(),x=right.clone().addScaledVector(y,-right.dot(y)).normalize(),z=new THREE.Vector3().crossVectors(x,y).normalize();
@@ -14,7 +15,8 @@ export async function createAvatarSurface(canvas){
  let model;
  try{
   const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-  const [gltf,frames]=await Promise.all([loader.loadAsync('/assets/models/portfolio-character.glb'),loadMotionFrames()]);
+  const [gltf,frames,headFrames]=await Promise.all([loader.loadAsync('/assets/models/portfolio-character.glb'),loadMotionFrames(),loadHeadFrames()]);
+  if(frames.length!==headFrames.length)throw new Error('Motion tracks must be synchronized');
   model=gltf.scene;const scene=new THREE.Scene();scene.add(model);model.updateMatrixWorld(true);
   const bones=new Map();model.traverse(node=>{if(node.isBone||/mixamorig/i.test(node.name))bones.set(node.name.replace(/^.*mixamorig:?/i,'').replace(/[^a-z0-9]/gi,'').toLowerCase(),node);if(node.isMesh){node.castShadow=true;node.frustumCulled=false;for(const material of Array.isArray(node.material)?node.material:[node.material]){material.roughness=.85;material.metalness=0;}}});
   const get=name=>{const bone=bones.get(name.replace(/[^a-z0-9]/gi,'').toLowerCase());if(!bone)throw new Error('Avatar rig is incomplete');return bone;};
@@ -26,6 +28,7 @@ export async function createAvatarSurface(canvas){
   const original=name=>rest.get(name.replace(/[^a-z0-9]/gi,'').toLowerCase());
   const restHip=basis(at('RightUpLeg').sub(at('LeftUpLeg')),at('Spine2').sub(at('Hips'))),restChest=basis(at('RightArm').sub(at('LeftArm')),at('Neck').sub(at('Spine')));
   const bounds=new THREE.Box3().setFromObject(model),clearance=(at('LeftFoot').y+at('RightFoot').y)/2-bounds.min.y;
+  const retargetHead=createHeadRetargeter({neck:get('Neck'),head:get('Head'),tip:get('HeadTop_End'),rightShoulder:get('RightArm'),leftShoulder:get('LeftArm')});
   const camera=new THREE.PerspectiveCamera(38,1,.01,50),target=new THREE.Vector3(0,1.02,0);
   const hemi=new THREE.HemisphereLight(),sun=new THREE.DirectionalLight();hemi.intensity=2.2;sun.intensity=3.1;sun.position.set(-2.5,4,3);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-2;sun.shadow.camera.right=2;sun.shadow.camera.top=3;sun.shadow.camera.bottom=-1;sun.shadow.normalBias=.015;scene.add(hemi,sun);
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(6,6),new THREE.MeshStandardMaterial({roughness:1,metalness:0}));floor.rotation.x=-Math.PI/2;floor.position.y=-.012;floor.receiveShadow=true;scene.add(floor);
@@ -40,7 +43,7 @@ export async function createAvatarSurface(canvas){
    const p=poseAt(phase,frames),hipDelta=basis(vector(p.rightHip).sub(vector(p.leftHip)),vector(p.spine).sub(vector(p.pelvis))).multiply(restHip.clone().invert()),chestDelta=basis(vector(p.rightShoulder).sub(vector(p.leftShoulder)),vector(p.neck).sub(vector(p.spine))).multiply(restChest.clone().invert());
    world('Hips',hipDelta.clone().multiply(original('Hips').world));
    for(const[name,weight]of [['Spine',.3],['Spine1',.65],['Spine2',1]])world(name,hipDelta.clone().slerp(chestDelta,weight).multiply(original(name).world));
-   pointDirection('Neck','Head',vector(p.head).sub(vector(p.neck)));pointDirection('Head','HeadTop_End',vector(p.head).sub(vector(p.neck)));
+   retargetHead(headPoseAt(phase,headFrames));
    for(const[side,prefix]of[['Left','left'],['Right','right']]){
     pointDirection(side+'Arm',side+'ForeArm',vector(p[prefix+'Elbow']).sub(vector(p[prefix+'Shoulder'])));
     pointDirection(side+'ForeArm',side+'Hand',vector(p[prefix+'Hand']).sub(vector(p[prefix+'Elbow'])));

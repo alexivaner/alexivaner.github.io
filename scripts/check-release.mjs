@@ -24,3 +24,7 @@ assert(!built.some(p=>/passphrase|engineering-walkthrough\.json|character\.fbx/i
 const model=await readFile('dist/assets/models/portfolio-character.glb');assert.equal(model.subarray(0,4).toString(),'glTF');assert.equal(model.readUInt32LE(4),2);
 const gltf=JSON.parse(model.subarray(20,20+model.readUInt32LE(12)).toString());assert(gltf.skins?.length>0);assert(!(gltf.buffers||[]).some(b=>b.uri));assert(!(gltf.images||[]).some(i=>i.uri),'Avatar must not request external textures');
 console.log('Motion, embedded avatar, and encrypted walkthrough boundaries passed.');
+
+const headMotion=JSON.parse(await readFile('dist/assets/media/golf-head-motion.json','utf8'));
+assert.deepEqual(Object.keys(headMotion).sort(),['format','frames']);assert.equal(headMotion.format,'head-directions-v1');assert.equal(headMotion.frames.length,motion.frames.length);
+for(const frame of headMotion.frames){assert.deepEqual(Object.keys(frame).sort(),['neck','right','up']);for(const key of ['neck','up','right'])assert(frame[key].length===3&&frame[key].every(Number.isFinite)&&Math.abs(Math.hypot(...frame[key])-1)<.001,'Only normalized head/neck directions may be exported');}

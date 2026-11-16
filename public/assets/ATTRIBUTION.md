@@ -22,7 +22,7 @@ The downloadable resume is the owner-supplied original PDF, retained without con
 
 ## Motion reconstruction
 
-The selected motion reconstruction is from XView Studio, developed and owned by IdeasLab Formosa Co., Ltd., and is used with permission confirmed by the portfolio owner. The public asset is a normalized 17-joint body-only presentation export. No source video, original product skeleton specification, application settings, model metadata, or analysis measurements are included.
+The selected motion reconstruction is from XView Studio, developed and owned by IdeasLab Formosa Co., Ltd., and is used with permission confirmed by the portfolio owner. The public motion is a normalized 17-joint body-only presentation export, with a synchronized head/neck direction track for retargeting. No original face landmark array is distributed. No source video, original product skeleton specification, application settings, model metadata, or analysis measurements are included.
 
 The portfolio renderer, materials, controls, and static fallback presentation are separately authored. Playback is resampled for presentation; it is not a measurement or biomechanical validation tool.
 
