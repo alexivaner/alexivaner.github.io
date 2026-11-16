@@ -5,6 +5,7 @@ import HardwareWork from './components/HardwareWork.jsx';
 import Recognition from './components/Recognition.jsx';
 import ProjectStory from './components/ProjectStory.jsx';
 import ProjectThumbnail from './components/ProjectThumbnail.jsx';
+import GolfMotion from './components/GolfMotion.jsx';
 import EngineeringWork from './components/EngineeringWork.jsx';
 import ResearchWork from './components/ResearchWork.jsx';
 import work from '../content/work.json';
@@ -39,11 +40,10 @@ function ThemeToggle() {
 }
 
 
-function Hero({ onOpen, onPreload, pending }) {
-  const project = work.engineering[0];
+function Hero({ suspended }) {
   return <Localized><section className="hero" id="home" aria-labelledby="hero-heading"><div className="container stage-grid">
-    <div className="intro-copy"><p className="personal-intro">Ivan Surya Hutomo · Lead Applied AI Engineer</p><h1 id="hero-heading">Engineering AI<br />beyond the model.</h1><p className="hero-description">I connect computer vision and product engineering, from research to real use.</p><div className="hero-actions"><a className="button" href="#engineering">Explore engineering work</a><a className="text-link" href="#about">About me</a></div></div>
-    <div className="work-preview"><article className="hero-product-text" aria-labelledby="flagship-title"><p className="hero-product-owner">IdeasLab / XView</p><h2 id="flagship-title">XView Studio</h2><p className="hero-product-purpose">Motion analysis, from capture to review.</p><ul className="hero-capabilities"><li>Multi-camera capture</li><li>Human pose estimation</li><li>3D motion review</li></ul><p className="hero-product-credit">My role: applied AI and product engineering within the IdeasLab team.</p></article><ProjectStory headingLevel={2} project={project} onOpen={onOpen} onPreload={onPreload} pending={pending === project.id} /></div>
+    <div className="intro-copy"><p className="personal-intro">Ivan Surya Hutomo · Lead Applied AI Engineer</p><h1 id="hero-heading">Engineering AI<br />beyond the model.</h1><p className="hero-description">I turn computer vision and AI research into real software products.</p><div className="hero-actions"><a className="button" href="#engineering">Explore engineering work</a><a className="text-link" href="resume/">View resume</a></div></div>
+    <div className="work-preview"><article className="hero-product-text" aria-labelledby="flagship-title"><h2 id="flagship-title">XView. Motion analysis in 3D.</h2><p className="hero-product-owner">XView is developed and owned by IdeasLab Formosa Co., Ltd.</p><GolfMotion suspended={suspended}/></article></div>
   </div></section></Localized>;
 }
 
@@ -103,6 +103,8 @@ function SiteFooter() {
 function PortfolioContent({ onHydrated }) {
   const [selected, setSelected] = useState(null);
   const [Viewer, setViewer] = useState(null);
+  const [PrivateViewer,setPrivateViewer]=useState(null),[privateOpen,setPrivateOpen]=useState(false);
+  const privateTrigger=useRef(null);
   const [pending, setPending] = useState(null);
   const module = useRef(null);
   const source = useRef(null);
@@ -115,7 +117,8 @@ function PortfolioContent({ onHydrated }) {
     try { const loaded = await loadViewer(); setViewer(() => loaded.default); source.current = trigger; setSelected(project); }
     finally { setPending(null); }
   }
-  return <Localized><><a className="skip-link" href="#main">Skip to content</a><SiteNavigation onOpenCase={(id, trigger) => openProject(findCase(id), trigger)} tools={<><LanguageSelector /><ThemeToggle /></>} /><main id="main"><Hero onOpen={openProject} onPreload={preload} pending={pending} /><EngineeringWork onOpen={openProject} onPreload={preload} pending={pending} /><ResearchWork onOpen={openProject} onPreload={preload} pending={pending} /><SelectedWork onOpen={openProject} onPreload={preload} pending={pending} /><WebsiteWork onOpen={openProject} onPreload={preload} pending={pending} /><HardwareWork onOpen={openProject} onPreload={preload} pending={pending} /><Experience /><Publications onOpen={openProject} onPreload={preload} pending={pending} /><Patents onOpen={openProject} onPreload={preload} pending={pending} /><About /><SiteFooter /></main>{Viewer && selected && <div id="project-viewer"><Viewer key={selected.id} project={selected} onOpenRelated={id => setSelected(findCase(id))} onClose={() => { setSelected(null); source.current?.focus({ preventScroll: true }); }} /></div>}</></Localized>;
+  async function openPrivate(trigger){const loaded=await import('./components/PrivateCaseViewer.jsx');privateTrigger.current=trigger;setPrivateViewer(()=>loaded.default);setPrivateOpen(true);}
+  return <Localized><><a className="skip-link" href="#main">Skip to content</a><SiteNavigation onOpenCase={(id, trigger) => openProject(findCase(id), trigger)} tools={<><LanguageSelector /><ThemeToggle /></>} /><main id="main"><Hero suspended={!!selected||privateOpen} /><EngineeringWork onOpenPrivate={openPrivate} onOpen={openProject} onPreload={preload} pending={pending} /><ResearchWork onOpen={openProject} onPreload={preload} pending={pending} /><SelectedWork onOpen={openProject} onPreload={preload} pending={pending} /><WebsiteWork onOpen={openProject} onPreload={preload} pending={pending} /><HardwareWork onOpen={openProject} onPreload={preload} pending={pending} /><Experience /><Publications onOpen={openProject} onPreload={preload} pending={pending} /><Patents onOpen={openProject} onPreload={preload} pending={pending} /><About /><SiteFooter /></main>{Viewer && selected && <div id="project-viewer"><Viewer key={selected.id} onOpenPrivate={openPrivate} project={selected} onOpenRelated={id => setSelected(findCase(id))} onClose={() => { setSelected(null); source.current?.focus({ preventScroll: true }); }} /></div>}{PrivateViewer&&privateOpen&&<PrivateViewer onClose={()=>{setPrivateOpen(false);privateTrigger.current?.focus({preventScroll:true});}}/>}</></Localized>;
 }
 
 export default function Portfolio(props) { return <LocaleProvider><PortfolioContent {...props} /></LocaleProvider>; }

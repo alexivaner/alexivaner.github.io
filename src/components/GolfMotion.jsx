@@ -1,0 +1,39 @@
+import React,{useEffect,useRef,useState} from 'react';
+import {Localized,useI18n} from '../i18n/I18n.jsx';
+import {bones,poseAt,project,initialCamera,visibleJoints} from '../motion/golf.js';
+
+function StaticPose(){
+ const {t}=useI18n();
+ const p=poseAt(.57),screen=v=>project(v,initialCamera,600,420);
+ return <svg className="motion-fallback" viewBox="0 0 600 420" role="img" aria-label={t('Golf-motion reconstruction with a standard body skeleton.')}><g className="motion-bones">{bones.map(([a,b])=>{const x=screen(p[a]),y=screen(p[b]);return <line key={a+b} x1={x[0].toFixed(2)} y1={x[1].toFixed(2)} x2={y[0].toFixed(2)} y2={y[1].toFixed(2)}/>;})}{visibleJoints.map(k=>[k,p[k]]).map(([k,v])=>{const q=screen(v);return <circle key={k} cx={q[0].toFixed(2)} cy={q[1].toFixed(2)} r={k==='head'?9:3}/>;})}</g></svg>;
+}
+export default function GolfMotion({suspended=false}){
+ const {t}=useI18n(),stage=useRef(null),canvas=useRef(null),avatarCanvas=useRef(null),timeline=useRef(null),api=useRef(null),choice=useRef('auto');
+ const [ready,setReady]=useState(false),[playing,setPlaying]=useState(false),[kind,setKind]=useState(null);
+ const pauseForModal=useRef(suspended);pauseForModal.current=suspended;
+ useEffect(()=>{
+  let disposed=false,visible=false,surface,loading=false,frame=0,last=0,phase=.4,active=false,width=600,height=420;
+  const camera={...initialCamera},node=stage.current,media=matchMedia('(prefers-reduced-motion: reduce)'),data=matchMedia('(prefers-reduced-data: reduce)');
+  const colors=()=>{const css=getComputedStyle(node);return Object.fromEntries([['ink','--color-ink'],['muted','--color-muted'],['rule','--color-rule'],['paper','--color-paper-2'],['ink2','--color-ink-2'],['accent','--color-accent']].map(([k,v])=>[k,css.getPropertyValue(v).trim()]));};
+  let palette=colors();
+  const paint=()=>surface?.draw(width,height,phase,camera,palette);
+  const animate=now=>{if(!active)return;if(now-last>=32){phase=(phase+Math.min((now-last)||32,70)/6500)%1;last=now;paint();if(timeline.current)timeline.current.value=String(Math.round(phase*100));}frame=requestAnimationFrame(animate);};
+  const policy=()=>{const preferred=!media.matches&&!data.matches&&!navigator.connection?.saveData;const next=!!surface&&visible&&!document.hidden&&!pauseForModal.current&&choice.current!=='pause'&&(choice.current==='play'||preferred);if(next===active)return;active=next;setPlaying(next);cancelAnimationFrame(frame);if(next){last=performance.now();frame=requestAnimationFrame(animate);}};
+  const resize=()=>{const box=node.getBoundingClientRect();width=box.width;height=box.height;paint();};
+  const theme=()=>{palette=colors();paint();};
+  const observer=new IntersectionObserver(async([entry])=>{visible=entry.isIntersecting&&entry.intersectionRatio>=.2;if(visible&&!surface&&!loading){loading=true;try{const module=await import('../motion/renderMotion.js');if(disposed)return;const loaded=await module.createMotionSurface(avatarCanvas.current,canvas.current);if(disposed){loaded?.dispose();return;}surface=loaded;if(surface){resize();setKind(surface.kind);setReady(true);}}catch{surface?.dispose();surface=null;setReady(false);setKind(null);}finally{loading=false;}}policy();},{threshold:[0,.2,.6]});
+  observer.observe(node);
+  const size=typeof ResizeObserver==='function'?new ResizeObserver(resize):null;size?.observe(node);
+  const mutation=new MutationObserver(theme);mutation.observe(document.documentElement,{attributes:true,attributeFilter:['data-mode','style']});
+  const colorScheme=matchMedia('(prefers-color-scheme: dark)');colorScheme.addEventListener('change',theme);
+  document.addEventListener('visibilitychange',policy);media.addEventListener('change',policy);data.addEventListener('change',policy);navigator.connection?.addEventListener?.('change',policy);window.addEventListener('resize',resize);
+  api.current={policy,seek(value){phase=Math.max(0,Math.min(1,value));paint();},rotate(x,y=0){camera.yaw+=x;camera.pitch=Math.max(-.5,Math.min(.4,camera.pitch+y));paint();},zoom(value){camera.zoom=Math.max(.75,Math.min(1.4,camera.zoom+value));paint();},reset(){Object.assign(camera,initialCamera);paint();}};
+  return()=>{disposed=true;active=false;cancelAnimationFrame(frame);surface?.dispose();observer.disconnect();size?.disconnect();mutation.disconnect();document.removeEventListener('visibilitychange',policy);media.removeEventListener('change',policy);data.removeEventListener('change',policy);navigator.connection?.removeEventListener?.('change',policy);colorScheme.removeEventListener('change',theme);window.removeEventListener('resize',resize);api.current=null;};
+ },[]);
+ useEffect(()=>{api.current?.policy();},[suspended]);
+ const pointer=useRef(null);
+ function down(e){if(!ready||e.button>0)return;pointer.current={x:e.clientX,y:e.clientY};e.currentTarget.setPointerCapture(e.pointerId);}
+ function move(e){if(!pointer.current)return;api.current?.rotate((e.clientX-pointer.current.x)*.008,e.pointerType==='mouse'?(e.clientY-pointer.current.y)*.004:0);pointer.current={x:e.clientX,y:e.clientY};}
+ function keys(e){const actions={ArrowLeft:()=>api.current?.rotate(-.12),ArrowRight:()=>api.current?.rotate(.12),ArrowUp:()=>api.current?.rotate(0,-.08),ArrowDown:()=>api.current?.rotate(0,.08),'+':()=>api.current?.zoom(.1),'=':()=>api.current?.zoom(.1),'-':()=>api.current?.zoom(-.1),r:()=>api.current?.reset()};if(actions[e.key]){e.preventDefault();actions[e.key]();}}
+ return <Localized><figure className="golf-motion"><div ref={stage} className="motion-stage" data-ready={ready||undefined} data-renderer={kind||undefined} role={ready?'img':undefined} aria-label={ready?t('3D motion study. Drag to rotate; arrow keys rotate, plus and minus zoom.'):undefined} tabIndex={ready?0:-1} onPointerDown={down} onPointerMove={move} onPointerUp={()=>pointer.current=null} onPointerCancel={()=>pointer.current=null} onLostPointerCapture={()=>pointer.current=null} onKeyDown={keys}><div hidden={ready}><StaticPose/></div><canvas ref={avatarCanvas} className="avatar-canvas" aria-hidden="true"/><canvas ref={canvas} className="skeleton-canvas" aria-hidden="true"/>{ready&&<span className="motion-hint" aria-hidden="true">Drag to rotate</span>}</div><div className="motion-controls-slot"><div className="motion-controls" hidden={!ready}><button type="button" className="motion-play" onClick={()=>{choice.current=playing?'pause':'play';api.current?.policy();}}>{playing?'Pause motion':'Play motion'}</button><label className="motion-timeline"><span className="visually-hidden">Swing position</span><input ref={timeline} type="range" min="0" max="100" step="1" defaultValue="40" aria-label={t('Swing position')} onChange={e=>{choice.current='pause';api.current?.policy();api.current?.seek(Number(e.target.value)/100);}}/></label><button type="button" aria-label={t('Rotate left')} onClick={()=>api.current?.rotate(-.2)}>↶</button><button type="button" aria-label={t('Rotate right')} onClick={()=>api.current?.rotate(.2)}>↷</button><button type="button" aria-label={t('Zoom out')} onClick={()=>api.current?.zoom(-.1)}>−</button><button type="button" aria-label={t('Zoom in')} onClick={()=>api.current?.zoom(.1)}>+</button><button type="button" onClick={()=>api.current?.reset()}>Reset view</button></div></div><figcaption>Reconstructed golf motion. Rendering adapted for this portfolio.</figcaption></figure></Localized>;
+}

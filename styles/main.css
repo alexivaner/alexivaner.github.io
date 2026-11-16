@@ -1,13 +1,16 @@
 /* Hallmark · shape: Portfolio Grid · genre: modern-minimal · theme: Console (deal 2/3, paper adapted to Apple-inspired brief) · redesign: full
- * hero: Stage · nav: name and six quiet destinations · footer: contact colophon · imagery: real products, websites, and hardware demonstrations · signature: actual work in the opening · console: paper · modes: light+dark
+ * hero: Stage · nav: name and six quiet destinations · footer: contact colophon · imagery: real products, websites, and hardware demonstrations · signature: approved reconstruction retargeted to the supplied avatar · console: paper · modes: light+dark
  * axes: light/grotesk-sans/chromatic-amber · posture: restrained · contrast: pass · fold: pass · draw: 5fe2cd (workflow swapped for portfolio, no sequential process) · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H5 E4 S5 R5 V4 · weakest: V, the owner rejected metaphorical cover art; actual work now leads the page */
+/* Hallmark · pre-emit critique: P4 H5 E4 S5 R5 V4 · weakest: E, the full approved swing fits the initial view, and default text is reduced without cutting case detail */
 /* Hallmark · dismissed 29 · the user requests Apple-inspired material; this one translucent navigation surface has a solid reduced-transparency fallback */
 /* Hallmark · dismissed 28a · website and hardware images occur below the opening screen; lazy loading is intentional, while the actual hero image has high fetch priority */
 /* Hallmark · dismissed 25 · project descriptions are short captions, and About is a short introduction, not running article prose; the narrower measures balance the actual grid tracks */
-/* Hallmark · hero-review: prior in-thread, mobile overflow fixed · finish-review: subagent, ship, 0 material findings · refinement: dialog hierarchy, video behavior, and resume · previous 2 findings resolved · floor: 0 FAIL · reflex: 0 open */
+/* Hallmark · hero-review: prior in-thread, mobile overflow fixed · finish-review: subagent, ship, avatar and restricted presenter reviewed, 0 material findings · refinement: dialog hierarchy, video behavior, and resume · previous 2 findings resolved · floor: 0 FAIL · reflex: 0 open */
 /* Hallmark · dismissed 59 · eleven content sections preserve the requested publications, patents, websites, hardware, and new engineering work; case details are progressive rather than additional pages */
 /* Hallmark · dismissed 58 · full source counts include collapsed case-study fallbacks; the hero identity line names the engineer and role, and the page preserves the user’s requested evidence */
+/* Hallmark · reworded "XView Studio" to "XView. Motion analysis in 3D." · the user requests one visual flagship instead of duplicate product introductions */
+/* Hallmark · reworded "Beyond inference. The whole product." to "From AI to a product." · the user requests three progressive engineering layers */
+/* Hallmark · reworded "XView - AI-Powered Motion Analysis Platform" to "Computer vision in use." · the complete project name remains in the deeper case rather than repeating it on the homepage */
 @import url('./tokens.css');
 @import url('./base.css');
 @font-face { font-family: 'Host Grotesk'; src: url('/assets/fonts/host-grotesk-latin.woff2') format('woff2'); font-weight: 300 700; font-style: normal; font-display: swap; }
@@ -316,3 +319,68 @@ details[open] > summary > .glyph { transform: rotate(45deg); }
 .product-capture > .project-thumbnail > img { width: 100%; aspect-ratio: 1.6; object-fit: cover; object-position: top; border-radius: calc(var(--radius-card) / 2); }
 .project-thumbnail:active { opacity: .9; }
 .website-preview .project-story { margin-block: var(--space-md); }
+
+/* Visual storytelling refinement: preserve Console paper, lead with one motion study. */
+.hero .stage-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); padding-block: var(--space-xl); }
+.hero-product-text { padding: 0; background: var(--color-transparent); }
+.hero-product-text h2 { font-size: var(--text-lg); line-height: 1.3; letter-spacing: -.025em; margin-bottom: var(--space-md); }
+.hero-product-owner { margin: var(--space-sm) 0 0; font-size: var(--text-sm); }
+.golf-motion { margin: 0; }
+.motion-stage { position: relative; width: 100%; aspect-ratio: 1.6; background: var(--color-paper-2); border-radius: var(--radius-card); overflow: hidden; }
+.motion-stage canvas, .motion-fallback { width: 100%; height: 100%; display: block; }
+.motion-stage canvas { position: absolute; inset: 0; opacity: 0; cursor: grab; touch-action: pan-y; }
+.motion-stage[data-ready] canvas { opacity: 1; }
+.motion-stage canvas:active { cursor: grabbing; }
+.motion-bones { stroke: var(--color-ink); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: var(--color-paper-2); }
+.motion-controls-slot { min-height: 56px; }
+.motion-controls { display: flex; align-items: center; gap: var(--space-2xs); padding-block: var(--space-xs); }
+.motion-controls[hidden] { display: none; }
+.motion-controls button { min-width: 44px; min-height: 44px; border: 0; background: var(--color-transparent); color: var(--color-ink); border-radius: var(--radius-pill); font: inherit; font-size: var(--text-sm); cursor: pointer; padding-inline: var(--space-xs); white-space: nowrap; }
+.motion-controls button:hover { background: var(--color-paper-3); }
+.motion-controls button:active { transform: translateY(1px); }
+.motion-controls .motion-play { min-width: 96px; text-align: left; }
+.motion-timeline { min-width: 50px; flex: 1; display: flex; align-items: center; }
+.motion-timeline input { width: 100%; min-width: 0; min-height: 44px; accent-color: var(--color-accent); cursor: pointer; }
+.golf-motion figcaption { font-size: var(--text-sm); color: var(--color-muted); line-height: 1.5; }
+.engineering-section { padding-top: var(--space-2xl); }
+.engineering-intro { display: block; margin-bottom: var(--space-xl); }
+.engineering-intro h2 { font-size: var(--text-section); }
+.system-detail > h3 { font-size: var(--text-title); max-width: 36ch; }
+.system-detail .system-headline { font-size: var(--text-md); margin-top: var(--space-sm); max-width: 50ch; }
+.system-selector a { min-height: 70px; }
+.system-detail .project-story { margin-top: var(--space-md); }
+.research-project { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: var(--space-lg); }
+.research-thumbnail { width: 100%; min-width: 0; border-radius: calc(var(--radius-card) / 2); overflow: hidden; background: var(--color-image-paper); }
+.research-thumbnail > img, .research-video-preview video { display: block; width: 100%; aspect-ratio: 1.4; object-fit: contain; }
+.research-video-preview { aspect-ratio: 1.4; }
+.research-video-preview video { height: 100%; pointer-events: none; }
+.zero-preview { position: relative; aspect-ratio: 1.4; }
+.zero-preview img { width: 100%; height: 100%; object-fit: cover; }
+.zero-preview img:last-child { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
+.notebook-preview { padding: var(--space-md); color: var(--color-image-ink); background: var(--color-image-paper); font-size: var(--text-sm); }
+.notebook-preview ol { margin-block: var(--space-md); padding-left: var(--space-lg); }
+.notebook-preview li { margin-block: var(--space-xs); }
+.notebook-preview small { font-size: var(--text-xs); }
+.website-preview img.glyph { width: 20px; height: 20px; aspect-ratio: auto; object-fit: contain; flex-shrink: 0; border-radius: 0; }
+@media (max-width: 1100px) and (min-width: 768px) { .motion-controls { flex-wrap: wrap; } .motion-timeline { flex-basis: 45%; } .motion-controls-slot { min-height: 104px; } }
+@media (max-width: 767px) { .hero .stage-grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); } .motion-stage { aspect-ratio: 1.25; } .motion-controls { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); } .motion-play { grid-column: span 2; } .motion-timeline { grid-column: span 4; } .motion-controls button:last-child { grid-column: span 2; } .motion-controls-slot { min-height: 104px; } .research-project { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: var(--space-md); } .research-project h4 { font-size: var(--text-lg); } .engineering-section { padding-top: var(--space-xl); } }
+@media (max-width: 374px) { .research-project { grid-template-columns: minmax(0, 1fr); } .research-thumbnail { max-width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .motion-controls button:active { transform: none; } }
+
+.hero-product-text .hero-product-owner { margin: 0 0 var(--space-md); }
+
+@media (max-width: 767px) { .motion-controls button, .motion-controls .motion-play { min-width: 0; white-space: normal; } }
+@media (max-width: 374px) { .nav-inner { gap: var(--space-xs); } .nav-tools { gap: var(--space-2xs); } .site-header .language-control select { max-width: 110px; } }
+
+.motion-hint { position: absolute; bottom: var(--space-md); left: var(--space-md); color: var(--color-muted); font-size: var(--text-sm); pointer-events: none; }
+
+[id] { scroll-margin-top: var(--space-3xl); }
+.protected-case-entry { margin-top: var(--space-xs); }
+.protected-case-link { gap: var(--space-xs); font-size: var(--text-sm); }
+.protected-case-link img { filter: var(--icon-filter); flex-shrink: 0; }
+.protected-case-entry > p { color: var(--color-muted); font-size: var(--text-sm); margin-top: var(--space-xs); }
+.motion-stage canvas { opacity: 0; pointer-events: none; }
+.motion-stage[data-ready] canvas { opacity: 0; }
+.motion-stage[data-renderer='avatar'] .avatar-canvas, .motion-stage[data-renderer='skeleton'] .skeleton-canvas { opacity: 1; }
+.motion-stage[data-ready] { cursor: grab; touch-action: pan-y; }
+.motion-stage[data-ready]:active { cursor: grabbing; }

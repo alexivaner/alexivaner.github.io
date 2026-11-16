@@ -59,7 +59,7 @@ The canonical domain and social preview URLs currently target `https://alexivane
 
 Host Grotesk is self-hosted, with its license in `public/assets/fonts/`. Icons come from Phosphor (MIT). The opening describes IdeasLab / XView through an attributed editorial product overview. Employer imagery is excluded because portfolio reuse is not authorized. The earlier abstract artwork has been retired. Readmory shows a real capture of the owner’s connected Kobo library, with local covers and aggregate activity. Raw databases, notes, interview documents, and device serial numbers are excluded from the site. Aegis is a screenshot of the owner's working local prototype, not a public deployment or production-readiness claim.
 
-Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Company-owned images, customer information, and private review documents are excluded from both this repository and the deployable artifact. Case-study copy stays general. The owner confirmed company approval to publish the exact supplied resume PDF; that file is served unchanged. This permission does not extend to other company material.
+Company cases contain factual employment history, general engineering skills, official links, and explicit team ownership attribution. Unapproved company-owned images, customer information, and private review documents are excluded from both this repository and the deployable artifact. Case-study copy stays general. The owner confirmed company approval for the exact supplied resume PDF and one selected 3D motion reconstruction. The PDF is served unchanged; the motion is a normalized body-only export. The owner also confirmed company approval for restricted interviewer access to the curated engineering walkthrough; its content is encrypted before publication. These permissions do not extend to other company material.
 
 Public media provenance and license notices are recorded in [the asset attribution file](public/assets/ATTRIBUTION.md). All supplied client destinations remain referenced. Kita Taiwan opens a local case study because live availability could not be verified.
 
@@ -70,3 +70,25 @@ Run `npm run test:feedback` for media, keyboard navigation, research cases, and 
 The resume page works as readable HTML on mobile. Download and new-tab actions serve the owner's original one-page PDF, preserved byte-for-byte at `public/assets/ivan-surya-hutomo-resume.pdf`. Replace it only with an approved source PDF; the site does not generate or overwrite it from the HTML profile.
 
 Product, website, and robotics thumbnails open their corresponding project details with keyboard focus restored on close. Separate source links still open the original website or video. The shared thumbnail component handles lazy viewer loading, first-click hydration, and a native disclosure fallback.
+
+## Motion study and visual previews
+
+The opening uses a selected XView Studio motion reconstruction with owner-confirmed company permission. The public asset contains only normalized, resampled coordinates in a standard 17-joint body layout. It excludes the source video, original skeleton specification, additional product joints, camera/calibration settings, model details, measurements, confidences, account identifiers, and session metadata.
+
+`src/motion/golf.js` interpolates this presentation data and projects its 3D coordinates. The separately authored Three.js renderer retargets this body motion onto the owner-supplied character, converted and compressed for the browser. Fixed avatar bone lengths preserve its head and neck proportions. No Studio renderer is included. A lightweight Canvas2D skeleton remains available when WebGL or reduced-data preferences prevent the avatar from loading. The caption identifies the motion as reconstructed and the rendering as adapted for this portfolio. The preview is not a measurement tool.
+
+The renderer, compressed avatar, and motion data load when the scene enters view. Animation stops offscreen, in hidden tabs, and behind an open project. Reduced-motion and reduced-data preferences suppress automatic movement. Drag or labelled controls orbit the scene; zoom is bounded, and the timeline supports keyboard scrubbing. An SVG pose from the same approved reconstruction remains with JavaScript or Canvas2D unavailable.
+
+Research thumbnails use already attributed source assets. Original pose and route videos share one automatic-preview coordinator; an open case takes precedence over background previews. All thumbnails retain direct project opening and native disclosure fallbacks.
+
+`npm run test:motion` checks the body-data boundary, interpolation, framing, orbit/zoom/scrubbing, playback policies, foreground media priority, five-language layouts, static fallbacks, and the original-PDF resume presentation. Updating the reconstruction asset requires permission for the replacement source; do not export application configuration or raw session files.
+
+## Restricted engineering walkthrough
+
+The public XView case links to an interviewer presentation. Eight English technical chapters cover end-to-end contributions and an interactive hexagonal architecture map. The interface is translated into the five supported languages. The owner confirmed company approval for this restricted disclosure; do not add unapproved material.
+
+The public build contains only AES-256-GCM ciphertext. PBKDF2-SHA256 uses 600,000 iterations with a random salt; the passphrase and decrypted content are never stored in browser storage. Unlocking happens in memory. Locking or closing removes the document from the interface. A shared passphrase can be forwarded by a recipient, so this is restricted sharing rather than identity-based access control.
+
+Private source and a randomly generated strong passphrase live in ignored `.private-review/engineering-walkthrough.json` and `.private-review/presenter-passphrase.txt` (mode 0600). Keep backups outside the public repository. Run `npm run private:pack` after approved content edits, or `npm run private:pack -- --rotate` to replace the passphrase. Ordinary builds and CI do not need either private file. Never commit them or send the passphrase in a URL.
+
+Run `npm run test:protected` locally with the private files present to verify encryption, tamper and wrong-key rejection, public-artifact boundaries, unlocking, locking, nested dialogs, focus restoration, translations, and responsive layout. The source document remains private; the encrypted payload is intentionally deployable.

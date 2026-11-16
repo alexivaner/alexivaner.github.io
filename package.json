@@ -12,7 +12,10 @@
     "test:locales": "node scripts/verify-locales.mjs",
     "test:feedback": "node scripts/verify-feedback.mjs",
     "check:release": "node scripts/check-release.mjs",
-    "test:publication": "node scripts/verify-publication.mjs"
+    "test:publication": "node scripts/verify-publication.mjs",
+    "test:motion": "node scripts/verify-motion.mjs",
+    "private:pack": "node scripts/pack-walkthrough.mjs",
+    "test:protected": "node scripts/verify-protected.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/host-grotesk": "^5.2.0",
@@ -25,6 +28,7 @@
   "dependencies": {
     "motion": "^14.14.0",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "three": "^0.187.0"
   }
 }

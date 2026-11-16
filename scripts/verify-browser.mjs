@@ -46,7 +46,7 @@ try {
   await page.setViewport({ width: 1280, height: 800 });
   await page.goto(url, { waitUntil: 'networkidle0' });
   await page.waitForFunction(() => document.documentElement.dataset.hydrated === 'true');
-  assert(await page.$eval('.hero-product-text', el => el.textContent.includes('XView Studio')), 'XView must lead the hero');
+  assert(await page.$eval('.hero-product-text', el => el.textContent.includes('XView. Motion analysis in 3D.')), 'XView must lead the hero');
   assert.equal(await page.$$eval('img[src*="xview-studio"]', els=>els.length),0,'Unapproved employer image must not ship');
   assert.equal(await page.$$eval('.system-selector a', els => els.length), 3);
   assert.equal(await page.$$eval('.research-project-group .research-project', els => els.length), 6);
@@ -143,6 +143,7 @@ try {
 
   await page.setViewport({ width: 1100, height: 900 });
   await page.goto(`${url}/resume/`, { waitUntil: 'networkidle0' });
+  await page.$eval('.resume-extended',el=>el.open=true);
   await page.pdf({ path: '.hallmark/reports/ivan-surya-hutomo-resume.pdf', format: 'A4', printBackground: true, preferCSSPageSize: true });
   for (const route of ['/legacy.html', '/line/', '/simplereact/', '/usandb/']) {
     const response = await fetch(url + route);

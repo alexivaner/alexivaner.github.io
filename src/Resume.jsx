@@ -5,7 +5,7 @@ import { LocaleProvider, Localized, LanguageSelector } from './i18n/I18n.jsx';
 function ResumeContent() {
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
-  return <Localized><><nav className="resume-nav"><LanguageSelector /><a href="../#resume">Back to portfolio</a><a className="resume-download" href="/assets/ivan-surya-hutomo-resume.pdf" download>Download PDF (English)</a><a href="/assets/ivan-surya-hutomo-resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a><button type="button" id="print-resume" hidden={!ready} onClick={() => window.print()}>Print / save PDF</button></nav><main>
+  return <Localized><><nav className="resume-nav"><LanguageSelector /><a href="../#resume">Back to portfolio</a><a className="resume-download" href="/assets/ivan-surya-hutomo-resume.pdf" download>Download PDF (English)</a><a href="/assets/ivan-surya-hutomo-resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a><button type="button" id="print-resume" hidden={!ready} onClick={() => { document.querySelector('.resume-extended').open=true; requestAnimationFrame(()=>window.print()); }}>Print extended profile</button></nav><section className="resume-document" aria-label="Original resume PDF"><object data="/assets/ivan-surya-hutomo-resume.pdf#view=FitH&toolbar=0&navpanes=0" type="application/pdf" aria-label="Original resume PDF"><p>Your browser cannot display this PDF. Use the download or new-tab links above.</p></object><p className="resume-mobile-note">Open or download the original PDF above, or read the extended profile below.</p></section><details className="resume-extended"><summary>Read extended profile</summary><main>
     <header><h1>{data.name}</h1><p className="resume-role">{data.role}</p><p><a href={`mailto:${data.email}`}>{data.email}</a> / <a href={data.social.github}>GitHub</a> / <a href={data.social.linkedin}>LinkedIn</a></p></header>
     <section><h2>Profile</h2><p>I turn AI models into practical products. My work connects computer vision, product architecture, and hands-on software engineering, from research to usable software.</p></section>
     <section><h2>Experience</h2>{data.experience.map(item => <article key={item.title}><div className="resume-row"><h3>{item.title}</h3><p>{item.period}</p></div><p className="resume-area">{item.area}</p><p>{item.text}</p></article>)}</section>
@@ -18,7 +18,7 @@ function ResumeContent() {
     <section><h2>Competition recognition</h2>{data.recognition.map(item => <article key={item.title}><h3>{item.result}{item.detail && <> ({item.detail})</>}: {item.title}</h3><p>{item.issuer}. {item.date}.{item.association && <> {item.association}.</>}</p></article>)}</section>
     <section><h2>Interests</h2><p>Photography: <a href={data.photography.href}>{data.photography.handle}</a>. Robotics and connected-hardware projects: <a href={data.social.youtube}>YouTube</a>.</p></section>
     <section><h2>Selected areas</h2><p>Applied AI, computer vision, Python, TypeScript, React, cross-platform development, WebRTC, product architecture, technical leadership.</p></section>
-  </main></></Localized>;
+  </main></details></></Localized>;
 }
 
 export default function Resume() { return <LocaleProvider><ResumeContent /></LocaleProvider>; }

@@ -14,26 +14,26 @@ try{
   return p;
  }
  const p=await sample();
- await p.waitForFunction(()=>{const v=document.querySelector('video');return !v.paused&&v.currentTime>0;},{timeout:15000});
- assert(await p.$eval('video',v=>v.muted&&v.loop&&v.playsInline&&v.autoplay));
+ await p.waitForFunction(()=>{const v=document.querySelector('dialog video');return !v.paused&&v.currentTime>0;},{timeout:15000});
+ assert(await p.$eval('dialog video',v=>v.muted&&v.loop&&v.playsInline&&v.autoplay));
  // Scroll the actual dialog body, keeping its header independent and visible.
  await p.$eval('.viewer-body',el=>el.scrollTop=el.scrollHeight);
- await p.waitForFunction(()=>document.querySelector('video').paused);
+ await p.waitForFunction(()=>document.querySelector('dialog video').paused);
  assert(await p.$eval('.viewer-top',el=>el.getBoundingClientRect().top>=0));
- await p.$eval('video',el=>el.scrollIntoView({block:'center'}));
- await p.waitForFunction(()=>!document.querySelector('video').paused);
+ await p.$eval('dialog video',el=>el.scrollIntoView({block:'center'}));
+ await p.waitForFunction(()=>!document.querySelector('dialog video').paused);
  await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});
- await p.waitForFunction(()=>document.querySelector('video').paused);
+ await p.waitForFunction(()=>document.querySelector('dialog video').paused);
  await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});document.dispatchEvent(new Event('visibilitychange'));});
- await p.waitForFunction(()=>!document.querySelector('video').paused);
+ await p.waitForFunction(()=>!document.querySelector('dialog video').paused);
  await p.screenshot({path:'.hallmark/reports/publication-tsp-desktop.png'});
- await p.keyboard.press('Escape');await p.waitForFunction(()=>!document.querySelector('video'));
+ await p.keyboard.press('Escape');await p.waitForFunction(()=>!document.querySelector('dialog video'));
  await p.close();
  for(const settings of [{motion:'reduce'},{saveData:true},{blocked:true}]){
-  const q=await sample(settings);await q.waitForSelector('.preview-manual');
-  assert(await q.$eval('video',v=>v.paused));
-  if(!settings.blocked)assert.equal(await q.$eval('video',v=>v.getAttribute('src')),null,'Motion/data preference must avoid fetching animation');
-  if(settings.motion){await q.click('.preview-manual');await q.waitForFunction(()=>!document.querySelector('video').paused);}
+  const q=await sample(settings);await q.waitForSelector('dialog .preview-manual');
+  assert(await q.$eval('dialog video',v=>v.paused));
+  if(!settings.blocked)assert.equal(await q.$eval('dialog video',v=>v.getAttribute('src')),null,'Motion/data preference must avoid fetching animation');
+  if(settings.motion){await q.click('dialog .preview-manual');await q.waitForFunction(()=>!document.querySelector('dialog video').paused);}
   await q.close();
  }
  const r=await browser.newPage();await r.setRequestInterception(true);r.on('request',q=>q.url().startsWith('https://www.youtube-nocookie.com/embed/')?q.respond({status:200,contentType:'text/html',body:'<!doctype html><title>Native embedded video test</title>'}):q.continue());

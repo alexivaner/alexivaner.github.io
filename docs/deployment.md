@@ -4,7 +4,7 @@ The personal portfolio is hosted at https://alexivaner.github.io/. GitHub Pages 
 
 ## Verify before pushing
 
-Run `npm ci`, `npm run build`, `npm run check`, and `npm run check:release`. Serve the production directory on port 4175, then run `npm test`, `npm run test:locales`, `npm run test:feedback`, and `npm run test:publication` with local Chrome. Check the Actions run after pushing and inspect the public homepage, `/resume/`, the resume PDF, and existing demo routes.
+Run `npm ci`, `npm run build`, `npm run check`, and `npm run check:release`. Serve the production directory on port 4175, then run `npm test`, `npm run test:locales`, `npm run test:feedback`, `npm run test:publication`, `npm run test:motion`, and `npm run test:protected` (the latter requires the ignored private source and passphrase) with local Chrome. Check the Actions run after pushing and inspect the public homepage, `/resume/`, the resume PDF, and existing demo routes.
 
 Private employment documents, review reports, and permission-pending drafts are deliberately ignored. Never force-add these files. Employer media requires confirmed reuse permission.
 

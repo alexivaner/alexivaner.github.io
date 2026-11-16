@@ -4,9 +4,10 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import '../../styles/viewer.css';
 import ResearchMedia, { ImageComparison } from './ResearchMedia.jsx';
 import data from '../../content/portfolio.json';
+import ProtectedCaseLink from './ProtectedCaseLink.jsx';
 import { Localized, LanguageSelector } from '../i18n/I18n.jsx';
 
-export default function ProjectViewer({ project, onClose, onOpenRelated }) {
+export default function ProjectViewer({ project, onClose, onOpenRelated, onOpenPrivate }) {
   const [open, setOpen] = useState(true);
   const dialog = useRef(null);
   const video = data.hardware.find(item => item.id === project.videoId);
@@ -32,6 +33,7 @@ export default function ProjectViewer({ project, onClose, onOpenRelated }) {
 
       {project.availability && <p className="availability-note">{project.availability}</p>}
       <div className="viewer-story">{project.story.map(part => <section key={part.title}><h3>{part.title}</h3><p>{part.text}</p></section>)}</div>
+      {project.id==='xview'&&onOpenPrivate&&<ProtectedCaseLink onOpen={onOpenPrivate}/>}
       {project.related && <button className="text-link related-case" type="button" onClick={()=>onOpenRelated(project.related)}>{project.relatedLabel}</button>}
       {project.href && <a className="button" href={project.href} target="_blank" rel="noopener noreferrer">{project.link}</a>}{project.links?.filter(link => link.href !== project.href).map(link=><a className="text-link viewer-source" key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>)}{project.source && <a className="text-link viewer-source" href={project.source} target="_blank" rel="noopener noreferrer">View source</a>}
     </div></motion.article>}

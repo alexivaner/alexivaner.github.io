@@ -34,6 +34,12 @@
           "label": "Open web demo",
           "href": "https://demo.xview.ai/"
         }
+      ],
+      "metadata": [
+        {
+          "label": "Public product scope",
+          "value": "Multi-camera capture, human pose estimation, and 3D motion review."
+        }
       ]
     },
     {
