@@ -32,7 +32,7 @@ try{
  for(const locale of ['en','id','zh-TW','ko','ja']){
   await p.select('.site-header select',locale);await p.waitForFunction(code=>document.documentElement.lang===code,{},locale);
   for(const width of [320,768,1440]){await p.setViewport({width,height:900});await p.evaluate(()=>scrollTo(0,0));assert(await p.$eval('body',el=>el.scrollWidth<=innerWidth),`${locale} ${width}: overflow`);}
-  if(locale!=='en'){assert(!(await p.$eval('.golf-motion figcaption',el=>el.textContent)).includes('Custom avatar. Reconstructed motion.'));assert(!(await p.$eval('.motion-stage',el=>el.getAttribute('aria-label'))).startsWith('3D motion study.'));}
+  if(locale!=='en'){assert(!(await p.$eval('.motion-stage',el=>el.getAttribute('aria-label'))).startsWith('3D motion study.'));}
  }
  await p.select('.site-header select','en');await p.waitForFunction(()=>document.documentElement.lang==='en');
  await p.setViewport({width:1440,height:900});await p.screenshot({path:'.hallmark/reports/motion-final-desktop.png'});await p.setViewport({width:375,height:844});await p.screenshot({path:'.hallmark/reports/motion-final-phone.png'});

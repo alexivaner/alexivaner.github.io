@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {Object3D,Matrix4,Vector3,Quaternion} from 'three';
+import {Object3D,Matrix4,Vector3,Quaternion,PerspectiveCamera} from 'three';
 import {createFootRetargeter} from '../src/motion/footRig.js';
 import {poseAt} from '../src/motion/golf.js';
+import {headPoseAt} from '../src/motion/headRig.js';
 import {cameraPose} from '../src/motion/viewCamera.js';
 import {cameraViews,blendCamera} from '../src/motion/cameraViews.js';
 const body=JSON.parse(await readFile('public/assets/media/golf-body-motion.json','utf8')).frames;
@@ -32,3 +33,15 @@ for(const name of ['head','chest']){
 }
 for(const a of cameraViews)for(const b of cameraViews)for(let i=0;i<=60;i++){const p=cameraPose(blendCamera(a.camera,b.camera,i/60),anchors);assert([...p.position.toArray(),...p.rotation.toArray(),p.fov].every(Number.isFinite));assert(Math.abs(p.rotation.length()-1)<1e-8);}
 console.log('Full-motion/POV checks passed: setup to finish, avatar-mounted outward cameras, moving anchors and continuous camera poses.');
+
+const headFrames=JSON.parse(await readFile('public/assets/media/golf-head-motion.json','utf8')).frames;
+for(let i=0;i<body.length;i++){
+ const p=poseAt(i/(body.length-1),body),grip=new Vector3(...club[i].grip),headForward=new Vector3(0,0,-1).applyQuaternion(headPoseAt(i/(body.length-1),headFrames).rotation);
+ const chestUp=new Vector3(...p.chest).sub(new Vector3(...p.pelvis)).normalize(),chestRight=new Vector3(...p.rightShoulder).sub(new Vector3(...p.leftShoulder)).normalize();
+ const anchors={grip,head:{position:new Vector3(...p.head),forward:headForward},chest:{position:new Vector3(...p.chest).lerp(new Vector3(...p.pelvis),.25),forward:new Vector3().crossVectors(chestUp,chestRight).normalize()}};
+ for(const name of ['head','chest'])for(const aspect of [1.25,1.6]){
+  const result=cameraPose(cameraViews.find(v=>v.id===name).camera,anchors),camera=new PerspectiveCamera(result.fov,aspect,.15,50);camera.position.copy(result.position);camera.quaternion.copy(result.rotation);camera.updateMatrixWorld(true);
+  const screen=grip.clone().project(camera);assert(Math.abs(screen.x)<.75&&Math.abs(screen.y)<.75&&screen.z>-1&&screen.z<1,'Recorded grip must stay in the first-person framing through the swing');
+ }
+}
+console.log('Grip framing passed across the full recorded swing in head/chest views at phone and desktop aspect ratios.');

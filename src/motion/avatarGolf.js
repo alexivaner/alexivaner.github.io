@@ -61,11 +61,13 @@ export async function createAvatarSurface(canvas){
    }
    retargetFeet(p);
    const desired=vector(p.pelvis);desired.y+=clearance;model.position.copy(desired.sub(at('Hips')));model.updateMatrixWorld(true);
-   equipment.update(clubPoseAt(phase,clubFrames),colors);
+   const clubPose=clubPoseAt(phase,clubFrames),firstPerson=(view.headFocus||0)+(view.chestFocus||0)>.9;
+   model.visible=!firstPerson;
+   equipment.update(clubPose,colors,firstPerson);
    const chestPosition=at('LeftArm').add(at('RightArm')).multiplyScalar(.5).lerp(at('Hips'),.25);
    const chestUp=at('Spine2').sub(at('Hips')).normalize(),chestRight=at('RightArm').sub(at('LeftArm')).normalize();
-   const pose=cameraPose(view,{head:{position:at('Head').add(at('HeadTop_End')).multiplyScalar(.5),forward:new THREE.Vector3(0,0,-1).applyQuaternion(headPose.rotation)},chest:{position:chestPosition,forward:new THREE.Vector3().crossVectors(chestUp,chestRight).normalize()}});
-   camera.position.copy(pose.position);camera.quaternion.copy(pose.rotation);camera.fov=pose.fov;camera.updateProjectionMatrix();renderer.render(scene,camera);
+   const pose=cameraPose(view,{grip:clubPose.grip,head:{position:at('Head').add(at('HeadTop_End')).multiplyScalar(.5),forward:new THREE.Vector3(0,0,-1).applyQuaternion(headPose.rotation)},chest:{position:chestPosition,forward:new THREE.Vector3().crossVectors(chestUp,chestRight).normalize()}});
+   camera.position.copy(pose.position);camera.quaternion.copy(pose.rotation);camera.fov=pose.fov;camera.near=.01+.14*Math.min(1,(view.headFocus||0)+(view.chestFocus||0));camera.updateProjectionMatrix();renderer.render(scene,camera);
   }
   return {kind:'avatar',draw,dispose(){model.traverse(node=>{if(node.isMesh){node.geometry.dispose();node.skeleton?.dispose();for(const material of Array.isArray(node.material)?node.material:[node.material]){for(const value of Object.values(material))if(value?.isTexture)value.dispose();material.dispose();}}});equipment.dispose();environment.dispose();floor.geometry.dispose();floor.material.dispose();stage.geometry.dispose();stage.material.dispose();ring.geometry.dispose();ring.material.dispose();renderer.dispose();renderer.forceContextLoss();}};
  }catch(error){renderer.dispose();renderer.forceContextLoss();throw error;}
