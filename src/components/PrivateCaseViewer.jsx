@@ -5,11 +5,8 @@ import {decryptWalkthrough} from '../protected/crypto.js';
 import {localizeWalkthrough} from '../protected/localize.js';
 import '../../styles/viewer.css';
 import PrivateScreens from './PrivateScreens.jsx';
+import ArchitectureMap from './ArchitectureMap.jsx';
 
-function ArchitectureMap({diagram}){
- const [active,setActive]=useState(0),node=diagram.nodes[active];
- return <section className="architecture-study"><div className="architecture-core" aria-hidden="true"><svg viewBox="0 0 240 180"><polygon points="120,12 193,54 193,126 120,168 47,126 47,54"/><polygon className="architecture-inner" points="120,38 171,67 171,113 120,142 69,113 69,67"/></svg><span>{diagram.center}</span></div><div className="architecture-choices" aria-label={diagram.title}>{diagram.nodes.map((item,i)=><button type="button" key={item.id} aria-pressed={active===i} onClick={()=>setActive(i)}>{item.title}</button>)}</div><section className="architecture-explanation" aria-live="polite"><h4>{node.title}</h4><p>{node.text}</p><p><code>{node.evidence}</code></p></section></section>;
-}
 function Chapter({chapter,owner,language}){
  return <article className="private-document" lang={language}><h3 tabIndex={-1}>{chapter.title}</h3><p className="private-summary">{chapter.summary}</p>{chapter.images&&<PrivateScreens images={chapter.images}/>}{chapter.diagram&&<ArchitectureMap diagram={chapter.diagram}/>}<div className="viewer-story">{chapter.sections.map(section=><section key={section.title}><h4>{section.title}</h4><p>{section.text}</p></section>)}</div><p className="private-owner">{owner}</p></article>;
 }

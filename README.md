@@ -108,3 +108,5 @@ The motion study offers Free view, Face-on, Down-the-line, Front, Head, and Ches
 `npm run test:presentation` checks rig constraints and camera interpolation. `npm run test:engineering` checks the guided explorer, responsive layouts, keyboard operation, camera transitions, first-click loading, and accessibility.
 
 The unlocked case-study reader uses a wide, nearly full-height workspace with persistent chapter navigation on desktop and a compact chapter selector on phones. Case-study text, diagram labels, and image captions follow the selected site language. Protected translations are packaged inside the encrypted document; public catalogs contain interface labels only. Switching languages preserves the selected chapter and access state.
+
+The protected relationship diagram distinguishes dependencies from composition wiring. Selecting a boundary highlights its connections and explains its responsibility and a change scenario. Product captures are placed with relevant chapters, with captions identifying their source and scope.

@@ -1,4 +1,4 @@
-const textFields=new Set(['title','summary','text','label','center','alt','caption','owner']);
+const textFields=new Set(['title','summary','text','label','center','alt','caption','owner','description','legend','layer','example']);
 // Localize only from the decrypted payload. Protected phrases never enter public catalogs.
 export function localizeWalkthrough(content,locale){
  const messages=content.translations?.[locale]||{};

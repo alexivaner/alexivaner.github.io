@@ -19,6 +19,12 @@ export async function decryptWalkthrough(packet,passcode){
  const content=JSON.parse(new TextDecoder().decode(plain));
  if(!content||!Array.isArray(content.chapters)||!content.chapters.length||content.chapters.length>20||!content.chapters.every(c=>typeof c.id==='string'&&typeof c.title==='string'&&typeof c.summary==='string'&&Array.isArray(c.sections)&&c.sections.length<=8&&c.sections.every(s=>typeof s.title==='string'&&typeof s.text==='string')))throw new Error('Invalid walkthrough');
  for(const chapter of content.chapters)if(chapter.images&&(!Array.isArray(chapter.images)||chapter.images.length>4||!chapter.images.every(image=>typeof image.src==='string'&&/^data:image\/(jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(image.src)&&image.src.length<1000000&&typeof image.alt==='string'&&typeof image.caption==='string'&&/^https:\/\/(?:demo\.)?xview\.ai\//.test(image.href))))throw new Error('Invalid product screens');
+ for(const chapter of content.chapters)if(chapter.diagram){
+  const diagram=chapter.diagram;
+  if(!Array.isArray(diagram.nodes)||!diagram.nodes.length||diagram.nodes.length>12||!diagram.nodes.every(node=>typeof node.id==='string'&&typeof node.title==='string'&&typeof node.text==='string'&&(!node.position||(Array.isArray(node.position)&&node.position.length===2&&node.position.every(n=>Number.isFinite(n)&&n>=0&&n<=100)))))throw new Error('Invalid diagram');
+  const ids=new Set(diagram.nodes.map(node=>node.id));
+  if(ids.size!==diagram.nodes.length||diagram.edges&&(!Array.isArray(diagram.edges)||diagram.edges.length>40||!diagram.edges.every(edge=>ids.has(edge.from)&&ids.has(edge.to)&&edge.from!==edge.to&&typeof edge.label==='string'&&['dependency','wiring'].includes(edge.kind))))throw new Error('Invalid connections');
+ }
  if(content.translations&&(!content.translations||typeof content.translations!=='object'||Array.isArray(content.translations)||!Object.entries(content.translations).every(([locale,messages])=>['id','zh-TW','ko','ja'].includes(locale)&&messages&&typeof messages==='object'&&!Array.isArray(messages)&&Object.keys(messages).length<=500&&Object.entries(messages).every(([key,value])=>typeof value==='string'&&key.length<=12000&&value.length<=12000))))throw new Error('Invalid translations');
  return content;
 }

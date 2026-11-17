@@ -1,6 +1,7 @@
 /* Hallmark · component: project viewer · genre: modern-minimal · theme: Console paper · states: native dialog with static detail fallback · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E5 S5 R5 V4 · existing Console system preserved; the unlocked reader gains full-height space and persistent chapter navigation */
 /* Hallmark · reader finish-review: subagent, ship · component sweep: 0 FAIL, 0 REFLEX, 0 WARN · sample-content captures exclude protected material */
+/* Hallmark · relationship-map finish-review: subagent, ship · connection contrast resolved, phone details verified · 0 FAIL, 0 REFLEX, 0 WARN */
 .project-dialog { position: fixed; inset: 0; width: min(960px, calc(100% - 48px)); max-height: calc(100dvh - 64px); padding: 0; border: 0; border-radius: var(--radius-card); background: var(--color-paper); color: var(--color-ink); overscroll-behavior: contain; margin: auto; }
 .project-dialog::backdrop { background: var(--color-backdrop); }
 .viewer-content { padding: var(--space-xl); }
@@ -221,3 +222,45 @@
 @media (max-width: 767px) { .protected-dialog[data-unlocked='true'] { max-width: calc(100% - 16px); } .protected-dialog .viewer-top { grid-template-columns: minmax(0,1fr) auto auto; } .protected-dialog .viewer-top .language-control select { width: 110px; max-width: 110px; } .protected-dialog .viewer-top h2 { font-size: 20px; } }
 .protected-dialog button:active:not(:disabled), .protected-dialog select:active { transform: translateY(1px); }
 .protected-dialog .viewer-top h2, .private-document > h3 { text-wrap: balance; }
+
+/* Interactive relationship map. All labels and topology come from the decrypted document. */
+.architecture-intro, .architecture-legend { color: var(--color-muted); font-size: var(--text-sm); max-width: 76ch; }
+.architecture-intro { margin-bottom: var(--space-lg); }
+.architecture-workspace { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: var(--space-lg); align-items: start; }
+.architecture-map { position: relative; display: block; margin: 0; aspect-ratio: 1000 / 640; background: var(--color-paper-2); border-radius: var(--radius-card); min-width: 0; }
+.architecture-connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.architecture-boundary { fill: var(--color-paper); stroke: var(--color-rule-2); stroke-width: 1.5; }
+.architecture-connections marker path { fill: var(--color-muted); }
+.architecture-connections .architecture-marker-active path { fill: var(--color-accent); }
+.architecture-edge { fill: none; stroke: var(--color-muted); stroke-width: 1.5; opacity: 1; }
+.architecture-edge.is-related { stroke: var(--color-accent); stroke-width: 3; opacity: 1; }
+.architecture-wiring { stroke-dasharray: 6 5; }
+.architecture-map .architecture-node { position: absolute; left: var(--node-x); top: var(--node-y); transform: translate(-50%,-50%); width: 22%; min-height: 64px; padding: var(--space-xs); display: grid; gap: var(--space-2xs); background: var(--color-paper); border: 1px solid var(--color-rule-2); border-radius: calc(var(--radius-card) / 2); line-height: 1.35; text-align: center; font-size: var(--text-sm); }
+.architecture-map .architecture-node:active { transform: translate(-50%,-50%); }
+.architecture-map .architecture-node:hover { border-color: var(--color-ink); }
+.architecture-map .architecture-node[aria-pressed='true'] { border-color: var(--color-accent); box-shadow: 0 0 0 1px var(--color-accent); }
+.architecture-map .architecture-domain { background: var(--color-paper-2); font-weight: 500; }
+.architecture-node-layer { font-size: var(--text-xs); color: var(--color-muted); }
+.architecture-workspace .architecture-explanation { margin: 0; min-height: 0; max-width: none; padding-top: var(--space-sm); }
+.architecture-example { padding-top: var(--space-md); border-top: 1px solid var(--color-rule); }
+.architecture-relations { list-style: none; padding: 0; margin-block: var(--space-lg); display: grid; gap: var(--space-md); font-size: var(--text-sm); }
+.architecture-relations li { display: grid; gap: var(--space-xs); }
+.architecture-relations li > span:last-child { color: var(--color-muted); }
+.architecture-relation-arrow { display: inline-block; margin-inline: var(--space-xs); color: var(--color-accent); }
+.architecture-explanation > code { display: block; font-size: var(--text-xs); color: var(--color-muted); overflow-wrap: anywhere; }
+.architecture-legend { margin-top: var(--space-lg); }
+@media (max-width: 1279px) { .architecture-workspace { grid-template-columns: minmax(0,1fr); } .architecture-workspace .architecture-explanation { max-width: 76ch; } }
+@media (max-width: 767px) {
+ .architecture-map { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-sm); padding: var(--space-md); aspect-ratio: auto; }
+ .architecture-connections { display: none; }
+ .architecture-map .architecture-node { position: static; transform: none; width: 100%; min-height: 76px; }
+ .architecture-map .architecture-node:active { transform: translateY(1px); }
+ .architecture-map .architecture-domain { grid-column: 1 / -1; }
+}
+
+.architecture-map[data-structured='false'] { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-sm); padding: var(--space-md); aspect-ratio: auto; }
+.architecture-map[data-structured='false'] .architecture-node { position: static; transform: none; width: 100%; }
+/* Preserve diagram node positioning during pointer activation. */
+.protected-dialog .architecture-map .architecture-node:active:not(:disabled) { transform: translate(-50%,-50%); background: var(--color-paper-2); }
+@media (max-width: 767px) { .protected-dialog .architecture-map .architecture-node:active:not(:disabled) { transform: translateY(1px); } }
+.protected-dialog .architecture-map[data-structured='false'] .architecture-node:active:not(:disabled) { transform: translateY(1px); }

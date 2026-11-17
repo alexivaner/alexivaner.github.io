@@ -27,7 +27,7 @@ try{
  await page.waitForFunction(()=>document.querySelector('.private-screen-preview img')?.naturalWidth>0);await page.click('.private-screen-preview');await page.waitForSelector('.private-screen-dialog[open]');await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.querySelector('.private-screen-dialog'));assert(await page.$eval('.private-screen-preview',el=>el===document.activeElement));
  assert(await page.$eval('.protected-dialog',el=>el.getBoundingClientRect().width>innerWidth*.9),'Unlocked reader must use the available desktop width');
  assert.equal(await page.$$eval('.private-toolbar option',els=>els.length),content.chapters.length);
- await page.select('.private-toolbar select','1');await page.waitForSelector('.architecture-study');assert.equal(await page.$$eval('.architecture-choices button',els=>els.length),6);await page.click('.architecture-choices button:nth-child(6)');assert((await page.$eval('.architecture-explanation',el=>el.textContent)).includes('api/composition_root.py'));
+ await page.select('.private-toolbar select','1');await page.waitForSelector('.architecture-study');assert.equal(await page.$$eval('.architecture-choices button',els=>els.length),content.chapters[1].diagram.nodes.length);await page.click('.architecture-choices button:nth-of-type(6)');await page.waitForFunction(evidence=>document.querySelector('.architecture-explanation > code')?.textContent===evidence,{},content.chapters[1].diagram.nodes[5].evidence);
  await page.addScriptTag({path:'node_modules/axe-core/axe.min.js'});const accessibility=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));assert.deepEqual(accessibility,[]);
  for(const width of [375,1440]){await page.setViewport({width,height:900});assert(await page.$eval('.protected-dialog',el=>el.scrollWidth<=innerWidth));}
  for(const locale of ['id','zh-TW','ko','ja','en']){
@@ -39,7 +39,16 @@ try{
    assert.deepEqual(await page.$$eval('.private-document .viewer-story section',els=>els.map(el=>({title:el.querySelector('h4').textContent,text:el.querySelector('p').textContent}))),expected.sections);
    assert.equal(await page.$eval('.private-owner',el=>el.textContent),translated.owner);
    if(expected.images)assert.deepEqual(await page.$$eval('.private-screen-preview img',els=>els.map(el=>el.alt)),expected.images.map(image=>image.alt));
-   if(expected.diagram){await page.click('.architecture-choices button:last-child');assert.equal(await page.$eval('.architecture-explanation > p',el=>el.textContent),expected.diagram.nodes.at(-1).text);}
+   if(expected.diagram){
+    assert.deepEqual(await page.$$eval('.architecture-node-layer',els=>els.map(el=>el.textContent)),expected.diagram.nodes.map(node=>node.layer));
+    for(let nodeIndex=0;nodeIndex<expected.diagram.nodes.length;nodeIndex++){
+     const selected=expected.diagram.nodes[nodeIndex];await page.click(`.architecture-choices button:nth-of-type(${nodeIndex+1})`);await page.waitForFunction(text=>document.querySelector('.architecture-explanation > p')?.textContent===text,{},selected.text);
+     assert.equal(await page.$eval('.architecture-example',el=>el.textContent),selected.example);
+     const edges=expected.diagram.edges.filter(edge=>edge.from===selected.id||edge.to===selected.id);assert.equal(await page.$$eval('.architecture-edge.is-related',els=>els.length),edges.length);
+     assert.deepEqual(await page.$$eval('.architecture-relations li > span:last-child',els=>els.map(el=>el.textContent)),edges.map(edge=>edge.label));
+    }
+    await page.focus('.architecture-choices button:first-of-type');await page.keyboard.press('End');await page.waitForFunction(()=>document.querySelector('.architecture-choices button:last-child').getAttribute('aria-pressed')==='true');await page.keyboard.press('Home');await page.waitForFunction(()=>document.querySelector('.architecture-choices button:first-of-type').getAttribute('aria-pressed')==='true');
+   }
   }
   for(const width of [320,375,768,1440,1920])for(const mode of ['light','dark']){await page.setViewport({width,height:900});await page.evaluate(mode=>document.documentElement.dataset.mode=mode,mode);await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));assert(await page.$eval('.protected-dialog',el=>el.scrollWidth<=el.clientWidth),'Reader must fit in all languages and themes');assert(await page.$eval('.private-workspace .viewer-body',el=>el.clientHeight>300),'Reader must leave usable vertical space');}
  }
