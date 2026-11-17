@@ -8,7 +8,7 @@ import PrivateScreens from './PrivateScreens.jsx';
 import ArchitectureMap from './ArchitectureMap.jsx';
 
 function Chapter({chapter,owner,language}){
- return <article className="private-document" lang={language}><h3 tabIndex={-1}>{chapter.title}</h3><p className="private-summary">{chapter.summary}</p>{chapter.images&&<PrivateScreens images={chapter.images}/>}{chapter.diagram&&<ArchitectureMap diagram={chapter.diagram}/>}<div className="viewer-story">{chapter.sections.map(section=><section key={section.title}><h4>{section.title}</h4><p>{section.text}</p></section>)}</div><p className="private-owner">{owner}</p></article>;
+ return <article className="private-document" lang={language}><h3 tabIndex={-1}>{chapter.title}</h3><p className="private-summary">{chapter.summary}</p>{chapter.images&&<PrivateScreens images={chapter.images}/>}{chapter.diagram&&<ArchitectureMap diagram={chapter.diagram}/>}<div className="viewer-story">{chapter.sections.map(section=><section key={section.title}><h4>{section.title}</h4><p>{section.text}</p></section>)}</div><div className="private-reference-links">{chapter.links?.map(link=><a key={link.href} className="text-link" href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<Icon name="arrow-up-right" size={16}/></a>)}</div><p className="private-owner">{owner}</p></article>;
 }
 export default function PrivateCaseViewer({onClose}){
  const {t,locale}=useI18n(),dialog=useRef(null),input=useRef(null),alive=useRef(true),body=useRef(null);

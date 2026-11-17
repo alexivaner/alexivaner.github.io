@@ -486,3 +486,5 @@ svg.glyph { filter: none; }
 @media (max-width: 374px) { .motion-views button { font-size: var(--text-xs); } }
 
 .motion-controls .motion-play { padding-inline: var(--space-2xs); white-space: nowrap; }
+/* Public contribution copy follows the existing editorial measure and spacing. */
+.system-story .system-summary { color: var(--color-muted); margin-top: var(--space-md); max-width: 65ch; font-size: var(--text-md); line-height: 1.6; }

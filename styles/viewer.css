@@ -264,3 +264,6 @@
 .protected-dialog .architecture-map .architecture-node:active:not(:disabled) { transform: translate(-50%,-50%); background: var(--color-paper-2); }
 @media (max-width: 767px) { .protected-dialog .architecture-map .architecture-node:active:not(:disabled) { transform: translateY(1px); } }
 .protected-dialog .architecture-map[data-structured='false'] .architecture-node:active:not(:disabled) { transform: translateY(1px); }
+.private-reference-links { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); margin-block: var(--space-xl); }
+.private-reference-links:empty { display: none; }
+.private-reference-links a { gap: var(--space-xs); }

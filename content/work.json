@@ -2,45 +2,23 @@
   "engineering": [
     {
       "id": "xview",
-      "name": "XView - AI-Powered Motion Analysis Platform",
-      "headline": "Applied AI engineering within the IdeasLab development team.",
+      "name": "Motion analysis platform",
+      "headline": "Professional work / Team contribution",
       "story": [
         {
-          "title": "The product",
-          "text": "XView is developed and owned by IdeasLab Formosa Co., Ltd. This case study describes my engineering contributions as part of the development team."
-        },
-        {
           "title": "My contribution",
-          "text": "I work on applied AI product engineering, connecting computer vision integration with desktop and web application development."
+          "text": "My contributions span computer-vision integration, application APIs, desktop and web workflows, and interactive 2D and 3D motion review."
         },
         {
           "title": "The approach",
-          "text": "My professional focus includes user-facing AI workflows, 2D and 3D pose-estimation applications, and full-stack software engineering."
+          "text": "I focus on making these parts work together as a coherent software experience."
         },
         {
           "title": "The context",
-          "text": "This is employment work within the IdeasLab team. Product information is available through the official XView website and public demo."
+          "text": "Professional work delivered as part of a development team."
         }
       ],
-      "href": "https://xview.ai/",
-      "link": "Explore XView",
-      "scope": "Computer vision, desktop & web",
-      "links": [
-        {
-          "label": "Explore XView",
-          "href": "https://xview.ai/"
-        },
-        {
-          "label": "Open web demo",
-          "href": "https://demo.xview.ai/"
-        }
-      ],
-      "metadata": [
-        {
-          "label": "Public product scope",
-          "value": "Multi-camera capture, human pose estimation, and 3D motion review."
-        }
-      ]
+      "scope": "Computer vision, desktop & web"
     },
     {
       "id": "xview-check",
@@ -49,7 +27,7 @@
       "story": [
         {
           "title": "The product",
-          "text": "A public XView system-readiness website linked here as part of my professional experience."
+          "text": "A system-readiness web experience that helps people understand software requirements before they begin."
         },
         {
           "title": "My contribution",
@@ -61,11 +39,9 @@
         },
         {
           "title": "The context",
-          "text": "IdeasLab owns the product. The official public website is the reference for its current capabilities."
+          "text": "Professional work delivered as part of a development team."
         }
       ],
-      "href": "https://check.xview.ai/",
-      "link": "Open compatibility checker",
       "scope": "Web application engineering"
     },
     {
@@ -79,7 +55,7 @@
         },
         {
           "title": "My contribution",
-          "text": "Professional experience in full-stack application engineering and product integration as part of the IdeasLab team."
+          "text": "My contribution spans full-stack application engineering and product integration as part of a development team."
         },
         {
           "title": "The approach",

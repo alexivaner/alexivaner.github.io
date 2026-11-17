@@ -38,6 +38,7 @@ try{
    assert.equal(await page.$eval('.private-summary',el=>el.textContent),expected.summary);
    assert.deepEqual(await page.$$eval('.private-document .viewer-story section',els=>els.map(el=>({title:el.querySelector('h4').textContent,text:el.querySelector('p').textContent}))),expected.sections);
    assert.equal(await page.$eval('.private-owner',el=>el.textContent),translated.owner);
+   if(expected.links)assert.deepEqual(await page.$$eval('.private-reference-links a',els=>els.map(el=>({label:el.textContent,href:el.href}))),expected.links);
    if(expected.images)assert.deepEqual(await page.$$eval('.private-screen-preview img',els=>els.map(el=>el.alt)),expected.images.map(image=>image.alt));
    if(expected.diagram){
     assert.deepEqual(await page.$$eval('.architecture-node-layer',els=>els.map(el=>el.textContent)),expected.diagram.nodes.map(node=>node.layer));
