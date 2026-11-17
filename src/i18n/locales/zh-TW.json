@@ -593,6 +593,8 @@
     "Case study": "案例研究",
     "Continue with your passcode.": "輸入通行碼以繼續。",
     "Opening case study…": "正在開啟案例…",
-    "Could not open the case study. Try again or request access.": "無法開啟案例，請重試或申請存取。"
+    "Could not open the case study. Try again or request access.": "無法開啟案例，請重試或申請存取。",
+    "Case study chapters": "案例章節",
+    "Lock case study": "鎖定案例"
   }
 }

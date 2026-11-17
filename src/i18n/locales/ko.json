@@ -593,6 +593,8 @@
     "Case study": "사례 연구",
     "Continue with your passcode.": "접근 암호를 입력해 계속하세요.",
     "Opening case study…": "사례 여는 중…",
-    "Could not open the case study. Try again or request access.": "사례를 열 수 없습니다. 다시 시도하거나 접근을 요청하세요."
+    "Could not open the case study. Try again or request access.": "사례를 열 수 없습니다. 다시 시도하거나 접근을 요청하세요.",
+    "Case study chapters": "사례 연구 장",
+    "Lock case study": "사례 잠금"
   }
 }

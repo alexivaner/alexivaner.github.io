@@ -1,4 +1,6 @@
 /* Hallmark · component: project viewer · genre: modern-minimal · theme: Console paper · states: native dialog with static detail fallback · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E5 S5 R5 V4 · existing Console system preserved; the unlocked reader gains full-height space and persistent chapter navigation */
+/* Hallmark · reader finish-review: subagent, ship · component sweep: 0 FAIL, 0 REFLEX, 0 WARN · sample-content captures exclude protected material */
 .project-dialog { position: fixed; inset: 0; width: min(960px, calc(100% - 48px)); max-height: calc(100dvh - 64px); padding: 0; border: 0; border-radius: var(--radius-card); background: var(--color-paper); color: var(--color-ink); overscroll-behavior: contain; margin: auto; }
 .project-dialog::backdrop { background: var(--color-backdrop); }
 .viewer-content { padding: var(--space-xl); }
@@ -171,3 +173,51 @@
 .private-screen-dialog[open] { display: flex; flex-direction: column; overflow: hidden; }
 .private-screen-dialog > button, .private-screen-dialog > p { flex-shrink: 0; }
 .private-screen-scroll { min-height: 0; flex: 1 1 auto; }
+
+/* Unlocked case studies use a reading workspace within the existing Console system. */
+.protected-dialog[data-unlocked='false'] { width: min(640px,calc(100% - 32px)); }
+.protected-dialog[data-unlocked='true'] { width: min(1600px,calc(100% - 48px)); height: calc(100dvh - 48px); max-height: calc(100dvh - 48px); }
+.protected-dialog[data-unlocked='true'] .viewer-shell { height: 100%; max-height: none; }
+.private-workspace { display: grid; grid-template-columns: 248px minmax(0,1fr); min-height: 0; flex: 1; }
+.private-chapters { overflow-y: auto; overscroll-behavior: contain; padding: var(--space-lg) var(--space-md); border-right: 1px solid var(--color-rule); background: var(--color-paper-2); }
+.private-chapters ol { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-xs); }
+.private-chapters button { width: 100%; display: grid; grid-template-columns: auto minmax(0,1fr); gap: var(--space-sm); padding: var(--space-md) var(--space-sm); border: 1px solid var(--color-transparent); border-radius: calc(var(--radius-card) / 2); text-align: left; font: inherit; font-size: var(--text-sm); line-height: 1.5; color: var(--color-muted); background: var(--color-transparent); cursor: pointer; }
+.private-chapters button > span:first-child { font-variant-numeric: tabular-nums; }
+.private-chapters button:hover { color: var(--color-ink); background: var(--color-paper); }
+.private-chapters button[aria-current='page'] { color: var(--color-ink); border-color: var(--color-accent); background: var(--color-paper); }
+.private-chapters button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.protected-dialog .private-toolbar { padding-block: var(--space-xs); gap: var(--space-sm); }
+.private-progress { margin-right: auto; font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.private-chapter-select { display: none; }
+.private-workspace .viewer-body { padding: var(--space-xl); }
+.private-document { max-width: 1100px; margin-inline: auto; min-width: 0; }
+.private-document > h3 { font-size: clamp(28px,3vw,42px); max-width: 30ch; }
+.private-document .private-summary { font-size: var(--text-lead); line-height: 1.6; margin-block: var(--space-lg) var(--space-xl); }
+.private-document .viewer-story { display: block; margin-block: var(--space-xl); }
+.private-document .viewer-story section { display: block; max-width: 76ch; padding-block: var(--space-lg); border-top: 1px solid var(--color-rule); }
+.private-document .viewer-story h4 { font-size: var(--text-lg); margin-bottom: var(--space-sm); }
+.private-document .viewer-story p { font-size: var(--text-lg); line-height: 1.7; }
+.private-workspace .private-screens { margin-block: var(--space-xl); }
+.private-workspace .architecture-explanation { max-width: 72ch; }
+@media (max-width: 1023px) { .private-workspace { grid-template-columns: minmax(0,1fr); } .private-chapters { display: none; } .private-chapter-select { display: block; } .private-progress { margin-right: 0; } }
+@media (max-width: 767px) {
+ .protected-dialog[data-unlocked='true'] { width: calc(100% - 16px); height: calc(100dvh - 16px); max-height: calc(100dvh - 16px); border-radius: calc(var(--radius-card) / 2); }
+ .protected-dialog .viewer-top { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: var(--space-xs) var(--space-sm); padding: var(--space-sm) var(--space-md); }
+ .protected-dialog .viewer-top h2 { grid-column: 1; grid-row: 1; }
+ .protected-dialog .viewer-top > .icon-button { grid-column: 2; grid-row: 1; }
+ .protected-dialog .viewer-top .language-control { grid-column: 1 / -1; grid-row: 2; }
+ .protected-dialog .viewer-top .language-control select { width: 100%; }
+ .protected-dialog .private-toolbar { gap: var(--space-xs); }
+ .private-chapter-select { flex-basis: 100%; }
+ .private-progress { margin-right: auto; }
+ .private-workspace .viewer-body { padding: var(--space-lg) var(--space-md); }
+ .private-document > h3 { font-size: var(--text-2xl); }
+ .private-document .viewer-story p { font-size: var(--text-md); }
+}
+.protected-dialog .viewer-top { display: grid; grid-template-columns: minmax(0,1fr) auto auto; }
+.protected-dialog .viewer-top h2 { grid-column: 1; grid-row: 1; }
+.protected-dialog .viewer-top .language-control { grid-column: 2; grid-row: 1; width: auto; }
+.protected-dialog .viewer-top > .icon-button { grid-column: 3; grid-row: 1; }
+@media (max-width: 767px) { .protected-dialog[data-unlocked='true'] { max-width: calc(100% - 16px); } .protected-dialog .viewer-top { grid-template-columns: minmax(0,1fr) auto auto; } .protected-dialog .viewer-top .language-control select { width: 110px; max-width: 110px; } .protected-dialog .viewer-top h2 { font-size: 20px; } }
+.protected-dialog button:active:not(:disabled), .protected-dialog select:active { transform: translateY(1px); }
+.protected-dialog .viewer-top h2, .private-document > h3 { text-wrap: balance; }

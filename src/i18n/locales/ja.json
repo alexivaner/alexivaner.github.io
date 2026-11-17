@@ -593,6 +593,8 @@
     "Case study": "事例紹介",
     "Continue with your passcode.": "パスコードを入力して続けてください。",
     "Opening case study…": "事例を開いています…",
-    "Could not open the case study. Try again or request access.": "事例を開けませんでした。再試行するか、アクセスを申請してください。"
+    "Could not open the case study. Try again or request access.": "事例を開けませんでした。再試行するか、アクセスを申請してください。",
+    "Case study chapters": "事例の章",
+    "Lock case study": "事例をロック"
   }
 }
