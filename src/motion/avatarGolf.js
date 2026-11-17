@@ -61,9 +61,8 @@ export async function createAvatarSurface(canvas){
    }
    retargetFeet(p);
    const desired=vector(p.pelvis);desired.y+=clearance;model.position.copy(desired.sub(at('Hips')));model.updateMatrixWorld(true);
-   const clubPose=clubPoseAt(phase,clubFrames),firstPerson=(view.headFocus||0)+(view.chestFocus||0)>.9;
-   model.visible=!firstPerson;
-   equipment.update(clubPose,colors,firstPerson);
+   const clubPose=clubPoseAt(phase,clubFrames);
+   equipment.update(clubPose,colors);
    const chestPosition=at('LeftArm').add(at('RightArm')).multiplyScalar(.5).lerp(at('Hips'),.25);
    const chestUp=at('Spine2').sub(at('Hips')).normalize(),chestRight=at('RightArm').sub(at('LeftArm')).normalize();
    const pose=cameraPose(view,{grip:clubPose.grip,head:{position:at('Head').add(at('HeadTop_End')).multiplyScalar(.5),forward:new THREE.Vector3(0,0,-1).applyQuaternion(headPose.rotation)},chest:{position:chestPosition,forward:new THREE.Vector3().crossVectors(chestUp,chestRight).normalize()}});

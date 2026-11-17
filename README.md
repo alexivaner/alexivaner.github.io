@@ -93,7 +93,7 @@ Website selections on phones open the shared project viewer immediately, with th
 
 The public engineering section combines projections of the approved reconstructed motion with the portfolio avatar, and high-level compatibility and commercial-workflow diagrams. It identifies product scope without presenting an invented product screenshot.
 
-The optional avatar has fixed neutral mittens rather than inferred finger movement. The club follows the recorded reconstruction in synchronization with the body. First-person views use neutral hand and arm presentation geometry so the costume cannot obstruct the grip; external views retain the full supplied avatar. A lit studio environment, soft-ground stage, and fill/rim lighting support both themes. These presentation adaptations are not measurement output.
+The optional avatar has fixed neutral mittens rather than inferred finger movement. The club follows the recorded reconstruction in synchronization with the body. All views retain the supplied avatar costume, including the head- and chest-mounted first-person views. A lit studio environment, soft-ground stage, and fill/rim lighting support both themes. These presentation adaptations are not measurement output.
 
 The passcode viewer supports enlarged, pannable media on phones. Closing or locking removes decrypted content. The passphrase remains unchanged.
 
