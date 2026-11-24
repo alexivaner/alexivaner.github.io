@@ -65,10 +65,12 @@ try {
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>!document.querySelector('dialog[open]'));
     await select(locale);
-    await page.click('.website-selector a[href="#kita-case-study"]');
-    await page.waitForSelector('dialog[open]');
-    assert.equal(await page.$$eval('dialog .viewer-image', els=>els.length),0,'Kita must not use an invented image');
-    assert(await page.$('dialog .availability-note'));
+    await page.click('.website-selector a[href="https://kitataiwan.com/"]');
+    await page.waitForFunction(()=>document.querySelector('.website-preview h3').textContent==='Kita Taiwan');
+    await page.click('.website-preview .project-story > summary');
+    await page.waitForSelector('dialog[open] .viewer-image img');
+    await page.waitForFunction(()=>document.querySelector('dialog[open] .viewer-image img')?.naturalWidth>0);
+    assert.equal(await page.$$eval('dialog .availability-note',els=>els.length),0);
     await page.keyboard.press('Escape');
     await page.waitForFunction(()=>!document.querySelector('dialog[open]'));
   }
@@ -123,6 +125,6 @@ try {
   assert.equal(await failed.evaluate(()=>document.documentElement.lang),'en');
   await failed.close();
   assert.deepEqual(errors,[]);
-  await writeFile('.hallmark/reports/locale-checks.json',JSON.stringify({passed:true,layouts:results,checks:['catalog parity and English fallback','locale regional mapping and invalid input','manual persistence and browser detection','20 language/theme layouts','all four employment cases','case study language state','Kita case without fabricated image','four lazy privacy-enhanced embeds, unload and focus restore','localized resume','locale download failure recovery'],errors},null,2));
+  await writeFile('.hallmark/reports/locale-checks.json',JSON.stringify({passed:true,layouts:results,checks:['catalog parity and English fallback','locale regional mapping and invalid input','manual persistence and browser detection','20 language/theme layouts','all four employment cases','case study language state','Kita case with real website capture','four lazy privacy-enhanced embeds, unload and focus restore','localized resume','locale download failure recovery'],errors},null,2));
   console.log('Locale and case-study verification passed: five languages, 20 layouts, all cases, video lifecycle, persistence, detection, and failure recovery.');
 } finally { await browser.close(); }

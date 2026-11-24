@@ -268,18 +268,14 @@
       {
         "title": "My contribution",
         "text": "Website design and development for the community. The organization’s identity and content belong to the community."
-      },
-      {
-        "title": "The delivery",
-        "text": "A public-facing community website. No unverified framework, backend, audience metrics, or operational outcomes are claimed."
-      },
-      {
-        "title": "Availability",
-        "text": "The live website was unavailable during review. This case study remains accessible here; the external address is provided only as a reference."
       }
     ],
     "href": "https://kitataiwan.com/",
-    "link": "Website reference",
-    "availability": "Live availability could not be verified."
+    "link": "Visit website",
+    "image": "assets/images/web/kita.jpg",
+    "imageWidth": 1710,
+    "imageHeight": 986,
+    "imageAlt": "Kita Taiwan, a real capture of the website.",
+    "caption": "Kita Taiwan, a real capture of the website."
   }
 }
