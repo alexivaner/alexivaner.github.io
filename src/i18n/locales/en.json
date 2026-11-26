@@ -1,5 +1,12 @@
 {
   "messages": {
+    "A shared expense tracker for a trip to Japan.": "A shared expense tracker for a trip to Japan.",
+    "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.": "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.",
+    "The OurTrip dashboard showing a sample Japan itinerary, payment totals, and a budget breakdown.": "The OurTrip dashboard showing a sample Japan itinerary, payment totals, and a budget breakdown.",
+    "OurTrip dashboard with synthetic trip data.": "OurTrip dashboard with synthetic trip data.",
+    "Trip costs were spread across bookings, receipts, and chat messages. I wanted one place to see what was paid, what was still due, and who owed whom.": "Trip costs were spread across bookings, receipts, and chat messages. I wanted one place to see what was paid, what was still due, and who owed whom.",
+    "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting.": "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting.",
+    "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger.": "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger.",
     "Lead Applied AI Engineer": "Lead Applied AI Engineer",
     "Independent product": "Independent product",
     "A second home for what you read.": "A second home for what you read.",

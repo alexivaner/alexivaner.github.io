@@ -53,12 +53,20 @@ function ProductCapture({ project, onOpen, onPreload, pending }) {
 }
 
 function SelectedWork({ onOpen, onPreload, pending }) {
-  const [readmory, aegis] = data.projects;
+  const readmory = data.projects.find(project => project.id === 'readmory');
+  const otherProjects = data.projects.filter(project => project.id !== readmory.id);
   const storyProps = project => ({ project, onOpen, onPreload, pending: pending === project.id, fallbackId: project.id });
   return <Localized><section className="work-section section" id="works" aria-labelledby="work-heading"><div className="container">
     <div className="section-intro"><h2 id="work-heading">Independent by design.</h2><p className="lead">Personal products, built around everyday interests.</p><nav className="work-destinations" aria-label="Browse selected work"><a href="#works">Products</a><a href="#websites">Websites</a><a href="#hardware">Hardware</a></nav></div>
     <article className="featured-project" aria-labelledby="readmory-heading"><div className="project-copy"><h3 id="readmory-heading">Readmory</h3><p className="project-headline">{readmory.headline}</p><p>{readmory.description}</p><a className="text-link" href={readmory.href} {...external}>{readmory.link}</a></div><ProductCapture {...storyProps(readmory)} /><ProjectStory {...storyProps(readmory)} /></article>
-    <div className="secondary-projects"><article className="aegis-project" aria-labelledby="aegis-heading"><ProductCapture {...storyProps(aegis)} /><h3 id="aegis-heading">Aegis</h3><p>{aegis.description}</p><ProjectStory {...storyProps(aegis)} /></article>
+    <div className="secondary-projects">{otherProjects.map(project => (
+      <article key={project.id} id={project.id} className={`secondary-product ${project.id}-project`} aria-labelledby={`${project.id}-heading`}>
+        <ProductCapture {...storyProps(project)} />
+        <h3 id={`${project.id}-heading`}>{project.name}</h3>
+        <p>{project.description}</p>
+        <ProjectStory {...storyProps(project)} />
+      </article>
+    ))}
     <aside className="earlier-projects" aria-labelledby="independent-heading"><h3 id="independent-heading">Built from<br />curiosity.</h3><p>Reading, exploring, and community needs become independent software projects.</p><a className="text-link" href="#applied">Explore research & applied AI</a><a className="text-link" href="#websites">Explore website work</a></aside></div>
   </div></section></Localized>;
 }

@@ -58,6 +58,32 @@
           "text": "This is a local prototype. Retrieval is lexical, source records can age or overlap, and travel times, costs, and opening hours are estimates to verify."
         }
       ]
+    },
+    {
+      "id": "ourtrip",
+      "name": "OurTrip",
+      "status": "Independent product",
+      "headline": "A shared expense tracker for a trip to Japan.",
+      "description": "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.",
+      "image": "assets/images/ourtrip-dashboard.webp",
+      "imageWidth": 1440,
+      "imageHeight": 900,
+      "imageAlt": "The OurTrip dashboard showing a sample Japan itinerary, payment totals, and a budget breakdown.",
+      "caption": "OurTrip dashboard with synthetic trip data.",
+      "story": [
+        {
+          "title": "The problem",
+          "text": "Trip costs were spread across bookings, receipts, and chat messages. I wanted one place to see what was paid, what was still due, and who owed whom."
+        },
+        {
+          "title": "What I built",
+          "text": "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting."
+        },
+        {
+          "title": "The engineering",
+          "text": "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger."
+        }
+      ]
     }
   ],
   "experience": [

@@ -1,5 +1,12 @@
 {
   "messages": {
+    "A shared expense tracker for a trip to Japan.": "Pelacak pengeluaran bersama untuk perjalanan ke Jepang.",
+    "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.": "Pantau pengeluaran bersama, tagihan mendatang, dan penggantian biaya. Catat pengeluaran dari Telegram atau periksa bukti pembayaran di dasbor web.",
+    "The OurTrip dashboard showing a sample Japan itinerary, payment totals, and a budget breakdown.": "Dasbor OurTrip dengan contoh rute perjalanan ke Jepang, total pembayaran, dan rincian anggaran.",
+    "OurTrip dashboard with synthetic trip data.": "Dasbor OurTrip dengan data perjalanan sintetis.",
+    "Trip costs were spread across bookings, receipts, and chat messages. I wanted one place to see what was paid, what was still due, and who owed whom.": "Biaya perjalanan tersebar di berbagai reservasi, bukti pembayaran, dan percakapan. Saya ingin melihat dalam satu tempat apa yang sudah dibayar, apa yang masih harus dibayar, dan siapa yang berutang kepada siapa.",
+    "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting.": "Saya membuat dasbor bersama untuk pengeluaran, reservasi, dan penggantian biaya, dengan pencatatan melalui Telegram dan peninjauan bukti pembayaran dari Gmail. Dasbor dan bot memakai buku kas yang sama, dan Google Sheets dapat menerbitkan salinannya untuk pelaporan.",
+    "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger.": "Aplikasi berjalan di Cloud Run dan menggunakan Firestore sebagai buku kas. Asisten mengutamakan aturan dan memakai Gemini untuk permintaan yang lebih fleksibel. Perubahan diajukan untuk ditinjau, sedangkan kurs dan pembagian biaya memakai nilai yang tercatat di buku kas.",
     "Lead Applied AI Engineer": "Lead Applied AI Engineer",
     "Independent product": "Produk independen",
     "A second home for what you read.": "Rumah kedua bagi bacaan Anda.",

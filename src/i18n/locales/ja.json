@@ -1,5 +1,12 @@
 {
   "messages": {
+    "A shared expense tracker for a trip to Japan.": "日本旅行のための共有支出トラッカー。",
+    "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.": "共同支出や今後の支払い、立替金の精算を管理。Telegram から支出を登録し、ウェブダッシュボードで領収書を確認できます。",
+    "The OurTrip dashboard showing a sample Japan itinerary, payment totals, and a budget breakdown.": "日本旅行のサンプル日程、支払額、予算の内訳を表示した OurTrip ダッシュボード。",
+    "OurTrip dashboard with synthetic trip data.": "架空の旅行データを使用した OurTrip ダッシュボード。",
+    "Trip costs were spread across bookings, receipts, and chat messages. I wanted one place to see what was paid, what was still due, and who owed whom.": "旅行の費用が予約情報、領収書、チャットに分散していました。支払い済みの金額、これから支払う金額、誰が誰にいくら精算するかを一か所で把握したいと考えました。",
+    "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting.": "支出、予約、立替金を管理する共有ダッシュボードを作り、Telegram での支出登録と Gmail の領収書確認を組み込みました。ダッシュボードとボットは同じ台帳を使用し、レポート用のコピーを Google スプレッドシートに公開できます。",
+    "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger.": "アプリは Cloud Run で稼働し、台帳を Firestore に保存します。アシスタントはルールを優先し、柔軟な対応が必要な依頼に Gemini を使います。変更は確認用の提案として提示し、為替レートや負担割合には台帳の記録を使用します。",
     "Lead Applied AI Engineer": "応用AIエンジニアリングリード",
     "Independent product": "個人開発プロダクト",
     "A second home for what you read.": "読んだ本に、もうひとつの居場所を。",

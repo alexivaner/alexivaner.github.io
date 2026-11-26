@@ -82,14 +82,14 @@ details[open] > summary > .glyph { transform: rotate(45deg); }
 .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl) var(--gap-columns); padding-block: var(--space-lg); }
 .story-grid h4 { font-size: var(--text-md); margin: 0 0 var(--space-sm); font-weight: 500; }
 .story-grid p { color: var(--color-muted); max-width: 45ch; }
-.secondary-projects { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: var(--gap-columns); margin-top: var(--space-2xl); }
-.aegis-project h3 { margin-top: var(--space-lg); font-size: 32px; }
-.aegis-project > p { color: var(--color-muted); max-width: 48ch; margin-top: var(--space-md); }
-.aegis-project .project-story { margin-top: var(--space-lg); }
-.aegis-project .story-grid { grid-template-columns: minmax(0, 1fr); }
-.earlier-projects { background: var(--color-paper-2); border-radius: var(--radius-card); padding: var(--space-xl); display: flex; flex-direction: column; align-items: start; justify-content: center; }
+.secondary-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-columns); margin-top: var(--space-2xl); }
+.secondary-product h3 { margin-top: var(--space-lg); font-size: 32px; }
+.secondary-product > p { color: var(--color-muted); max-width: 48ch; margin-top: var(--space-md); }
+.secondary-product .project-story { margin-top: var(--space-lg); }
+.secondary-product .story-grid { grid-template-columns: minmax(0, 1fr); }
+.earlier-projects { grid-column: 1 / -1; background: var(--color-paper-2); border-radius: var(--radius-card); padding: var(--space-xl); display: flex; flex-direction: column; align-items: start; justify-content: center; }
 .earlier-projects h3 { font-size: clamp(28px, 2.7vw, 36px); letter-spacing: -.045em; line-height: 1.1; }
-.earlier-projects > p { margin-top: var(--space-lg); color: var(--color-muted); max-width: 28ch; }
+.earlier-projects > p { margin-top: var(--space-lg); color: var(--color-muted); max-width: 54ch; }
 .earlier-projects ul { list-style: none; padding: 0; width: 100%; margin: var(--space-xl) 0 var(--space-lg); }
 .earlier-projects li a { min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); font-size: var(--text-sm); border-top: 1px solid var(--color-rule); }
 .earlier-projects li span { max-width: 24ch; }
