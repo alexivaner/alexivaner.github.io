@@ -64,7 +64,7 @@
       "name": "OurTrip",
       "status": "Independent product",
       "headline": "A shared expense tracker for a trip to Japan.",
-      "description": "Track shared expenses, upcoming payments, and reimbursements. Log expenses from Telegram or review receipts in the web dashboard.",
+      "description": "Ask about trip spending in Telegram, log payments in your own words, and track bookings and reimbursements in the web dashboard.",
       "image": "assets/images/ourtrip-dashboard.webp",
       "imageWidth": 1440,
       "imageHeight": 900,
@@ -80,8 +80,12 @@
           "text": "I built a shared dashboard for expenses, bookings, and reimbursements, with Telegram capture and Gmail receipt review. The dashboard and bot use the same ledger, and Google Sheets can publish a copy for reporting."
         },
         {
+          "title": "Telegram and Gemini",
+          "text": "I connected Gemini to the Telegram bot so travelers can ask about expenses, payments, bookings, and balances without memorizing commands. The bot can ask a follow-up when a message is ambiguous. It labels general travel tips separately so the conversation stays clear about which answers come from trip records."
+        },
+        {
           "title": "The engineering",
-          "text": "Cloud Run hosts the app, with Firestore as the ledger. The assistant uses rules first and Gemini for more flexible requests. It proposes edits for review, and exchange rates and splits come from values recorded in the ledger."
+          "text": "Cloud Run hosts the app, with Firestore as the ledger. Direct requests use rules. For more flexible requests, Gemini calls tools that read the ledger or propose changes for review. Ledger rules validate those changes and calculate balances from recorded exchange rates and splits."
         }
       ]
     }

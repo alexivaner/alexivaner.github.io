@@ -1,3 +1,4 @@
+import OurTripConversation from './OurTripConversation.jsx';
 import Icon from './Icon.jsx';
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
@@ -24,6 +25,7 @@ export default function ProjectViewer({ project, onClose, onOpenRelated, onOpenP
   return <Localized><dialog className="project-dialog" ref={dialog} aria-labelledby="project-dialog-title" onCancel={event => { event.preventDefault(); close(); }} onClick={event => { if (event.target === event.currentTarget) close(); }}><AnimatePresence onExitComplete={() => { dialog.current.close(); onClose(); }}>
     {open && <motion.article className="viewer-shell" initial={reduce ? false : { opacity: 0, y: 22, scale: .985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={reduce ? { opacity: 1 } : { opacity: 0, y: 12 }} transition={{ duration: reduce ? 0 : .3, ease: [.16, 1, .3, 1] }}>
       <div className="viewer-top"><h2 id="project-dialog-title">{project.name}</h2><LanguageSelector /><button className="icon-button" type="button" aria-label="Close project" onClick={close} autoFocus><Icon name="x" size={24}/></button></div><div className="viewer-body"><p className="viewer-lead">{project.headline}</p>
+      {project.id === 'ourtrip' && <OurTripConversation />}
       {video && <div className="case-video"><div className="video-frame"><iframe src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`} title={video.title} loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen/></div><a className="text-link" href={video.href} target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>}
       {project.image && !video && <figure className="viewer-image"><img src={`/${project.image.replace(/^\//, '')}`} width={project.imageWidth || 1440} height={project.imageHeight || 900} alt={project.imageAlt} /><figcaption>{project.caption || 'Independent prototype. Working local build.'}</figcaption></figure>}
       {project.pipeline && <details className="workflow-details"><summary>Technical workflow</summary><ol className="project-pipeline" aria-label="Project workflow">{project.pipeline.map(step => <li key={step}>{step}</li>)}</ol></details>}
