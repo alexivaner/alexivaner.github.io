@@ -1,6 +1,8 @@
 {
   "messages": {
-    "Ask about trip spending in Telegram, log payments in your own words, and track bookings and reimbursements in the web dashboard.": "Telegram で旅費について聞いたり、自分の言葉で支払いを記録したりできます。予約や立替金の精算はウェブダッシュボードで確認できます。",
+    "Log an expense in Telegram by describing it or sending an invoice photo. Ask who paid, then track balances in the web dashboard.": "Telegram で支払いを説明するか、請求書の写真を送って支出を記録。誰が払ったかを聞き、残高はウェブダッシュボードで確認できます。",
+    "Photo to expense": "写真から支出を記録",
+    "Send a photo of an invoice or receipt in Telegram, or use the camera in the web assistant. Gemini reads the merchant, date, total, and currency. Check the draft and confirm before it enters the ledger.": "Telegram で請求書や領収書の写真を送るか、ウェブアシスタントのカメラを使えます。Gemini が店名、日付、合計金額、通貨を読み取ります。下書きを確認すると台帳に記録されます。",
     "Telegram and Gemini": "Telegram と Gemini",
     "I connected Gemini to the Telegram bot so travelers can ask about expenses, payments, bookings, and balances without memorizing commands. The bot can ask a follow-up when a message is ambiguous. It labels general travel tips separately so the conversation stays clear about which answers come from trip records.": "Gemini を Telegram ボットに組み込み、コマンドを覚えなくても支出や支払い、予約、残高について質問できるようにしました。意味が曖昧ならボットが聞き返します。一般的な旅行のヒントには別のラベルを付け、旅行記録に基づく回答が分かるようにしています。",
     "Cloud Run hosts the app, with Firestore as the ledger. Direct requests use rules. For more flexible requests, Gemini calls tools that read the ledger or propose changes for review. Ledger rules validate those changes and calculate balances from recorded exchange rates and splits.": "アプリは Cloud Run で稼働し、台帳を Firestore に保存します。明確な依頼はルールで処理し、柔軟な対応が必要な依頼では Gemini がツールを使って台帳を参照したり変更を提案したりします。台帳のルールが変更を検証し、記録済みの為替レートと負担割合で残高を計算します。",

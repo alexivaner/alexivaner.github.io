@@ -19,6 +19,10 @@ export default function OurTripConversation({ headingLevel = 3 }) {
       <div className="conversation-intro">
         <Heading id={titleId}>From chat to ledger</Heading>
         <p>Talk to OurTrip in Telegram. Ask what’s already paid, who covered it, or what’s still due. Gemini helps with open-ended questions and follow-ups in the same chat.</p>
+        <div className="conversation-photo">
+          <p className="conversation-photo-title">Photo to expense</p>
+          <p>Send a photo of an invoice or receipt in Telegram, or use the camera in the web assistant. Gemini reads the merchant, date, total, and currency. Check the draft and confirm before it enters the ledger.</p>
+        </div>
       </div>
       <figure className="conversation-figure">
         <ol className="conversation-thread" role="list">

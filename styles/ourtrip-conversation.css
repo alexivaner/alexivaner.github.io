@@ -85,3 +85,17 @@
   .conversation-intro > h3, .conversation-intro > h4 { max-inline-size: none; }
   .conversation-thread > li { max-inline-size: 96%; }
 }
+
+.conversation-photo {
+  max-inline-size: 35ch;
+  margin-block-start: var(--space-lg);
+  padding-inline-start: var(--space-md);
+  border-inline-start: var(--rule-hair) solid var(--color-accent);
+}
+
+.conversation-photo p { color: var(--color-muted); }
+.conversation-photo .conversation-photo-title {
+  margin-block-end: var(--space-2xs);
+  color: var(--color-ink);
+  font-weight: 600;
+}

@@ -1,6 +1,8 @@
 {
   "messages": {
-    "Ask about trip spending in Telegram, log payments in your own words, and track bookings and reimbursements in the web dashboard.": "在 Telegram 詢問旅費，用自己的話登記付款，並在網頁儀表板追蹤預訂與代墊還款。",
+    "Log an expense in Telegram by describing it or sending an invoice photo. Ask who paid, then track balances in the web dashboard.": "在 Telegram 用文字說明或傳送發票照片即可記帳。可詢問由誰付款，並在網頁儀表板追蹤餘額。",
+    "Photo to expense": "從發票照片到支出紀錄",
+    "Send a photo of an invoice or receipt in Telegram, or use the camera in the web assistant. Gemini reads the merchant, date, total, and currency. Check the draft and confirm before it enters the ledger.": "在 Telegram 傳送發票或收據照片，也可使用網頁助理的相機。Gemini 會辨識商家、日期、總額與幣別。核對草稿並確認後，才會寫入帳本。",
     "Telegram and Gemini": "Telegram 與 Gemini",
     "I connected Gemini to the Telegram bot so travelers can ask about expenses, payments, bookings, and balances without memorizing commands. The bot can ask a follow-up when a message is ambiguous. It labels general travel tips separately so the conversation stays clear about which answers come from trip records.": "我將 Gemini 整合進 Telegram 機器人，讓旅伴不用記指令就能詢問支出、付款、預訂及應付餘額。訊息有歧義時，機器人可以追問。一般旅遊建議會另外標示，讓人清楚辨認哪些答案來自旅行帳本。",
     "Cloud Run hosts the app, with Firestore as the ledger. Direct requests use rules. For more flexible requests, Gemini calls tools that read the ledger or propose changes for review. Ledger rules validate those changes and calculate balances from recorded exchange rates and splits.": "應用程式部署於 Cloud Run，以 Firestore 儲存帳務資料。明確的請求由規則處理，較彈性的請求則由 Gemini 呼叫工具讀取帳本或提出變更供審核。帳本規則會驗證變更，並按已記錄的匯率與分攤比例計算餘額。",

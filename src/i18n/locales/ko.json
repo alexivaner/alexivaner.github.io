@@ -1,6 +1,8 @@
 {
   "messages": {
-    "Ask about trip spending in Telegram, log payments in your own words, and track bookings and reimbursements in the web dashboard.": "Telegram에서 여행 경비를 묻고 자연스러운 말로 결제를 기록하세요. 예약과 정산 내역은 웹 대시보드에서 확인할 수 있습니다.",
+    "Log an expense in Telegram by describing it or sending an invoice photo. Ask who paid, then track balances in the web dashboard.": "Telegram에서 말로 설명하거나 청구서 사진을 보내 지출을 기록하세요. 누가 냈는지 묻고 웹 대시보드에서 잔액을 확인할 수 있습니다.",
+    "Photo to expense": "사진으로 지출 기록",
+    "Send a photo of an invoice or receipt in Telegram, or use the camera in the web assistant. Gemini reads the merchant, date, total, and currency. Check the draft and confirm before it enters the ledger.": "Telegram으로 청구서나 영수증 사진을 보내거나 웹 어시스턴트의 카메라를 사용하세요. Gemini가 가맹점, 날짜, 총액, 통화를 읽습니다. 초안을 검토하고 확인하면 장부에 기록됩니다.",
     "Telegram and Gemini": "Telegram과 Gemini",
     "I connected Gemini to the Telegram bot so travelers can ask about expenses, payments, bookings, and balances without memorizing commands. The bot can ask a follow-up when a message is ambiguous. It labels general travel tips separately so the conversation stays clear about which answers come from trip records.": "Gemini를 Telegram 봇에 연결해 명령어를 외우지 않고도 지출, 결제, 예약, 잔액을 물을 수 있게 했습니다. 의미가 모호하면 봇이 다시 묻습니다. 일반 여행 팁에는 별도 표시를 붙여 여행 기록에 근거한 답변과 구분합니다.",
     "Cloud Run hosts the app, with Firestore as the ledger. Direct requests use rules. For more flexible requests, Gemini calls tools that read the ledger or propose changes for review. Ledger rules validate those changes and calculate balances from recorded exchange rates and splits.": "앱은 Cloud Run에서 실행되며 Firestore에 장부를 저장합니다. 명확한 요청은 규칙으로 처리합니다. 그 외 요청에는 Gemini가 도구를 호출해 장부를 읽거나 변경 사항을 제안합니다. 장부 규칙이 변경 내용을 검증하고 기록된 환율과 분담 비율로 잔액을 계산합니다.",
