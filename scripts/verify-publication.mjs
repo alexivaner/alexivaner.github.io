@@ -54,6 +54,21 @@ try{
  const gallery=await browser.newPage();await gallery.goto(process.env.PORTFOLIO_URL||'http://127.0.0.1:4175',{waitUntil:'networkidle0'});await gallery.waitForFunction(()=>document.documentElement.dataset.hydrated==='true');
  async function thumbnail(selector,name){await gallery.click(selector);await gallery.waitForSelector('dialog[open]');assert.equal(await gallery.$eval('#project-dialog-title',el=>el.textContent),name);await gallery.keyboard.press('Escape');await gallery.waitForFunction(()=>!document.querySelector('dialog[open]'));assert(await gallery.$eval(selector,el=>el===document.activeElement),'Thumbnail focus was not restored');}
  await thumbnail('.featured-project .project-thumbnail','Readmory');await thumbnail('.aegis-project .project-thumbnail','Aegis');await thumbnail('.ourtrip-project .project-thumbnail','OurTrip');
+ await gallery.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'no-preference'}]);
+ await gallery.click('.ourtrip-project .project-thumbnail');
+ await gallery.waitForSelector('dialog[open] .conversation-play');
+ await gallery.evaluate(()=>[...document.querySelectorAll('dialog .conversation-scenarios button')].at(-1).click());
+ assert(await gallery.$('dialog .conversation-attachment'));
+ await gallery.click('dialog .conversation-play');
+ await gallery.waitForSelector('dialog .conversation-typing');
+ assert.equal(await gallery.$$eval('dialog .conversation-thread > li:not(.conversation-typing)',messages=>messages.length),1);
+ await gallery.click('dialog .conversation-play');
+ assert.equal(await gallery.$eval('dialog .conversation-play',button=>button.textContent.trim()),'Resume playback');
+ await gallery.click('dialog .conversation-play');
+ await gallery.waitForFunction(()=>document.querySelector('dialog .conversation-play')?.textContent.trim()==='Replay chat');
+ assert.equal(await gallery.$$eval('dialog .conversation-thread > li',messages=>messages.length),4);
+ await gallery.keyboard.press('Escape');
+ await gallery.waitForFunction(()=>!document.querySelector('dialog[open]'));
  const websites=JSON.parse(await readFile('content/portfolio.json')).websites;
  for(const site of websites.filter(item=>item.image)){
   await gallery.$eval(`.website-selector a[href="${site.href}"]`,el=>el.click());await thumbnail('.website-preview .project-thumbnail',site.name);

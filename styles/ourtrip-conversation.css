@@ -1,4 +1,4 @@
-/* Hallmark · component: Telegram transcript · genre: editorial · theme: existing portfolio · signature: the meaning of “paid half” · v2.0.0 */
+/* Hallmark · component: Telegram transcript · genre: editorial · theme: existing portfolio · signature: a replayable expense and invoice chat · v2.0.0 */
 /* Critique: speaker labels and turn alignment preserve the distinction between a payment and a reimbursement at narrow widths. */
 
 .ourtrip-conversation {
@@ -99,3 +99,82 @@
   color: var(--color-ink);
   font-weight: 600;
 }
+
+.conversation-toolbar,
+.conversation-scenarios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.conversation-toolbar {
+  justify-content: space-between;
+  margin-block-end: var(--space-md);
+  padding-block-end: var(--space-sm);
+  border-block-end: var(--rule-hair) solid var(--color-rule);
+}
+
+.conversation-toolbar button,
+.conversation-static-invoice summary {
+  min-block-size: 44px;
+  padding-inline: var(--space-sm);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.conversation-toolbar button:hover { border-color: var(--color-rule-2); }
+.conversation-toolbar button[aria-pressed='true'],
+.conversation-toolbar .conversation-play { background: var(--color-accent-soft); }
+.conversation-toolbar button:focus-visible,
+.conversation-static-invoice summary:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.conversation-toolbar button:active { transform: translateY(1px); }
+.conversation-static-invoice { margin-block-start: var(--space-md); }
+.conversation-static-invoice summary { display: list-item; padding-block-start: var(--space-xs); }
+.conversation-static-invoice .conversation-thread { margin-block-start: var(--space-sm); }
+
+.conversation-thread > .conversation-typing {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+.conversation-typing p { color: var(--color-muted); font-size: var(--text-sm); }
+.conversation-typing-dots { display: inline-flex; gap: var(--space-2xs); }
+.conversation-typing-dots i {
+  inline-size: var(--space-2xs);
+  block-size: var(--space-2xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-muted);
+}
+.conversation-attachment {
+  min-inline-size: 0;
+  margin: var(--space-xs) 0;
+  padding-block: var(--space-xs);
+  border-block: var(--rule-hair) dashed var(--color-rule-2);
+}
+.conversation-attachment figcaption {
+  margin: 0 0 var(--space-2xs);
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.conversation-attachment dl { margin: 0; font-size: var(--text-sm); }
+.conversation-attachment dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-xs); }
+.conversation-attachment dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .conversation-thread > [data-entering] { animation: conversation-enter var(--dur-short) var(--ease-out) both; }
+  .conversation-typing-dots i { animation: conversation-pulse 1s ease-in-out infinite alternate; }
+  .conversation-typing-dots i:nth-child(2) { animation-delay: 120ms; }
+  .conversation-typing-dots i:nth-child(3) { animation-delay: 240ms; }
+}
+@keyframes conversation-enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes conversation-pulse { from { opacity: .4; } to { opacity: 1; } }
